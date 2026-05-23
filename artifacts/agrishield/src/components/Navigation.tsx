@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Leaf, Globe, Menu, User, X, ShoppingBag, FlaskConical, Home, Play } from "lucide-react";
+import { Globe, Menu, User, X, ShoppingBag, FlaskConical, Home, Play, Leaf } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -19,10 +19,14 @@ export default function Navigation() {
   return (
     <>
       <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100">
-        <div className="max-w-[1280px] mx-auto px-6 h-[68px] flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 shrink-0" data-testid="link-home-logo">
-            <Leaf className="w-6 h-6 text-primary" strokeWidth={2.5} />
-            <span className="font-semibold text-[20px] text-primary tracking-tight">agrishield</span>
+        <div className="max-w-[1280px] mx-auto px-6 h-[72px] flex items-center justify-between">
+          <Link href="/" className="flex items-center shrink-0" data-testid="link-home-logo">
+            <img
+              src="/logo.png"
+              alt="Agrishield Industries"
+              className="w-auto object-contain"
+              style={{ height: 88, maxWidth: 200, marginTop: 4, marginBottom: 4 }}
+            />
           </Link>
 
           <nav className="hidden md:flex items-center" aria-label="Main navigation">

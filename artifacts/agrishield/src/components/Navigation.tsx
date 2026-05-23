@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Leaf, Globe, Menu, User, X, ShoppingBag, Lightbulb, FlaskConical } from "lucide-react";
+import { Leaf, Globe, Menu, User, X, ShoppingBag, FlaskConical, Home } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const tabs = [
+    { href: "/", label: "Home", Icon: Home },
     { href: "/products", label: "Products", Icon: ShoppingBag },
     { href: "/solutions", label: "Solutions", Icon: Leaf },
     { href: "/innovation", label: "Innovation", Icon: FlaskConical },
   ];
 
-  const isActive = (href: string) =>
-    location === href || (href === "/products" && location === "/");
+  const isActive = (href: string) => location === href;
 
   return (
     <>

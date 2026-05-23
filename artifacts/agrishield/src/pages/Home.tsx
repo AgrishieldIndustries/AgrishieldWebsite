@@ -46,7 +46,7 @@ const PRODUCTS = [
     price: "₹1,890",
     rating: 4.76,
     badge: true,
-    img: "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=600&fit=crop&q=80",
   },
 ];
 
@@ -103,7 +103,7 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
 
       <div className="px-0.5">
         <div className="flex items-start justify-between gap-2 mb-0.5">
-          <span className="text-[13px] font-bold text-gray-900 leading-tight line-clamp-1">{product.name}</span>
+          <span className="text-[13px] font-extrabold text-gray-900 leading-tight line-clamp-1 tracking-tight">{product.name}</span>
           <div className="flex items-center gap-1 shrink-0">
             <Star className="w-3 h-3 fill-gray-900 text-gray-900" />
             <span className="text-[13px] font-semibold text-gray-900">{product.rating}</span>
@@ -111,7 +111,7 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
         </div>
         <div className="text-[13px] text-gray-500">{product.type} · {product.category}</div>
         <div className="text-[13px] text-gray-500">{product.sizes}</div>
-        <div className="text-[13px] text-gray-900 mt-1"><span className="font-bold">{product.price}</span> per pack</div>
+        <div className="text-[13px] text-gray-900 mt-1"><span className="font-extrabold">{product.price}</span> per pack</div>
       </div>
     </motion.div>
   );

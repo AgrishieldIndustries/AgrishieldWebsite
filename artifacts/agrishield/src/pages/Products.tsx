@@ -21,47 +21,47 @@ const ALL_PRODUCTS = [
   {
     id: 4, name: "AGRISHIELD CALCIUM NITRATE", type: "Calcium Fertilizer", category: "NPK",
     sizes: "25 kg sack", price: "₹1,890", rating: 4.76, badge: true,
-    img: "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=600&fit=crop&q=80",
   },
   {
     id: 5, name: "AGRISHIELD CHELAMIN PLUS", type: "Chelated Micronutrient", category: "Micronutrient",
     sizes: "250 g · 500 g", price: "₹280", rating: 4.85, badge: false,
-    img: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop&q=80",
   },
   {
     id: 6, name: "AGRISHIELD MANCOZEB 75", type: "Contact Fungicide", category: "Fungicide",
     sizes: "500 g · 1 kg", price: "₹195", rating: 4.79, badge: true,
-    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=600&fit=crop&q=80",
   },
   {
     id: 7, name: "AGRISHIELD BORON 20%", type: "Boron Micronutrient", category: "Micronutrient",
     sizes: "500 g · 1 kg", price: "₹240", rating: 4.91, badge: false,
-    img: "https://images.unsplash.com/photo-1490750967868-88df5691cc1d?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=600&fit=crop&q=80",
   },
   {
     id: 8, name: "AGRISHIELD NPK 13:40:13", type: "Water Soluble Fertilizer", category: "NPK",
     sizes: "1 kg · 5 kg", price: "₹460", rating: 4.83, badge: true,
-    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=600&fit=crop&q=80",
   },
   {
     id: 9, name: "AGRISHIELD IMIDACLOPRID 17.8", type: "Systemic Insecticide", category: "Insecticide",
     sizes: "100 ml · 250 ml · 1 L", price: "₹320", rating: 4.87, badge: true,
-    img: "https://images.unsplash.com/photo-1566408669374-5a6d5dca1ef5?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=600&h=600&fit=crop&q=80",
   },
   {
     id: 10, name: "AGRISHIELD POTASSIUM HUMATE", type: "Soil Conditioner", category: "Humic",
     sizes: "1 kg · 5 kg", price: "₹180", rating: 4.74, badge: false,
-    img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=600&fit=crop&q=80",
   },
   {
     id: 11, name: "AGRISHIELD TRICHODERMA", type: "Biofungicide", category: "Fungicide",
     sizes: "250 g · 500 g · 1 kg", price: "₹150", rating: 4.68, badge: false,
-    img: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=600&fit=crop&q=80",
   },
   {
     id: 12, name: "AGRISHIELD ZINC SULPHATE", type: "Zinc Micronutrient", category: "Micronutrient",
     sizes: "1 kg · 5 kg · 25 kg", price: "₹110", rating: 4.77, badge: false,
-    img: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=600&h=600&fit=crop&q=80",
+    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop&q=80",
   },
 ];
 
@@ -104,7 +104,7 @@ function ProductCard({ product, index }: { product: typeof ALL_PRODUCTS[0]; inde
 
       <div className="px-0.5">
         <div className="flex items-start justify-between gap-2 mb-0.5">
-          <span className="text-[13px] font-bold text-gray-900 leading-tight line-clamp-1">{product.name}</span>
+          <span className="text-[13px] font-extrabold text-gray-900 leading-tight line-clamp-1 tracking-tight">{product.name}</span>
           <div className="flex items-center gap-1 shrink-0">
             <Star className="w-3 h-3 fill-gray-900 text-gray-900" />
             <span className="text-[13px] font-semibold text-gray-900">{product.rating}</span>
@@ -113,7 +113,7 @@ function ProductCard({ product, index }: { product: typeof ALL_PRODUCTS[0]; inde
         <div className="text-[13px] text-gray-500">{product.type} · {product.category}</div>
         <div className="text-[13px] text-gray-500">{product.sizes}</div>
         <div className="text-[13px] text-gray-900 mt-1">
-          <span className="font-bold">{product.price}</span>{" "}
+          <span className="font-extrabold">{product.price}</span>{" "}
           <span className="font-normal">per pack</span>
         </div>
       </div>

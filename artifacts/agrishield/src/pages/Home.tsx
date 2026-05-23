@@ -1,261 +1,323 @@
+import { useState } from "react";
 import { Link } from "wouter";
+import { Heart, Star, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, ShieldCheck, Factory, Sprout, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
-export default function Home() {
-  const categories = ["Herbicides", "Pesticides", "Fungicides", "Insecticides", "Sprayers", "Accessories"];
+const PRODUCTS = [
+  {
+    id: 1,
+    name: "AGRISHIELD WSF 19:19:19",
+    type: "Water Soluble Fertilizer",
+    category: "NPK",
+    sizes: "1 kg · 5 kg",
+    price: "₹420",
+    rating: 4.92,
+    badge: true,
+    img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=600&fit=crop&q=80",
+  },
+  {
+    id: 2,
+    name: "AGRISHIELD HUMIGROWTH",
+    type: "Organic Biostimulant",
+    category: "Humic",
+    sizes: "500 ml · 1 L",
+    price: "₹360",
+    rating: 4.88,
+    badge: true,
+    img: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=600&fit=crop&q=80",
+  },
+  {
+    id: 3,
+    name: "AGRISHIELD WASHOUT 41",
+    type: "Systemic Herbicide",
+    category: "Glyphosate",
+    sizes: "1 L · 5 L",
+    price: "₹540",
+    rating: 4.81,
+    badge: true,
+    img: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=600&h=600&fit=crop&q=80",
+  },
+  {
+    id: 4,
+    name: "AGRISHIELD CALCIUM NITRATE",
+    type: "Calcium Fertilizer",
+    category: "Calcium Nit.",
+    sizes: "25 kg sack",
+    price: "₹1,890",
+    rating: 4.76,
+    badge: true,
+    img: "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?w=600&h=600&fit=crop&q=80",
+  },
+];
 
-  const products = [
-    {
-      id: 1,
-      name: "ShieldMax Pro 500",
-      category: "Herbicides",
-      desc: "Industrial grade broad-spectrum herbicide for pre-emergent weed control.",
-      img: "/product-chemical.png",
-    },
-    {
-      id: 2,
-      name: "AeroSpray Titan",
-      category: "Sprayers",
-      desc: "Heavy-duty tractor mounted boom sprayer with 1000L capacity and precision nozzles.",
-      img: "/product-sprayer.png",
-    },
-    {
-      id: 3,
-      name: "FungiGuard Plus",
-      category: "Fungicides",
-      desc: "Systemic fungicide providing long-lasting protection against rust and blight.",
-      img: "/product-chemical.png",
-    },
-    {
-      id: 4,
-      name: "CropNet Advance",
-      category: "Accessories",
-      desc: "UV-stabilized protective netting for extreme weather and pest exclusion.",
-      img: "/product-sprayer.png",
-    }
-  ];
+const STATES = [
+  { state: "Maharashtra", crops: "Grape & pomegranate" },
+  { state: "Karnataka", crops: "Coffee & arecanut" },
+  { state: "Punjab", crops: "Wheat & paddy" },
+  { state: "Gujarat", crops: "Cotton & groundnut" },
+  { state: "Tamil Nadu", crops: "Banana & turmeric" },
+  { state: "Andhra Pradesh", crops: "Chilli & paddy" },
+  { state: "Madhya Pradesh", crops: "Soybean & gram" },
+  { state: "Rajasthan", crops: "Mustard & cumin" },
+  { state: "West Bengal", crops: "Jute & potato" },
+  { state: "Haryana", crops: "Wheat & sugarcane" },
+  { state: "Uttar Pradesh", crops: "Sugarcane & potato" },
+  { state: "Kerala", crops: "Coconut & spices" },
+];
+
+function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: number }) {
+  const [liked, setLiked] = useState(false);
 
   return (
-    <div className="w-full">
-      {/* HERO SECTION */}
-      <section className="relative h-[600px] md:h-[700px] w-full flex items-center bg-gray-900">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-          style={{ backgroundImage: "url('/hero-bg.png')" }}
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      className="group cursor-pointer"
+      data-testid={`card-product-${product.id}`}
+    >
+      <div className="relative aspect-square rounded-[14px] overflow-hidden mb-3">
+        <img
+          src={product.img}
+          alt={product.name}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
-        
-        <div className="max-w-[1280px] mx-auto w-full px-6 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl text-white"
+        {product.badge && (
+          <div className="absolute top-3 left-3 bg-white rounded-full px-3 py-1 text-[11px] font-semibold text-gray-800 shadow-sm">
+            Dealer favorite
+          </div>
+        )}
+        <button
+          className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          onClick={(e) => { e.preventDefault(); setLiked(!liked); }}
+          data-testid={`btn-like-${product.id}`}
+          aria-label="Save product"
+        >
+          <Heart
+            className={`w-[18px] h-[18px] transition-colors ${liked ? "fill-primary text-primary" : "text-white drop-shadow"}`}
+            strokeWidth={2}
+          />
+        </button>
+      </div>
+
+      <div className="px-0.5">
+        <div className="flex items-start justify-between gap-2 mb-0.5">
+          <span className="text-[13px] font-semibold text-gray-900 leading-tight line-clamp-1">{product.name}</span>
+          <div className="flex items-center gap-1 shrink-0">
+            <Star className="w-3 h-3 fill-gray-900 text-gray-900" />
+            <span className="text-[13px] font-medium text-gray-900">{product.rating}</span>
+          </div>
+        </div>
+        <div className="text-[13px] text-gray-500">{product.type} · {product.category}</div>
+        <div className="text-[13px] text-gray-500">{product.sizes}</div>
+        <div className="text-[13px] font-semibold text-gray-900 mt-1"><span className="font-normal">{product.price}</span> per pack</div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function Home() {
+  const [activeTab, setActiveTab] = useState<"CROP" | "CONCERN" | "REGION">("CROP");
+
+  return (
+    <div className="w-full bg-white">
+      {/* HERO CARD */}
+      <section className="px-4 md:px-6 pt-6 pb-8">
+        <div className="max-w-[1280px] mx-auto">
+          <div
+            className="relative rounded-[20px] overflow-hidden"
+            style={{ minHeight: 480 }}
           >
-            <h1 className="text-[40px] md:text-[56px] font-bold leading-[1.1] mb-6 tracking-tight">
-              Protecting What Grows
-            </h1>
-            <p className="text-[18px] md:text-[22px] text-gray-200 mb-10 leading-relaxed font-normal">
-              Industrial precision meets the land. We manufacture the high-grade protection products, chemicals, and equipment that serious farmers trust.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Link href="/products">
-                <Button className="rounded-full px-8 py-6 bg-primary hover:bg-primary/90 text-white font-semibold text-[16px]">
-                  Explore Products
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="outline" className="rounded-full px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white hover:text-black font-semibold text-[16px] backdrop-blur-sm">
-                  Contact Us
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            <img
+              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1400&h=700&fit=crop&q=85"
+              alt="Farmland aerial view"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
-      {/* CATEGORY STRIP */}
-      <section className="border-b border-gray-200 bg-white">
-        <div className="max-w-[1280px] mx-auto px-6 py-6 overflow-x-auto whitespace-nowrap hide-scrollbar flex items-center gap-3">
-          {categories.map((cat, i) => (
-            <Link key={i} href={`/products?category=${cat.toLowerCase()}`}>
-              <div className="inline-flex px-5 py-2.5 rounded-full border border-gray-200 hover:border-primary hover:text-primary transition-colors text-sm font-medium cursor-pointer text-gray-700">
-                {cat}
+            <div className="relative z-10 flex flex-col justify-between h-full p-8 md:p-12" style={{ minHeight: 480 }}>
+              <div className="max-w-[600px]">
+                <div className="inline-flex items-center gap-1.5 bg-white/95 rounded-full px-4 py-1.5 text-[11px] font-semibold text-gray-700 tracking-wider uppercase mb-6">
+                  Manufactured in Pune · Trusted across India
+                </div>
+                <h1 className="text-[36px] md:text-[52px] font-bold text-white leading-[1.1] mb-4">
+                  Fertilizers &amp; micronutrients that boost your plant growth.
+                </h1>
+                <p className="text-[15px] md:text-[16px] text-white/80 leading-relaxed max-w-[500px]">
+                  The complete crop-care catalogue from Agrishield Industries — biostimulants, NPKs, chelated micronutrients and plant protection, engineered for every crop.
+                </p>
               </div>
-            </Link>
-          ))}
-        </div>
-      </section>
 
-      {/* STATS BAND */}
-      <section className="bg-primary text-white py-16">
-        <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20">
-          <div className="text-center md:pt-0 pb-6 md:pb-0">
-            <div className="text-[32px] md:text-[48px] font-bold mb-2">25+</div>
-            <div className="text-sm font-medium text-white/80 uppercase tracking-wider">Years Experience</div>
-          </div>
-          <div className="text-center pt-6 md:pt-0 pb-6 md:pb-0">
-            <div className="text-[32px] md:text-[48px] font-bold mb-2">500+</div>
-            <div className="text-sm font-medium text-white/80 uppercase tracking-wider">Products</div>
-          </div>
-          <div className="text-center pt-6 md:pt-0 pb-6 md:pb-0">
-            <div className="text-[32px] md:text-[48px] font-bold mb-2">10k+</div>
-            <div className="text-sm font-medium text-white/80 uppercase tracking-wider">Farmers Served</div>
-          </div>
-          <div className="text-center pt-6 md:pt-0">
-            <div className="text-[32px] md:text-[48px] font-bold mb-2">50+</div>
-            <div className="text-sm font-medium text-white/80 uppercase tracking-wider">States Covered</div>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED PRODUCTS */}
-      <section className="py-20 md:py-24 bg-gray-50">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="text-[28px] md:text-[32px] font-bold text-gray-900 mb-4">Featured Solutions</h2>
-              <p className="text-gray-600 text-lg">Top-grade equipment and chemicals for maximum yield.</p>
+              <div className="mt-8">
+                <div className="inline-flex bg-white/10 backdrop-blur-sm rounded-[12px] overflow-hidden border border-white/20">
+                  {(["CROP", "CONCERN", "REGION"] as const).map((tab) => (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      data-testid={`tab-hero-${tab.toLowerCase()}`}
+                      className={`px-6 py-3 text-[12px] font-semibold tracking-wider transition-colors ${
+                        activeTab === tab
+                          ? "bg-white text-gray-900"
+                          : "text-white/70 hover:text-white"
+                      }`}
+                    >
+                      {tab}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-            <Link href="/products" className="hidden md:flex items-center gap-2 text-primary font-medium hover:underline">
-              View all products <ArrowRight className="w-4 h-4" />
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCT GRID */}
+      <section className="px-4 md:px-6 py-10">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="flex items-center justify-between mb-7">
+            <h2 className="text-[24px] md:text-[28px] font-bold text-gray-900">
+              Inspiration for your next season
+            </h2>
+            <Link
+              href="/products"
+              className="hidden md:flex items-center gap-1 text-[14px] font-semibold text-gray-900 underline-offset-2 hover:underline"
+              data-testid="link-view-all-products"
+            >
+              View all products
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map((product, i) => (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                key={product.id} 
-                className="bg-white rounded-[14px] border border-gray-100 overflow-hidden hover-float group cursor-pointer"
-              >
-                <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
-                  <div className="absolute top-3 left-3 z-10 px-3 py-1 bg-white/90 backdrop-blur text-xs font-semibold rounded-full text-gray-800 shadow-sm">
-                    {product.category}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {PRODUCTS.map((product, i) => (
+              <ProductCard key={product.id} product={product} index={i} />
+            ))}
+          </div>
+
+          <div className="mt-6 md:hidden text-center">
+            <Link href="/products" className="text-[14px] font-semibold text-gray-900 underline">
+              View all products
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS CARD */}
+      <section className="px-4 md:px-6 py-6">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="bg-[#f5f5f5] rounded-[20px] px-8 md:px-16 py-12">
+            <p className="text-[18px] md:text-[22px] font-semibold text-gray-900 mb-10 max-w-xl">
+              Trusted by farmers and dealers across India's most productive fields.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { value: "15+", label: "Years of experience" },
+                { value: "120+", label: "Products in catalogue" },
+                { value: "2,400+", label: "Dealers & retailers" },
+                { value: "180k+", label: "Farmers served" },
+              ].map((stat) => (
+                <div key={stat.label} data-testid={`stat-${stat.label.replace(/\s+/g, "-").toLowerCase()}`}>
+                  <div className="text-[40px] md:text-[52px] font-bold text-primary leading-none mb-2">
+                    {stat.value}
                   </div>
-                  <img src={product.img} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="text-[13px] text-gray-500">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CROP COVERAGE GRID */}
+      <section className="px-4 md:px-6 py-12">
+        <div className="max-w-[1280px] mx-auto">
+          <h2 className="text-[24px] md:text-[28px] font-bold text-gray-900 mb-8">
+            We understand every crop's need
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-4">
+            {STATES.map((s) => (
+              <div key={s.state} data-testid={`state-${s.state.toLowerCase().replace(/\s/g, "-")}`}>
+                <div className="text-[14px] font-semibold text-gray-900">{s.state}</div>
+                <div className="text-[13px] text-gray-500 mt-0.5">{s.crops}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SOLUTIONS STRIP */}
+      <section className="px-4 md:px-6 py-10 bg-gray-50">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="flex items-center justify-between mb-7">
+            <h2 className="text-[24px] md:text-[28px] font-bold text-gray-900">
+              Solutions for every challenge
+            </h2>
+            <Link href="/solutions" className="hidden md:flex items-center gap-1 text-[14px] font-semibold text-gray-900 underline-offset-2 hover:underline">
+              View all solutions
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                title: "Nutrient Management",
+                desc: "Balanced NPK programmes for every crop stage — from seedling establishment to fruiting.",
+                img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop&q=80",
+              },
+              {
+                title: "Pest & Disease Control",
+                desc: "Targeted chemistry that eliminates threats without harming beneficial organisms or residue limits.",
+                img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=400&fit=crop&q=80",
+              },
+              {
+                title: "Biostimulants",
+                desc: "Humic, fulvic and seaweed extract-based products that unlock the natural potential of your soil.",
+                img: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=400&fit=crop&q=80",
+              },
+            ].map((sol, i) => (
+              <motion.div
+                key={sol.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+                className="bg-white rounded-[16px] overflow-hidden border border-gray-100 hover:shadow-[rgba(0,0,0,0.02)_0_0_0_1px,rgba(0,0,0,0.04)_0_2px_6px,rgba(0,0,0,0.1)_0_4px_8px] transition-shadow cursor-pointer"
+                data-testid={`card-solution-${i}`}
+              >
+                <div className="aspect-[3/2] overflow-hidden">
+                  <img src={sol.img} alt={sol.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-5">
-                  <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">{product.desc}</p>
-                  <Link href={`/products`} className="text-primary text-sm font-medium hover:underline inline-flex items-center gap-1">
-                    View Details <ArrowRight className="w-3 h-3" />
-                  </Link>
+                  <h3 className="font-semibold text-[16px] text-gray-900 mb-2">{sol.title}</h3>
+                  <p className="text-[13px] text-gray-500 leading-relaxed">{sol.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
-          
-          <div className="mt-8 text-center md:hidden">
-            <Link href="/products">
-              <Button variant="outline" className="rounded-full">View all products</Button>
+        </div>
+      </section>
+
+      {/* CONTACT CTA */}
+      <section className="px-4 md:px-6 py-16">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <h2 className="text-[28px] md:text-[36px] font-bold text-gray-900 leading-tight mb-3">
+                Enquiries, dealerships, agronomy<br className="hidden md:block" /> — we're a call away.
+              </h2>
+              <p className="text-[15px] text-gray-500 max-w-xl">
+                Tell us about your crop, your region and what you're trying to solve. Our field officers respond within one working day.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="shrink-0 flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold text-[15px] px-7 py-3.5 rounded-full transition-colors"
+              data-testid="btn-contact-cta"
+            >
+              Get in touch <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
-
-      {/* WHY CHOOSE US */}
-      <section className="py-20 md:py-24 bg-white">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-[28px] md:text-[32px] font-bold text-gray-900 mb-4">Why Farmers Trust Us</h2>
-            <p className="text-gray-600 text-lg">We don't just sell products; we engineer solutions that protect your livelihood.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Factory className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">ISO Certified Manufacturing</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed">Our state-of-the-art facilities ensure every batch meets rigorous international quality and safety standards.</p>
-            </div>
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <ShieldCheck className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Proven Effectiveness</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed">Backed by dedicated R&D, our formulas are tested in real-world extreme conditions to guarantee crop safety.</p>
-            </div>
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Sprout className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Sustainable Solutions</h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed">We balance powerful protection with environmental responsibility, offering low-residue and targeted treatments.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-20 md:py-24 bg-gray-50">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <h2 className="text-[28px] md:text-[32px] font-bold text-gray-900 mb-12 text-center">Words from the Field</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Rajesh Kumar",
-                location: "Punjab",
-                quote: "Switching to Agrishield's FungiGuard saved our entire tomato yield this season. The quality is unmatched and their support team knows exactly what they're talking about."
-              },
-              {
-                name: "Suresh Patel",
-                location: "Gujarat",
-                quote: "The AeroSpray Titan is built like a tank. We've run it for hundreds of hours across difficult terrain without a single breakdown. Worth every rupee."
-              },
-              {
-                name: "Amit Singh",
-                location: "Haryana",
-                quote: "I've been using their herbicides for five years. Consistent results, no residue issues, and delivery is always on time. They are true professionals."
-              }
-            ].map((testimonial, i) => (
-              <div key={i} className="bg-white p-8 rounded-[14px] shadow-sm border border-gray-100">
-                <div className="flex items-center gap-1 mb-6">
-                  {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
-                </div>
-                <p className="text-gray-700 text-[16px] leading-relaxed mb-8">"{testimonial.quote}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900 text-sm">{testimonial.name}</div>
-                    <div className="text-gray-500 text-xs">{testimonial.location}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA BANNER */}
-      <section className="py-20 bg-white">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="bg-primary rounded-[24px] p-10 md:p-16 text-center text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 bg-black/10 rounded-full blur-3xl"></div>
-            
-            <h2 className="text-[32px] md:text-[40px] font-bold mb-6 relative z-10">Ready to secure your yield?</h2>
-            <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto mb-10 relative z-10">
-              Speak with our agricultural experts today to find the perfect protection strategy for your crops.
-            </p>
-            <Link href="/contact" className="relative z-10">
-              <Button className="rounded-full px-8 py-6 bg-white text-primary hover:bg-gray-100 font-bold text-[16px] shadow-lg">
-                Get a Custom Quote
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }

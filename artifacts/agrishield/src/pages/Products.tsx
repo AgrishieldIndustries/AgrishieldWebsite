@@ -104,16 +104,16 @@ function ProductCard({ product, index }: { product: typeof ALL_PRODUCTS[0]; inde
 
       <div className="px-0.5">
         <div className="flex items-start justify-between gap-2 mb-0.5">
-          <span className="text-[13px] font-semibold text-gray-900 leading-tight line-clamp-1">{product.name}</span>
+          <span className="text-[13px] font-bold text-gray-900 leading-tight line-clamp-1">{product.name}</span>
           <div className="flex items-center gap-1 shrink-0">
             <Star className="w-3 h-3 fill-gray-900 text-gray-900" />
-            <span className="text-[13px] font-medium text-gray-900">{product.rating}</span>
+            <span className="text-[13px] font-semibold text-gray-900">{product.rating}</span>
           </div>
         </div>
         <div className="text-[13px] text-gray-500">{product.type} · {product.category}</div>
         <div className="text-[13px] text-gray-500">{product.sizes}</div>
         <div className="text-[13px] text-gray-900 mt-1">
-          <span className="font-semibold">{product.price}</span>{" "}
+          <span className="font-bold">{product.price}</span>{" "}
           <span className="font-normal">per pack</span>
         </div>
       </div>

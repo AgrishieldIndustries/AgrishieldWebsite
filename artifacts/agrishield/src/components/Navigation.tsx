@@ -7,11 +7,11 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const tabs = [
-    { href: "/", label: "Home", Icon: Home },
-    { href: "/products", label: "Products", Icon: ShoppingBag },
-    { href: "/solutions", label: "Solutions", Icon: Leaf },
-    { href: "/innovation", label: "Innovation", Icon: FlaskConical },
-    { href: "/social", label: "Community", Icon: Play },
+    { href: "/", label: "Home", Icon: Home, isNew: false },
+    { href: "/products", label: "Products", Icon: ShoppingBag, isNew: false },
+    { href: "/solutions", label: "Solutions", Icon: Leaf, isNew: true },
+    { href: "/innovation", label: "Innovation", Icon: FlaskConical, isNew: true },
+    { href: "/social", label: "Community", Icon: Play, isNew: false },
   ];
 
   const isActive = (href: string) => location === href;
@@ -19,30 +19,39 @@ export default function Navigation() {
   return (
     <>
       <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100">
-        <div className="max-w-[1280px] mx-auto px-6 h-[72px] flex items-center justify-between">
+        <div className="max-w-[1280px] mx-auto px-6 h-[80px] flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0" data-testid="link-home-logo">
             <img
               src="/logo.png"
               alt="Agrishield Industries"
               className="w-auto object-contain"
-              style={{ height: 88, maxWidth: 200, marginTop: 4, marginBottom: 4 }}
+              style={{ height: 96, maxWidth: 210 }}
             />
           </Link>
 
-          <nav className="hidden md:flex items-center" aria-label="Main navigation">
-            {tabs.map(({ href, label, Icon }) => (
+          <nav className="hidden md:flex items-end pb-0" aria-label="Main navigation">
+            {tabs.map(({ href, label, Icon, isNew }) => (
               <Link
                 key={href}
                 href={href}
                 data-testid={`tab-nav-${label.toLowerCase()}`}
-                className={`flex flex-col items-center px-6 pt-3 pb-2 gap-1 relative transition-colors group ${
-                  isActive(href) ? "text-gray-900" : "text-gray-400 hover:text-gray-600"
+                className={`flex flex-col items-center px-5 pt-4 pb-3 gap-1.5 relative transition-colors group ${
+                  isActive(href) ? "text-gray-900" : "text-gray-400 hover:text-gray-700"
                 }`}
               >
-                <Icon className="w-[18px] h-[18px]" strokeWidth={1.5} />
-                <span className="text-[13px] font-medium">{label}</span>
+                <div className="relative">
+                  <Icon className="w-6 h-6" strokeWidth={1.75} />
+                  {isNew && (
+                    <span className="absolute -top-2.5 -right-3.5 bg-[#1f7a3a] text-white text-[9px] font-bold px-1.5 py-[2px] rounded-full leading-none tracking-wide">
+                      NEW
+                    </span>
+                  )}
+                </div>
+                <span className={`text-[14px] tracking-tight ${isActive(href) ? "font-bold" : "font-semibold"}`}>
+                  {label}
+                </span>
                 {isActive(href) && (
-                  <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gray-900 rounded-full" />
+                  <span className="absolute bottom-0 left-3 right-3 h-[2.5px] bg-gray-900 rounded-full" />
                 )}
               </Link>
             ))}

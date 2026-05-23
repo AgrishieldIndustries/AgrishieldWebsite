@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "VsQzkRXQKRk9Jmb2wkIJA"
+uri = "file://artifacts/agrishield/public/hero-bg.png"
+type = "image"
+title = "Aerial photo of lush farmland"
+
+[[generated]]
+id = "oW81AYbVCwtdV7_UKqAPS"
+uri = "file://artifacts/agrishield/public/product-sprayer.png"
+type = "image"
+title = "Industrial agricultural sprayer equipment"
+
+[[generated]]
+id = "VymWy9gvzvA4NoU2Neov6"
+uri = "file://artifacts/agrishield/public/product-chemical.png"
+type = "image"
+title = "Crop protection chemical drum"
+
+[[generated]]
+id = "z57RP59nbbJ9Xwl-N9zgA"
+uri = "file://artifacts/agrishield/public/factory.png"
+type = "image"
+title = "Modern farm factory exterior"

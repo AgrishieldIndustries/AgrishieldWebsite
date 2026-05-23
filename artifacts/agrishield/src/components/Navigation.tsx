@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Leaf, Globe, Menu, User, X, ShoppingBag, FlaskConical, Home } from "lucide-react";
+import { Leaf, Globe, Menu, User, X, ShoppingBag, FlaskConical, Home, Play } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -11,6 +11,7 @@ export default function Navigation() {
     { href: "/products", label: "Products", Icon: ShoppingBag },
     { href: "/solutions", label: "Solutions", Icon: Leaf },
     { href: "/innovation", label: "Innovation", Icon: FlaskConical },
+    { href: "/social", label: "Community", Icon: Play },
   ];
 
   const isActive = (href: string) => location === href;

@@ -1,0 +1,122 @@
+Create a premium modern social media showcase page for “Agrishield Industries” inspired by Airbnb’s website style — clean, minimal, aesthetic, spacious, smooth animations, modern typography, and mobile-first responsive design.
+
+STYLE DIRECTION:
+
+* Airbnb-inspired UI/UX
+* Soft white background with subtle shadows
+* Rounded cards and sections
+* Elegant spacing and clean grid layout
+* Smooth scroll animations using Framer Motion
+* Minimal but premium design
+* Use modern typography like Inter or Poppins
+* High-end brand feel
+* NOT a typical agricultural website
+* Blend modern tech aesthetic with agriculture visuals
+
+COLOR PALETTE:
+
+* White background
+* Deep green (#0B5D3B)
+* Agrishield red (#E53935)
+* Soft grey backgrounds
+* Product accent colors (magenta, sunflower yellow, blue) only in small highlights
+
+WEBSITE PAGE STRUCTURE:
+
+1. HERO SECTION
+
+* Full-width cinematic agriculture background video/image
+* Overlay with minimal text:
+  “Modern Crop Nutrition for Future Farming”
+* Subtext:
+  “Follow Agrishield across social platforms for farming insights, product education, and field success stories.”
+* CTA buttons:
+  “Watch Videos”
+  “Follow on Instagram”
+
+2. FEATURED VIDEO SECTION
+
+* Airbnb-style horizontal cards
+* Embed YouTube Shorts/Reels
+* Large thumbnail previews
+* Hover animations
+* Clean rounded corners
+* Display:
+  title
+  short caption
+  views
+  upload date
+* Auto responsive grid
+
+3. INSTAGRAM REELS SECTION
+
+* Modern masonry grid
+* Reel preview cards
+* Smooth hover scale effect
+* Minimal UI
+* Each card opens embedded reel modal popup
+
+4. AGRISHIELD PRODUCT HIGHLIGHTS
+
+* Floating product cards using existing fertilizer bag designs
+* Showcase:
+  WSF 13:40:13
+  WSF 19:19:19
+  WSF 12:61:00
+* Animated hover effects
+* Premium lighting effects
+
+5. FARMER SUCCESS STORIES
+
+* Modern testimonial cards
+* Real farmer images
+* Marathi + English quotes
+* Soft card shadows
+
+6. DEALER NETWORK SECTION
+
+* Interactive Maharashtra map
+* Dealer inquiry CTA
+* WhatsApp floating button
+* Minimal modern design
+
+7. YOUTUBE + INSTAGRAM STATS SECTION
+
+* Animated counters
+* Subscribers
+* Reel views
+* Farmer reach
+* Dealer network growth
+
+8. FOOTER
+
+* Minimal clean footer
+* Agrishield logo
+* Social media icons
+* Contact info
+* Website links
+* Copyright
+
+FUNCTIONALITY:
+
+* Fully responsive mobile-first design
+* Smooth page transitions
+* Lazy-loaded videos
+* Modern hover effects
+* Sticky navbar
+* Floating WhatsApp button
+* Dark overlay video hero section
+* Fast loading optimized UI
+
+TECH STACK:
+
+* React + Next.js
+* TailwindCSS
+* Framer Motion
+* Shadcn UI
+* Lucide Icons
+* Embla Carousel for reels/videos
+
+IMPORTANT:
+The page should feel like a premium modern lifestyle/agritech brand — not a traditional fertilizer company website.
+Use cinematic farming visuals, clean whitespace, elegant motion, and Apple/Airbnb-level presentation quality.

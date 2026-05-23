@@ -10,6 +10,7 @@ import Solutions from "@/pages/Solutions";
 import Innovation from "@/pages/Innovation";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import Social from "@/pages/Social";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function Router() {
         <Route path="/innovation" component={Innovation} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
+        <Route path="/social" component={Social} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

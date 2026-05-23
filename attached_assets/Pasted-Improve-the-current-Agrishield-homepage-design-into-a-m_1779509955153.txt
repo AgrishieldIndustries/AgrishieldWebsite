@@ -1,0 +1,139 @@
+Improve the current Agrishield homepage design into a more premium, cinematic, modern Airbnb-style agritech website while keeping the existing structure and branding intact.
+
+MAIN GOAL:
+Make the website feel:
+- more luxurious
+- more spacious
+- more cinematic
+- more emotionally premium
+- less template-like
+- more like a funded modern startup brand
+
+DO NOT redesign from scratch.
+Refine and elevate the existing UI.
+
+-----------------------------------
+TYPOGRAPHY IMPROVEMENTS
+-----------------------------------
+
+- Increase typography sophistication
+- Use cleaner modern font hierarchy (Inter / Satoshi / Manrope style)
+- Improve line spacing in hero heading
+- Reduce text width for better readability
+- Make paragraph container narrower and more premium
+- Improve kerning and spacing
+- Create stronger visual hierarchy between:
+  headline
+  subheadline
+  supporting text
+
+Hero heading should feel bold, cinematic, breathable, and premium.
+
+-----------------------------------
+SPACING & LAYOUT IMPROVEMENTS
+-----------------------------------
+
+- Add significantly more whitespace
+- Increase padding around hero content
+- Add more breathing room between navbar items
+- Improve alignment consistency
+- Increase vertical spacing between:
+  badge
+  headline
+  paragraph
+  CTA/search section
+
+Use luxury-style spacing similar to:
+Airbnb, Apple, Linear, Notion.
+
+-----------------------------------
+HERO SECTION IMPROVEMENTS
+-----------------------------------
+
+- Increase hero section height slightly
+- Make hero image more cinematic
+- Add subtle warm sunlight atmosphere
+- Improve image overlay for readability
+- Add very soft gradient overlay
+- Create emotional storytelling feel
+
+The hero should feel immersive and aspirational.
+
+-----------------------------------
+NAVBAR IMPROVEMENTS
+-----------------------------------
+
+- Make navbar cleaner and lighter visually
+- Slightly increase logo size
+- Improve logo prominence
+- Better spacing between nav icons and labels
+- Add softer hover animations
+- Reduce clutter feeling
+
+Navbar should feel minimal and premium.
+
+-----------------------------------
+SEARCH / FILTER SECTION IMPROVEMENTS
+-----------------------------------
+
+Current crop/concern/region buttons feel outdated.
+
+Redesign them into:
+- modern pill-style controls
+- softer borders
+- cleaner shadows
+- subtle hover animations
+- glassmorphism or soft card aesthetic
+- smoother rounded corners
+
+Make interaction feel modern SaaS-quality.
+
+-----------------------------------
+VISUAL ATMOSPHERE
+-----------------------------------
+
+Add:
+- cinematic lighting
+- subtle depth
+- soft shadows
+- premium card layering
+- elegant hover motion
+- subtle scroll animations
+- refined transitions
+
+Avoid:
+- aggressive gradients
+- overly saturated colors
+- clutter
+- old corporate styling
+
+-----------------------------------
+BRAND FEEL
+-----------------------------------
+
+The website should feel like:
+“A premium modern agritech company helping future farming.”
+
+NOT:
+“A traditional fertilizer business website.”
+
+Blend:
+- Airbnb minimalism
+- Apple-style spacing
+- cinematic agriculture visuals
+- modern startup UI
+
+-----------------------------------
+IMPORTANT
+-----------------------------------
+
+Keep:
+- existing structure
+- existing Agrishield branding
+- current hero layout
+- overall navigation structure
+
+Only refine, modernize, and elevate the design quality dramatically.
+
+Target result:
+A premium 9.5/10 modern agritech homepage with emotional cinematic appeal and luxury-level UI polish.

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Play, X, Heart, Share2, MessageCircle, Youtube, Instagram, Users, Eye, TrendingUp, Star, ChevronRight, ExternalLink } from "lucide-react";
+import { Play, X, Heart, Share2, MessageCircle, Youtube, Instagram, Users, Eye, TrendingUp, Star, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 /* ─── DATA ────────────────────────────────────────────────────── */
 
@@ -86,6 +86,20 @@ const REELS = [
     likes: "11.2K",
     caption: "Field tour with our farming community 🚜",
   },
+];
+
+const FIELD_TRIALS = [
+  { id: 1, src: "/community-photos/trial_1.jpeg", caption: "Direct root inspection during biostimulant trials." },
+  { id: 2, src: "/community-photos/trial_2.jpeg", caption: "Foliar spray evaluation on leafy vegetables." },
+  { id: 3, src: "/community-photos/trial_3.jpeg", caption: "Soil conditioner assessment on sugarcane." },
+  { id: 4, src: "/community-photos/trial_4.jpeg", caption: "Grape vineyard health and cluster size monitoring." },
+  { id: 5, src: "/community-photos/trial_5.jpeg", caption: "Precision drip nutrition trial in pomegranate fields." },
+  { id: 6, src: "/community-photos/trial_6.jpeg", caption: "Field training program with local crop advisors." },
+  { id: 7, src: "/community-photos/trial_7.jpeg", caption: "Efficacy monitoring of protective bio-inputs." },
+  { id: 8, src: "/community-photos/trial_8.jpeg", caption: "Yield improvement comparison on onion crops." },
+  { id: 9, src: "/community-photos/trial_9.jpeg", caption: "On-site soil health testing for nutrient deficiency." },
+  { id: 10, src: "/community-photos/trial_10.jpeg", caption: "Dealer demonstration meeting on premium NPK application." },
+  { id: 11, src: "/community-photos/trial_11.jpeg", caption: "Pomegranate size and color development monitoring." }
 ];
 
 const PRODUCTS = [
@@ -470,6 +484,75 @@ export default function Social() {
             </div>
           </motion.div>
         </div>
+      </section>
+
+      {/* ── ON FIELD TRIALS CAROUSEL ────────────────────────── */}
+      <section className="max-w-[1280px] mx-auto px-6 py-20 overflow-hidden">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeUp}
+        >
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[13px] font-semibold text-primary uppercase tracking-widest">Research &amp; trials</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">On Field Trials</h2>
+              <p className="text-gray-500 mt-2">Active testing, dosage optimization, and crop responses captured directly by our agronomists.</p>
+            </div>
+            
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  const el = document.getElementById("trial-carousel-container");
+                  if (el) el.scrollBy({ left: -340, behavior: "smooth" });
+                }}
+                className="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-55 hover:border-gray-300 active:scale-95 transition-all text-gray-700 cursor-pointer"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("trial-carousel-container");
+                  if (el) el.scrollBy({ left: 340, behavior: "smooth" });
+                }}
+                className="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-55 hover:border-gray-300 active:scale-95 transition-all text-gray-700 cursor-pointer"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="trial-carousel-container"
+            className="flex gap-6 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scroll-smooth hide-scrollbar"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            {FIELD_TRIALS.map((trial) => (
+              <div
+                key={trial.id}
+                className="w-[280px] md:w-[320px] shrink-0 snap-start group"
+              >
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-4 shadow-sm bg-gray-50 border border-gray-100">
+                  <img
+                    src={trial.src}
+                    alt={trial.caption}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="px-1">
+                  <span className="text-[11px] font-bold text-primary uppercase tracking-wider">Trial #{trial.id}</span>
+                  <p className="text-[13.5px] text-gray-600 mt-1 leading-snug font-medium line-clamp-2">{trial.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* ── PRODUCT HIGHLIGHTS ──────────────────────────────── */}

@@ -570,7 +570,7 @@ const ALL_PRODUCTS = [
     price: "₹1,510 - ₹2,950",
     rating: 4.89,
     badge: true,
-    img: "/product-photos/shield_pro.jpeg",
+    img: "/product-photos/shield_pro_render.jpeg",
     packings: [
       { size: "250 ml", price: "₹1,510" },
       { size: "500 ml", price: "₹2,950" }
@@ -585,7 +585,7 @@ const ALL_PRODUCTS = [
     price: "₹1,490 - ₹2,900",
     rating: 4.82,
     badge: false,
-    img: "/product-photos/hunter.jpeg",
+    img: "/product-photos/hunter_render.jpeg",
     packings: [
       { size: "500 ml", price: "₹1,490" },
       { size: "1000 ml", price: "₹2,900" }
@@ -600,7 +600,7 @@ const ALL_PRODUCTS = [
     price: "₹850 - ₹2,750",
     rating: 4.85,
     badge: false,
-    img: "/product-photos/citron.jpeg",
+    img: "/product-photos/citron_render.jpeg",
     packings: [
       { size: "250 ml", price: "₹850" },
       { size: "500 ml", price: "₹1,450" },
@@ -616,7 +616,7 @@ const ALL_PRODUCTS = [
     price: "₹860 - ₹3,200",
     rating: 4.87,
     badge: false,
-    img: "/product-photos/azocure.jpeg",
+    img: "/product-photos/azocure_render.jpeg",
     packings: [
       { size: "250 ml", price: "₹860" },
       { size: "500 ml", price: "₹1,640" },
@@ -632,7 +632,7 @@ const ALL_PRODUCTS = [
     price: "₹740 - ₹2,700",
     rating: 4.80,
     badge: false,
-    img: "/product-photos/tebuza.jpeg",
+    img: "/product-photos/tebuza_render.jpeg",
     packings: [
       { size: "250 ml", price: "₹740" },
       { size: "500 ml", price: "₹1,390" },
@@ -650,7 +650,7 @@ const ALL_PRODUCTS = [
     price: "₹180 - ₹4,500",
     rating: 4.83,
     badge: false,
-    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/douse_saver_new.jpeg",
     packings: [
       { size: "100 ml", price: "₹180" },
       { size: "250 ml", price: "₹330" },
@@ -668,7 +668,7 @@ const ALL_PRODUCTS = [
     price: "₹175 - ₹8,500",
     rating: 4.91,
     badge: true,
-    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/spreadsil.jpeg",
     packings: [
       { size: "50 ml", price: "₹175" },
       { size: "100 ml", price: "₹320" },

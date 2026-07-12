@@ -137,8 +137,8 @@ export default function About() {
               </span>
             </div>
 
-            <p className="text-[16px] md:text-[18px] text-gray-500 leading-relaxed mb-8 max-w-2xl">
-              Established in the year **2020**, our state-of-the-art facility is located in Pune's major industrial corridor near Chakan, Tal-Khed. Fully connected by road, rail, and air, we formulate high-performance agrochemicals to boost soil health and maximize Indian crop yields.
+            <p className="text-[15.5px] md:text-[17px] text-gray-500 leading-relaxed mb-8 max-w-2xl">
+              AGRISHIELD® Brand of Agrishield Industries Pvt Ltd located in the Pune District of Maharashtra State, in the Kuruli Industrial Area, Tal- Khed near Chakan. It is well connected by road, rail &amp; air. Our product range includes Organic Biostimulants, Organic Bio Fertilizers, Adjuvants, Chelated Micronutrients, Water Soluble Fertilizers Formulations (NPK’s) Straight Micronutrients &amp; their mixtures, Liquid Fertilizers, Insecticides, Pesticides, Herbicides and various Agrochemicals.
             </p>
 
             <Link href="/contact">

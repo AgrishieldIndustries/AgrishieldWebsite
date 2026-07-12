@@ -151,8 +151,8 @@ export default function About() {
           <div className="lg:col-span-5">
             <div className="rounded-[32px] overflow-hidden aspect-[4/3] relative shadow-2xl border border-gray-100 bg-gray-50">
               <img
-                src="/factory.png"
-                alt="Agrishield Manufacturing Facility Pune"
+                src="/company-building.png"
+                alt="Agrishield Industries Manufacturing Facility in Pune"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent" />

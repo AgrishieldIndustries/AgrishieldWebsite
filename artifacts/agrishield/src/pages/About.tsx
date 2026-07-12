@@ -406,7 +406,7 @@ export default function About() {
                   {/* Image card */}
                   <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-gray-150 bg-white">
                     <img
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=450&fit=crop&q=80"
+                      src="/mrs-pratibha-patil.png"
                       alt="Mrs. Pratibha Patil"
                       className="w-full h-full object-cover"
                     />

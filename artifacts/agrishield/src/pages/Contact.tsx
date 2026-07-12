@@ -11,14 +11,21 @@ export default function Contact() {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "28ca6348-1a33-4b31-a833-4519a4453046");
-    formData.append("subject", "New Website Enquiry - Agrishield Industries");
-    formData.append("from_name", "Agrishield Website Portal");
+    const object = Object.fromEntries(formData.entries());
+    object.access_key = "28ca6348-1a33-4b31-a833-4519a4453046";
+    object.subject = "New Website Enquiry - Agrishield Industries";
+    object.from_name = "Agrishield Website Portal";
+
+    const json = JSON.stringify(object);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: json
       });
       const data = await response.json();
       if (data.success) {

@@ -8,21 +8,8 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100 pt-14 pb-8">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-          <div className="col-span-1 sm:col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center mb-4">
-              <img
-                src="/logo.png"
-                alt="Agrishield Industries"
-                className="w-auto object-contain"
-                style={{ height: 72, maxWidth: 160 }}
-              />
-            </Link>
-            <p className="text-[13px] text-gray-500 leading-relaxed max-w-[220px]">
-              Manufactured in Pune. Trusted across India. Fertilizers, micronutrients, and crop protection engineered for Indian farmers.
-            </p>
-          </div>
-
+        {/* Navigation grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-12">
           <div>
             <h3 className="text-[13px] font-semibold text-gray-900 mb-4 uppercase tracking-wider">Products</h3>
             <ul className="space-y-3">
@@ -104,7 +91,28 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-6 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Mockup Compliance block */}
+        <div className="mt-12 pt-10 border-t border-gray-100 flex flex-col items-center text-center">
+          <Link href="/" className="inline-flex items-center mb-6">
+            <img
+              src="/logo.png"
+              alt="Agrishield Industries"
+              className="h-20 w-auto object-contain"
+            />
+          </Link>
+          <p className="text-[13.5px] text-gray-550 leading-relaxed max-w-3xl mb-8">
+            Organisation is an ISO 9001: 2018 certified, Organic Biofertilizers, Organic Bio stimulants DRC Certified, Micronutrients &amp; Water Soluble Fertilizers Manufacturing license, CIBRC &amp; Maharashtra state manufacturing license of Insecticides etc.
+          </p>
+          <div className="w-full max-w-[760px] mx-auto mb-4 bg-gray-50/50 p-2.5 rounded-2xl border border-gray-100/40">
+            <img
+              src="/accreditations-banner.png"
+              alt="Licenses &amp; Accreditations"
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+
+        <div className="pt-6 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
           <p className="text-[12px] text-gray-400">
             © 2025 Agrishield Industries Pvt. Ltd. All rights reserved.
           </p>

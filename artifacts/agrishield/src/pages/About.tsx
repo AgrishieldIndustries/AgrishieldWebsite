@@ -374,7 +374,7 @@ export default function About() {
                   {/* Image card */}
                   <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-gray-150 bg-white">
                     <img
-                      src="/dr-shantishwar-patil.png"
+                      src="/director-shantishwar.png"
                       alt="Dr. Shantishwar Patil"
                       className="w-full h-full object-cover"
                     />

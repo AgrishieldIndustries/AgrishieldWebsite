@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { ShieldCheck, FileText, CheckCircle, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ShieldCheck, FileText, CheckCircle, ExternalLink, X } from "lucide-react";
 
 const CERTIFICATIONS = [
   {
@@ -82,6 +83,8 @@ const CERTIFICATIONS = [
 ];
 
 export default function Awards() {
+  const [activePdf, setActivePdf] = useState<typeof CERTIFICATIONS[0] | null>(null);
+
   return (
     <div className="w-full bg-white pb-24">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6 pt-12">
@@ -164,7 +167,7 @@ export default function Awards() {
               Official Certificates &amp; Registrations
             </h2>
             <p className="text-[15px] text-gray-500 max-w-2xl">
-              Click "View" to open and inspect any of Agrishield's official government registration documents.
+              Click "View PDF" to open and inspect any of Agrishield's official government registration documents.
             </p>
           </div>
 
@@ -196,15 +199,13 @@ export default function Awards() {
 
                 {/* Actions */}
                 <div className="px-5 pb-5 flex items-center gap-3 pt-3 border-t border-gray-50">
-                  <a
-                    href={`/${cert.file}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white text-[13px] font-semibold px-4 py-2.5 rounded-full transition-colors"
+                  <button
+                    onClick={() => setActivePdf(cert)}
+                    className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white text-[13px] font-semibold px-4 py-2.5 rounded-full transition-colors cursor-pointer"
                     data-testid={`btn-view-${i}`}
                   >
                     <ExternalLink className="w-3.5 h-3.5" /> View PDF
-                  </a>
+                  </button>
                 </div>
               </motion.div>
             ))}
@@ -212,6 +213,51 @@ export default function Awards() {
         </div>
 
       </div>
+
+      {/* ── PDF VIEWER MODAL ────────────────────────────────── */}
+      <AnimatePresence>
+        {activePdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setActivePdf(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-2xl overflow-hidden w-full max-w-4xl h-[85vh] shadow-2xl relative flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50">
+                <div>
+                  <h3 className="font-bold text-gray-900 text-[16px] leading-snug">{activePdf.title}</h3>
+                  <p className="text-[12px] text-gray-500 font-semibold">{activePdf.issuer}</p>
+                </div>
+                <button
+                  onClick={() => setActivePdf(null)}
+                  className="p-2 rounded-full hover:bg-gray-200 transition-colors ml-4 cursor-pointer"
+                  aria-label="Close PDF viewer"
+                >
+                  <X className="w-5 h-5 text-gray-600" />
+                </button>
+              </div>
+
+              {/* PDF Iframe with toolbar disabled to prevent download */}
+              <div className="flex-1 bg-gray-100 relative">
+                <iframe
+                  src={`/${activePdf.file}#toolbar=0`}
+                  title={activePdf.title}
+                  className="w-full h-full border-0"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

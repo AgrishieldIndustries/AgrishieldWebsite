@@ -56,12 +56,20 @@ export default function Footer() {
             <h3 className="text-[13px] font-semibold text-gray-900 mb-4 uppercase tracking-wider">Contact</h3>
             <ul className="space-y-3">
               <li className="text-[13px] text-gray-500 leading-relaxed">
-                Kuruli Industrial Area,<br />
-                Tal-Khed, near Chakan,<br />
-                Pune, Maharashtra 410501
+                Plot No. 55, Gat No. 679,<br />
+                Behind Maruti Suzuki Showroom,<br />
+                Pune Nashik Highway, Kuruli,<br />
+                Tal: Khed, Dist: Pune - 410501
               </li>
-              <li className="text-[13px] text-gray-500">+91 90000 00000</li>
-              <li className="text-[13px] text-gray-500">sales@agrishield.in</li>
+              <li className="text-[13px] text-gray-500 leading-relaxed">
+                +91 93596 87781<br />
+                +91 79726 10839<br />
+                +91 90213 42901
+              </li>
+              <li className="text-[13px] text-gray-500 leading-relaxed">
+                <a href="mailto:shantishwar.patil@agrishieldindustries.com" className="hover:underline">shantishwar.patil@agrishieldindustries.com</a><br />
+                <a href="mailto:info.agrishield@gmail.com" className="hover:underline">info.agrishield@gmail.com</a>
+              </li>
             </ul>
           </div>
         </div>

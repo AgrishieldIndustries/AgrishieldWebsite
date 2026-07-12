@@ -105,9 +105,11 @@ export default function Contact() {
                 <div>
                   <div className="text-[13px] font-semibold text-gray-900 mb-2">Visit us</div>
                   <p className="text-[14px] text-gray-600 leading-relaxed">
-                    Kuruli Industrial Area<br />
-                    Tal-Khed, near Chakan<br />
-                    Pune, Maharashtra 410501
+                    Plot No. 55, Gat No. 679,<br />
+                    Behind Maruti Suzuki Showroom,<br />
+                    Pune Nashik Highway, Kuruli,<br />
+                    Tal: Khed, Dist: Pune - 410501<br />
+                    Maharashtra, India
                   </p>
                 </div>
               </div>
@@ -120,8 +122,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-[13px] font-semibold text-gray-900 mb-2">Call us</div>
-                  <p className="text-[14px] text-gray-600">+91 90000 00000</p>
-                  <p className="text-[14px] text-gray-600">+91 90000 00001</p>
+                  <p className="text-[14px] text-gray-600">+91 93596 87781</p>
+                  <p className="text-[14px] text-gray-600">+91 79726 10839</p>
+                  <p className="text-[14px] text-gray-600">+91 90213 42901</p>
                 </div>
               </div>
             </div>
@@ -133,8 +136,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-[13px] font-semibold text-gray-900 mb-2">Email us</div>
-                  <p className="text-[14px] text-gray-600">sales@agrishield.in</p>
-                  <p className="text-[14px] text-gray-600">support@agrishield.in</p>
+                  <p className="text-[14px] text-gray-600">
+                    <a href="mailto:shantishwar.patil@agrishieldindustries.com" className="hover:underline">shantishwar.patil@agrishieldindustries.com</a>
+                  </p>
+                  <p className="text-[14px] text-gray-600">
+                    <a href="mailto:info.agrishield@gmail.com" className="hover:underline">info.agrishield@gmail.com</a>
+                  </p>
                 </div>
               </div>
             </div>

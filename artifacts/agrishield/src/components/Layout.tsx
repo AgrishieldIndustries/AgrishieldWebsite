@@ -14,7 +14,7 @@ export default function Layout({ children }: LayoutProps) {
       <main className="flex-1">{children}</main>
       <Footer />
       <a
-        href="https://wa.me/919876543210?text=Hi%20Agrishield%2C%20I%20have%20an%20enquiry"
+        href="https://wa.me/919021342901?text=Hello%20Agrishield%20Industries%20Pvt.%20Ltd.%0A%0AI%20would%20like%20to%20know%20more%20about%20your%20products.%20Please%20assist%20me."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

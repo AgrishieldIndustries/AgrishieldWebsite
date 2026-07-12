@@ -606,7 +606,7 @@ export default function Social() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://wa.me/919876543210?text=I%20want%20to%20become%20an%20Agrishield%20dealer"
+              href="https://wa.me/919021342901?text=Hello%20Agrishield%20Industries%20Pvt.%20Ltd.%0A%0AI%20would%20like%20to%20know%20more%20about%20your%20products.%20Please%20assist%20me."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2.5 bg-[#25D366] text-white font-bold px-8 py-4 rounded-full hover:bg-[#20bb5a] transition-colors shadow-lg text-[15px]"

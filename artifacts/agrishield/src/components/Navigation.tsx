@@ -64,7 +64,7 @@ export default function Navigation() {
               className="text-[14px] font-medium text-gray-700 hover:underline whitespace-nowrap"
               data-testid="link-become-dealer"
             >
-              Become a dealer
+              Contact Us
             </Link>
             <button
               className="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-600"
@@ -116,7 +116,7 @@ export default function Navigation() {
               onClick={() => setMobileOpen(false)}
               className="block py-4 text-[16px] font-semibold text-primary"
             >
-              Become a dealer
+              Contact Us
             </Link>
           </div>
         </div>

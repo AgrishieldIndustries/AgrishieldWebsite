@@ -816,7 +816,7 @@ const ALL_PRODUCTS = [
     id: 54,
     name: "AGRISHIELD BLOOM SHIELD",
     type: "Nitrobenzene 20% EW – Flower Growth Regulator",
-    category: "Biostimulant",
+    category: "Herbicide/Fungicide/Insecticide",
     sizes: "1 L",
     price: "₹950",
     rating: 4.79,
@@ -830,7 +830,7 @@ const ALL_PRODUCTS = [
     id: 55,
     name: "AGRISHIELD CALTAR PLUS",
     type: "Paclobutrazol 23% SC – Plant Growth Regulator",
-    category: "Biostimulant",
+    category: "Herbicide/Fungicide/Insecticide",
     sizes: "1 L",
     price: "On Request",
     rating: 4.86,
@@ -881,6 +881,18 @@ const ALL_PRODUCTS = [
     packings: [
       { size: "500 gms", price: "On Request" }
     ]
+  },
+  {
+    id: 59,
+    name: "AGRISHIELD FOLLIBOSTER",
+    type: "Foliar Booster – Advanced Plant Growth Promoter",
+    category: "Herbicide/Fungicide/Insecticide",
+    sizes: "On Request",
+    price: "On Request",
+    rating: 4.82,
+    badge: false,
+    img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop&q=80",
+    packings: []
   },
 ];
 

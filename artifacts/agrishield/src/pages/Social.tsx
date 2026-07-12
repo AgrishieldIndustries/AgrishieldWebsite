@@ -386,7 +386,7 @@ export default function Social() {
                 Watch Videos
               </button>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/agrishield.india/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 border-2 border-white/50 text-white font-semibold px-7 py-3.5 rounded-full hover:border-white hover:bg-white/10 transition-all"
@@ -453,7 +453,7 @@ export default function Social() {
                 <p className="text-gray-500 mt-2">Behind the scenes from farms across India.</p>
               </div>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/agrishield.india/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex items-center gap-1.5 text-[14px] font-semibold text-gray-900 hover:underline"

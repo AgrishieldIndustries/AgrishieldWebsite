@@ -110,12 +110,12 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-5">
             {[
-              { Icon: Facebook, label: "Facebook" },
-              { Icon: Twitter, label: "Twitter" },
-              { Icon: Instagram, label: "Instagram" },
-              { Icon: Linkedin, label: "LinkedIn" },
-            ].map(({ Icon, label }) => (
-              <a key={label} href="#" aria-label={label} className="text-gray-400 hover:text-gray-600 transition-colors">
+              { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com" },
+              { Icon: Twitter, label: "Twitter", href: "https://twitter.com" },
+              { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/agrishield.india/" },
+              { Icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com" },
+            ].map(({ Icon, label, href }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="text-gray-400 hover:text-gray-600 transition-colors">
                 <Icon className="w-4 h-4" />
               </a>
             ))}

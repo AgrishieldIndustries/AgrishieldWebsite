@@ -5,7 +5,6 @@ import { useToast } from "@/hooks/use-toast";
 export default function Contact() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
-  const [showMap, setShowMap] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -98,10 +97,9 @@ export default function Contact() {
 
           {/* Info Cards */}
           <div className="flex flex-col gap-4">
-            {/* Visit Us Card with interactive map toggler */}
+            {/* Visit Us Card with interactive map */}
             <div 
-              className="bg-gray-50 hover:bg-gray-100/70 border border-transparent hover:border-gray-200 rounded-[16px] p-6 cursor-pointer transition-all duration-300 shadow-sm"
-              onClick={() => setShowMap(!showMap)}
+              className="bg-gray-50 border border-transparent rounded-[16px] p-6 shadow-sm"
             >
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
@@ -113,12 +111,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <div className="text-[13px] font-semibold text-gray-900 mb-2">Visit us</div>
-                    <span className="text-[11px] font-bold text-primary uppercase tracking-wider">
-                      {showMap ? "Hide Map ▲" : "Click to view map ▼"}
-                    </span>
-                  </div>
+                  <div className="text-[13px] font-semibold text-gray-900 mb-2">Visit us</div>
                   <p className="text-[14px] text-gray-600 leading-relaxed">
                     Plot No. 55, Gat No. 679,<br />
                     Behind Maruti Suzuki Showroom,<br />
@@ -129,30 +122,27 @@ export default function Contact() {
                 </div>
               </div>
 
-              {showMap && (
-                <div 
-                  className="mt-5 rounded-2xl overflow-hidden h-[300px] border border-gray-200/80 shadow-inner relative"
-                  onClick={(e) => e.stopPropagation()}
+              <div 
+                className="mt-5 rounded-2xl overflow-hidden h-[300px] border border-gray-200/80 shadow-inner relative"
+              >
+                <iframe
+                  src="https://maps.google.com/maps?q=Agrishield%20Industries%20Pvt%20Ltd%20-%20Agrochemicals%20Manufacturer&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <a 
+                  href="https://share.google/Z6Wlvy3RKSSUsoqHf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="absolute bottom-3 right-3 bg-white/95 hover:bg-white text-gray-800 text-[11px] font-bold px-3 py-1.5 rounded-lg shadow border border-gray-150 transition-colors flex items-center gap-1"
                 >
-                  <iframe
-                    src="https://maps.google.com/maps?q=Agrishield%20Industries%20Pvt%20Ltd%20-%20Agrochemicals%20Manufacturer&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                  <a 
-                    href="https://share.google/Z6Wlvy3RKSSUsoqHf" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="absolute bottom-3 right-3 bg-white/95 hover:bg-white text-gray-800 text-[11px] font-bold px-3 py-1.5 rounded-lg shadow border border-gray-150 transition-colors flex items-center gap-1"
-                  >
-                    Open in Google Maps ↗
-                  </a>
-                </div>
-              )}
+                  Open in Google Maps ↗
+                </a>
+              </div>
             </div>
 
             {/* Call Us Card with custom phone SVG */}

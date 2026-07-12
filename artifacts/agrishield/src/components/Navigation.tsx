@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Globe, Menu, User, X, ShoppingBag, Award, Home, Play, Leaf, Info } from "lucide-react";
+import { Globe, Menu, User, X, ShoppingBag, Award, Home, Play, Leaf, Info, Phone } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -13,6 +13,7 @@ export default function Navigation() {
     { href: "/awards", label: "Awards & Certs", Icon: Award, isNew: false },
     { href: "/social", label: "Community", Icon: Play, isNew: false },
     { href: "/about", label: "About Us", Icon: Info, isNew: false },
+    { href: "/contact", label: "Contact Us", Icon: Phone, isNew: false },
   ];
 
   const isActive = (href: string) => location === href;
@@ -59,13 +60,6 @@ export default function Navigation() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="text-[14px] font-medium text-gray-700 hover:underline whitespace-nowrap"
-              data-testid="link-become-dealer"
-            >
-              Contact Us
-            </Link>
             <button
               className="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-600"
               aria-label="Language selector"
@@ -111,13 +105,6 @@ export default function Navigation() {
                 {label}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="block py-4 text-[16px] font-semibold text-primary"
-            >
-              Contact Us
-            </Link>
           </div>
         </div>
       )}

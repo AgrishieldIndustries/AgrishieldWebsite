@@ -188,11 +188,8 @@ export default function About() {
             <h2 className="text-[32px] md:text-[44px] font-extrabold text-gray-900 leading-[1.1] mb-6">
               Reputation Built on Quality &amp; Honest Intentions
             </h2>
-            <p className="text-[15px] text-gray-500 leading-relaxed mb-4">
+             <p className="text-[15px] text-gray-500 leading-relaxed mb-8">
               AGRISHIELD® organisation started in the year 2020. The organisation is ISO 9001: 2015 certified, Organic Biostimulants, Organic Bio Fertilizers DRC Certified, Adjuvants, Micronutrients &amp; Water Soluble Fertilizers Manufacturing license, CIBRC &amp; Maharashtra state manufacturing license of Insecticides etc. The organisation also has the Maharashtra Pollution Control Board’s Consent to operate.
-            </p>
-            <p className="text-[15px] text-gray-500 leading-relaxed mb-6">
-              Our comprehensive product range includes **Organic Biostimulants**, **Organic Bio-fertilizers**, **Adjuvants**, **Chelated Micronutrients**, **NPK Water Soluble Fertilizer formulations**, straight micronutrients &amp; mixtures, liquid fertilizers, insecticides, pesticides, herbicides, and custom agricultural inputs.
             </p>
             <Link href="/products">
               <span className="inline-flex items-center gap-1.5 text-[15px] font-bold text-primary hover:underline cursor-pointer group">
@@ -210,31 +207,6 @@ export default function About() {
                   alt="Agrishield ISO 9001:2015 Certification Document"
                   className="w-full h-full object-contain p-4"
                 />
-                
-                {/* Floating metrics badge */}
-                <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-sm border border-gray-100 rounded-2xl p-4 shadow-lg flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center">
-                    <Star className="w-5 h-5 text-green-600 fill-green-600" />
-                  </div>
-                  <div>
-                    <h5 className="text-[13px] font-extrabold text-gray-800 leading-tight">ISO 9001:2015</h5>
-                    <p className="text-[11px] font-bold text-green-600">Accredited Production</p>
-                  </div>
-                </div>
-
-                {/* Floating pill tags */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm border border-gray-100 rounded-2xl p-4 shadow-lg">
-                  <div className="flex flex-wrap gap-1.5 mb-2.5">
-                    {["NPK Mixtures", "Chelates", "Bio Fertilizers", "Adjuvants"].map((tag) => (
-                      <span key={tag} className="text-[9px] font-bold uppercase tracking-wider bg-gray-100 px-2 py-0.5 rounded-md text-gray-600">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h4 className="text-[13.5px] font-bold text-gray-900 leading-snug">
-                    Committed to double farmer productivity at minimum cost.
-                  </h4>
-                </div>
               </div>
             </div>
           </div>

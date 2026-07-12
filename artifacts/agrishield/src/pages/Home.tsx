@@ -15,40 +15,40 @@ const PRODUCTS = [
     price: "₹420",
     rating: 4.92,
     badge: true,
-    img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/wsf_19_19_19.jpeg",
   },
   {
     id: 2,
-    name: "AGRISHIELD HUMIGROWTH",
-    type: "Organic Biostimulant",
-    category: "Humic",
-    sizes: "500 ml · 1 L",
-    price: "₹360",
+    name: "AGRISHIELD® HumiGrowth",
+    type: "Organic Soil Conditioner Powder 98%",
+    category: "Biostimulant",
+    sizes: "500 g",
+    price: "₹580",
     rating: 4.88,
     badge: true,
-    img: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/humigrowth.jpeg",
   },
   {
     id: 3,
     name: "AGRISHIELD WASHOUT 41",
     type: "Systemic Herbicide",
-    category: "Glyphosate",
+    category: "Herbicide",
     sizes: "1 L · 5 L",
-    price: "₹540",
+    price: "₹1,080 - ₹4,850",
     rating: 4.81,
     badge: true,
-    img: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/washout_41.jpeg",
   },
   {
     id: 4,
-    name: "AGRISHIELD CALCIUM NITRATE",
-    type: "Calcium Fertilizer",
-    category: "Calcium Nit.",
-    sizes: "25 kg sack",
-    price: "₹1,890",
-    rating: 4.76,
+    name: "AGRISHIELD CalciNitro",
+    type: "Water Soluble Fertilizer",
+    category: "NPK",
+    sizes: "1 kg · 25 kg",
+    price: "₹165 - ₹3,465",
+    rating: 4.81,
     badge: true,
-    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/calcinitro.jpeg",
   },
 ];
 
@@ -90,54 +90,56 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
   const [liked, setLiked] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group cursor-pointer"
-      data-testid={`card-product-${product.id}`}
-    >
-      <div className="relative aspect-square rounded-2xl overflow-hidden mb-3.5 shadow-sm">
-        <img
-          src={product.img}
-          alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
-        />
-        {product.badge && (
-          <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-[11px] font-semibold text-gray-800 shadow-sm">
-            Dealer favorite
-          </div>
-        )}
-        <button
-          className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm hover:bg-white/30 transition-all duration-200"
-          onClick={(e) => { e.preventDefault(); setLiked(!liked); }}
-          data-testid={`btn-like-${product.id}`}
-          aria-label="Save product"
-        >
-          <Heart
-            className={`w-[17px] h-[17px] transition-all duration-200 ${liked ? "fill-primary text-primary scale-110" : "text-white drop-shadow"}`}
-            strokeWidth={2}
+    <Link href="/products">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] as const }}
+        className="group cursor-pointer"
+        data-testid={`card-product-${product.id}`}
+      >
+        <div className="relative aspect-square rounded-2xl overflow-hidden mb-3.5 shadow-sm">
+          <img
+            src={product.img}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
           />
-        </button>
-      </div>
+          {product.badge && (
+            <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-[11px] font-semibold text-gray-800 shadow-sm">
+              Dealer favorite
+            </div>
+          )}
+          <button
+            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm hover:bg-white/30 transition-all duration-200"
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLiked(!liked); }}
+            data-testid={`btn-like-${product.id}`}
+            aria-label="Save product"
+          >
+            <Heart
+              className={`w-[17px] h-[17px] transition-all duration-200 ${liked ? "fill-primary text-primary scale-110" : "text-white drop-shadow"}`}
+              strokeWidth={2}
+            />
+          </button>
+        </div>
 
-      <div className="px-0.5 space-y-0.5">
-        <div className="flex items-start justify-between gap-2">
-          <span className="text-[13px] font-extrabold text-gray-900 leading-snug line-clamp-1 tracking-tight">{product.name}</span>
-          <div className="flex items-center gap-0.5 shrink-0 mt-px">
-            <Star className="w-3 h-3 fill-gray-900 text-gray-900" />
-            <span className="text-[12.5px] font-semibold text-gray-900">{product.rating}</span>
+        <div className="px-0.5 space-y-0.5">
+          <div className="flex items-start justify-between gap-2">
+            <span className="text-[13px] font-extrabold text-gray-900 leading-snug line-clamp-1 tracking-tight">{product.name}</span>
+            <div className="flex items-center gap-0.5 shrink-0 mt-px">
+              <Star className="w-3 h-3 fill-gray-900 text-gray-900" />
+              <span className="text-[12.5px] font-semibold text-gray-900">{product.rating}</span>
+            </div>
+          </div>
+          <div className="text-[12.5px] text-gray-400 leading-relaxed">{product.type} · {product.category}</div>
+          <div className="text-[12.5px] text-gray-400">{product.sizes}</div>
+          <div className="text-[13px] text-gray-900 pt-0.5">
+            <span className="font-extrabold">{product.price}</span>
+            <span className="text-gray-400 font-normal"> per pack</span>
           </div>
         </div>
-        <div className="text-[12.5px] text-gray-400 leading-relaxed">{product.type} · {product.category}</div>
-        <div className="text-[12.5px] text-gray-400">{product.sizes}</div>
-        <div className="text-[13px] text-gray-900 pt-0.5">
-          <span className="font-extrabold">{product.price}</span>
-          <span className="text-gray-400 font-normal"> per pack</span>
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 }
 

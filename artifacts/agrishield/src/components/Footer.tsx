@@ -7,9 +7,13 @@ export default function Footer() {
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Leaf className="w-5 h-5 text-primary" strokeWidth={2.5} />
-              <span className="font-semibold text-[18px] text-primary">agrishield</span>
+            <Link href="/" className="flex items-center mb-4">
+              <img
+                src="/logo.png"
+                alt="Agrishield Industries"
+                className="w-auto object-contain"
+                style={{ height: 72, maxWidth: 160 }}
+              />
             </Link>
             <p className="text-[13px] text-gray-500 leading-relaxed max-w-[220px]">
               Manufactured in Pune. Trusted across India. Fertilizers, micronutrients, and crop protection engineered for Indian farmers.
@@ -34,7 +38,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "Solutions", href: "/solutions" },
-                { label: "Innovation & R&D", href: "/innovation" },
+                { label: "Awards & Certificates", href: "/awards" },
                 { label: "About Us", href: "/about" },
                 { label: "Become a Dealer", href: "/contact" },
                 { label: "Careers", href: "/contact" },

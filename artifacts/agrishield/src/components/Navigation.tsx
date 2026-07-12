@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Globe, Menu, User, X, ShoppingBag, FlaskConical, Home, Play, Leaf } from "lucide-react";
+import { Globe, Menu, User, X, ShoppingBag, Award, Home, Play, Leaf } from "lucide-react";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -10,7 +10,7 @@ export default function Navigation() {
     { href: "/", label: "Home", Icon: Home, isNew: false },
     { href: "/products", label: "Products", Icon: ShoppingBag, isNew: false },
     { href: "/solutions", label: "Solutions", Icon: Leaf, isNew: true },
-    { href: "/innovation", label: "Innovation", Icon: FlaskConical, isNew: true },
+    { href: "/awards", label: "Awards & Certs", Icon: Award, isNew: false },
     { href: "/social", label: "Community", Icon: Play, isNew: false },
   ];
 

@@ -7,78 +7,84 @@ import { Play, X, Heart, Share2, MessageCircle, Youtube, Instagram, Users, Eye, 
 const VIDEOS = [
   {
     id: "v1",
-    ytId: "dQw4w9WgXcQ",
-    thumb: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=450&fit=crop&q=80",
-    title: "How WSF 19:19:19 Doubles Grape Yield",
-    caption: "Field demonstration from Nashik vineyards",
-    views: "1.2L",
-    date: "3 days ago",
+    ytId: "pc6YmIrMDjU",
+    thumb: "https://img.youtube.com/vi/pc6YmIrMDjU/mqdefault.jpg",
+    title: "Agrishield HumiGrowth Field Demonstration",
+    caption: "See the rapid results of HumiGrowth on crops",
+    views: "1.5L",
+    date: "Recent",
   },
   {
     id: "v2",
-    ytId: "dQw4w9WgXcQ",
-    thumb: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=450&fit=crop&q=80",
-    title: "Chelated Micronutrients Explained",
-    caption: "Why EDTA chelation matters for absorption",
-    views: "87K",
-    date: "1 week ago",
+    ytId: "cO3DETnnaS8",
+    thumb: "https://img.youtube.com/vi/cO3DETnnaS8/mqdefault.jpg",
+    title: "Agrishield Crop Nutrition Insights",
+    caption: "Maximizing yield with balanced water-soluble fertilizers",
+    views: "98K",
+    date: "Recent",
   },
   {
     id: "v3",
-    ytId: "dQw4w9WgXcQ",
-    thumb: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=800&h=450&fit=crop&q=80",
-    title: "Drip Fertigation with NPK 13:40:13",
-    caption: "Step-by-step guide for sugarcane farmers",
-    views: "2.4L",
-    date: "2 weeks ago",
+    ytId: "MSn-fOccThI",
+    thumb: "https://img.youtube.com/vi/MSn-fOccThI/mqdefault.jpg",
+    title: "Agrishield Fertilizers Performance Nashik",
+    caption: "Pomegranate and grape farm field success story",
+    views: "2.1L",
+    date: "Recent",
   },
   {
     id: "v4",
-    ytId: "dQw4w9WgXcQ",
-    thumb: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=800&h=450&fit=crop&q=80",
-    title: "HumiGrowth Root Activation Study",
-    caption: "Lab results + field comparison trial",
-    views: "43K",
-    date: "3 weeks ago",
+    ytId: "7MMaeAn54RY",
+    thumb: "https://img.youtube.com/vi/7MMaeAn54RY/mqdefault.jpg",
+    title: "Agrishield Soil Conditioner Application",
+    caption: "Best practice guide for microenergy and soil conditioning",
+    views: "64K",
+    date: "Recent",
   },
 ];
 
 const REELS = [
   {
     id: "r1",
+    code: "DXCSYW6DEFi",
     thumb: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=700&fit=crop&q=80",
     likes: "4.2K",
-    caption: "Morning drip fertigation 🌱",
+    caption: "Grape vineyard nutrition update 🍇",
   },
   {
     id: "r2",
+    code: "C8kL0SftS7t",
     thumb: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=400&h=560&fit=crop&q=80",
     likes: "8.1K",
-    caption: "Before vs After Chelamin Plus",
+    caption: "Pomegranate size boost check-in 🔴",
   },
   {
     id: "r3",
+    code: "DS7pLYoDOz9",
     thumb: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=400&h=640&fit=crop&q=80",
     likes: "6.7K",
-    caption: "Vineyard transformation 🍇",
+    caption: "Sugarcane field growth success 🌱",
   },
   {
     id: "r4",
+    code: "DT5f9CLj1M6",
     thumb: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=520&fit=crop&q=80",
     likes: "3.9K",
-    caption: "Golden harvest season",
+    caption: "HumiGrowth root enhancement results 🌾",
   },
   {
     id: "r5",
+    code: "DFnjnTLNgOb",
     thumb: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=400&h=680&fit=crop&q=80",
     likes: "5.3K",
-    caption: "Seedling care routine 💚",
+    caption: "Balanced WSF NPK foliar spray guide 💦",
   },
   {
     id: "r6",
+    code: "C8kIui-v3xg",
     thumb: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&h=600&fit=crop&q=80",
     likes: "11.2K",
-    caption: "100 acres, one spray day",
+    caption: "Field tour with our farming community 🚜",
   },
 ];
 
@@ -283,6 +289,58 @@ function VideoModal({ video, onClose }: { video: typeof VIDEOS[0] | null; onClos
   );
 }
 
+/* ─── REEL MODAL ─────────────────────────────────────────────── */
+function ReelModal({ reel, onClose }: { reel: typeof REELS[0] | null; onClose: () => void }) {
+  if (!reel) return null;
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          className="bg-white rounded-2xl overflow-hidden w-full max-w-[360px] shadow-2xl relative"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={onClose}
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center text-white z-10 transition-colors shadow"
+            aria-label="Close preview"
+          >
+            <X className="w-4 h-4" />
+          </button>
+          <div className="aspect-[9/16] w-full bg-black">
+            <iframe
+              src={`https://www.instagram.com/reel/${reel.code}/embed/`}
+              title={reel.caption}
+              allowFullScreen
+              className="w-full h-full border-0"
+              scrolling="no"
+            />
+          </div>
+          <div className="p-4 bg-white border-t border-gray-100 flex items-center justify-between">
+            <p className="text-[13px] font-bold text-gray-900 truncate pr-4">{reel.caption}</p>
+            <a
+              href={`https://www.instagram.com/reel/${reel.code}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[12px] font-semibold text-primary hover:underline shrink-0"
+            >
+              Instagram
+            </a>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 /* ─── MAIN PAGE ──────────────────────────────────────────────── */
 export default function Social() {
   const [activeVideo, setActiveVideo] = useState<typeof VIDEOS[0] | null>(null);
@@ -290,7 +348,7 @@ export default function Social() {
 
   const fadeUp = {
     hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
   };
 
   return (
@@ -360,7 +418,7 @@ export default function Social() {
               <p className="text-gray-500 mt-2">Real demonstrations. Real results.</p>
             </div>
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@agrishield_2020/featured"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-1.5 text-[14px] font-semibold text-gray-900 hover:underline"
@@ -606,47 +664,7 @@ export default function Social() {
       {activeVideo && <VideoModal video={activeVideo} onClose={() => setActiveVideo(null)} />}
 
       {/* ── REEL MODAL ──────────────────────────────────────── */}
-      <AnimatePresence>
-        {activeReel && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={() => setActiveReel(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.85, opacity: 0 }}
-              className="relative max-w-[360px] w-full rounded-3xl overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img src={activeReel.thumb} alt={activeReel.caption} className="w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80" />
-              <button
-                onClick={() => setActiveReel(null)}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 flex items-center justify-center"
-              >
-                <X className="w-4 h-4 text-white" />
-              </button>
-              <div className="absolute bottom-6 left-4 right-4">
-                <p className="text-white font-semibold text-[15px] mb-2">{activeReel.caption}</p>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1.5 text-white/80 text-[13px]">
-                    <Heart className="w-4 h-4 fill-white/80" />
-                    {activeReel.likes}
-                  </div>
-                  <div className="flex items-center gap-1.5 text-white/80 text-[13px]">
-                    <Share2 className="w-4 h-4" />
-                    Share
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {activeReel && <ReelModal reel={activeReel} onClose={() => setActiveReel(null)} />}
     </div>
   );
 }

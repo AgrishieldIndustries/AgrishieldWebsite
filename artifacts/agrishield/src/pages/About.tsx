@@ -340,75 +340,78 @@ export default function About() {
         </div>
 
         {/* ── DIRECTORS & LEADERSHIP SECTION ─────────────────── */}
-        <div className="mb-24">
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-[12px] font-bold text-primary tracking-widest uppercase mb-3 block">
+        <div className="bg-[#f4f6f9] rounded-[40px] p-8 md:p-14 mb-24">
+          <div className="mb-14 text-center md:text-left">
+            <span className="text-[12px] font-bold text-[#b91c1c] tracking-widest uppercase mb-3 block">
               Leadership
             </span>
             <h2 className="text-[32px] md:text-[40px] font-extrabold text-gray-900 leading-tight">
               Our Directors
             </h2>
-            <p className="text-gray-500 text-[14.5px] mt-4 leading-relaxed">
-              Meet the key leaders steering Agrishield Industries towards agricultural excellence and professional employee culture.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+          <div className="space-y-20">
             {/* Dr. Shantishwar Patil */}
-            <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-primary/20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              <div className="lg:col-span-7 flex flex-col justify-center">
+                <p className="text-[15.5px] text-gray-700 leading-relaxed font-medium mb-8">
+                  " I believe and salute Farmer’s strength &amp; patience to walk in all up and down weather conditions, Our country’s growth depends on the growth of our farmers. They are the backbone of our economy. I extend my heartfelt thanks to our country’s Annadatas, the farmers who stay close to nature and work extensively to bring out the gems from Mother Earth to feed our growing population. We are running our organisation AGRISHIELD® Brand of Agrishield Industries Pvt Ltd on the slogan “CONSERVE THE NATURE, SERVE THE FUTURE”. We believe in educating and sharing new technology through our advanced crop protection solutions and services to ensure National Food Security, and to support today’s farmers to become the agricultural leaders of tomorrow. AGRISHIELD® organisation is bound to manufacture and sell quality products at reasonable cost in future. "
+                </p>
+                <div>
+                  <h3 className="text-[20px] md:text-[22px] font-extrabold text-[#1a3a6e] leading-tight mb-1">
+                    Dr. Shantishwar Patil
+                  </h3>
+                  <p className="text-[13px] font-bold text-gray-500 uppercase tracking-wide">
+                    Managing Director
+                  </p>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 flex justify-center">
+                <div className="relative w-full max-w-[380px] aspect-[4/3] mr-4 mb-4">
+                  {/* Red backdrop offset */}
+                  <div className="absolute inset-0 bg-[#b91c1c] rounded-2xl translate-x-3 translate-y-3" />
+                  {/* Image card */}
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-gray-150 bg-white">
                     <img
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&q=80"
+                      src="/dr-shantishwar-patil.png"
                       alt="Dr. Shantishwar Patil"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div>
-                    <h3 className="text-[18px] font-extrabold text-gray-900 leading-tight">Dr. Shantishwar Patil</h3>
-                    <p className="text-[13px] font-bold text-primary">Managing Director</p>
-                  </div>
                 </div>
-                <p className="text-[13px] text-gray-400 font-semibold mb-4 uppercase tracking-wider">
-                  Postgraduate, MBA in Operation Management
-                </p>
-                <p className="text-[13.5px] text-gray-500 leading-relaxed mb-6">
-                  Over **24 years** of vast industrial experience in the chemical field operation. Technically sound, dynamic, and focused on real-time decision making. He steers the production, R&amp;D, and marketing departments.
-                </p>
-              </div>
-              <div className="bg-primary/[0.02] border border-primary/5 rounded-2xl p-5 italic text-[13px] text-gray-600 leading-relaxed relative">
-                <span className="absolute -top-3 left-4 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">MD Message</span>
-                ” I believe and salute Farmer’s strength &amp; patience. Our country’s growth depends on the growth of our farmers. They are the backbone of our economy. I extend my heartfelt thanks to our Annadatas. We run our organisation on the slogan 'CONSERVE THE NATURE, SERVE THE FUTURE'. “
               </div>
             </div>
 
             {/* Mrs. Pratibha Patil */}
-            <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-primary/20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center border-t border-gray-200/60 pt-16">
+              <div className="lg:col-span-7 lg:order-2 flex flex-col justify-center">
+                <p className="text-[15.5px] text-gray-700 leading-relaxed font-medium mb-8">
+                  " I always bind to maintain the neat and clean environment of company, To support the Positive thinking and hard work employees. Also continuously maintaining the professional and family culture in the organisation that is “Not I, Say We” from top to bottom of employees. "
+                </p>
+                <div>
+                  <h3 className="text-[20px] md:text-[22px] font-extrabold text-[#1a3a6e] leading-tight mb-1">
+                    Mrs. Pratibha Patil
+                  </h3>
+                  <p className="text-[13px] font-bold text-gray-500 uppercase tracking-wide">
+                    HRD Director
+                  </p>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 lg:order-1 flex justify-center">
+                <div className="relative w-full max-w-[380px] aspect-[4/3] mr-4 mb-4">
+                  {/* Red backdrop offset */}
+                  <div className="absolute inset-0 bg-[#b91c1c] rounded-2xl translate-x-3 translate-y-3" />
+                  {/* Image card */}
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-gray-150 bg-white">
                     <img
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80"
+                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=450&fit=crop&q=80"
                       alt="Mrs. Pratibha Patil"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div>
-                    <h3 className="text-[18px] font-extrabold text-gray-900 leading-tight">Mrs. Pratibha Patil</h3>
-                    <p className="text-[13px] font-bold text-primary">HRD Director</p>
-                  </div>
                 </div>
-                <p className="text-[13px] text-gray-400 font-semibold mb-4 uppercase tracking-wider">
-                  Human Resources &amp; Culture Director
-                </p>
-                <p className="text-[13.5px] text-gray-500 leading-relaxed mb-6">
-                  Dedicated to maintaining a professional yet familial culture in the organisation, ensuring workplace safety, employee welfare, and aligning team workflows to support positive thinking and employee empowerment.
-                </p>
-              </div>
-              <div className="bg-primary/[0.02] border border-primary/5 rounded-2xl p-5 italic text-[13px] text-gray-600 leading-relaxed relative">
-                <span className="absolute -top-3 left-4 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">HRD Message</span>
-                “ I always bind to maintain the neat and clean environment of the company, and to support the positive thinking and hard work of our employees. We continuously maintain a family culture built on 'Not I, Say We' from top to bottom. “
               </div>
             </div>
           </div>

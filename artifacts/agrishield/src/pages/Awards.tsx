@@ -4,6 +4,13 @@ import { ShieldCheck, FileText, CheckCircle, ExternalLink, X } from "lucide-reac
 
 const CERTIFICATIONS = [
   {
+    code: "ISO 9001:2015",
+    title: "ISO 9001:2015 Quality Management",
+    issuer: "Quality Control Certification (QCC) · Accredited by UABL",
+    file: "iso-certificate.png",
+    color: "#b91c1c",
+  },
+  {
     code: "GST Certificate",
     title: "GST Registration",
     issuer: "Government of India – Income Tax Department",
@@ -246,13 +253,21 @@ export default function Awards() {
                 </button>
               </div>
 
-              {/* PDF Iframe with toolbar disabled to prevent download */}
-              <div className="flex-1 bg-gray-100 relative">
-                <iframe
-                  src={`/${activePdf.file}#toolbar=0`}
-                  title={activePdf.title}
-                  className="w-full h-full border-0"
-                />
+              {/* PDF or Image Viewer */}
+              <div className="flex-1 bg-gray-100 relative overflow-auto flex items-center justify-center p-4">
+                {activePdf.file.endsWith(".pdf") ? (
+                  <iframe
+                    src={`/${activePdf.file}#toolbar=0`}
+                    title={activePdf.title}
+                    className="w-full h-full border-0"
+                  />
+                ) : (
+                  <img
+                    src={`/${activePdf.file}`}
+                    alt={activePdf.title}
+                    className="max-w-full max-h-full object-contain shadow-md rounded"
+                  />
+                )}
               </div>
             </motion.div>
           </motion.div>

@@ -1168,13 +1168,6 @@ export default function Products() {
                     </div>
                   )}
 
-                  {/* GST & Terms Note */}
-                  <div className="bg-emerald-50/40 rounded-xl p-3 border border-emerald-100/50 text-[11.5px] text-gray-500 space-y-1">
-                    <p className="font-semibold text-emerald-800 flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" /> Rates include GST
-                    </p>
-                    <p>Accepted: NEFT, RTGS, QR-Code. Cash is not accepted.</p>
-                  </div>
                 </div>
 
                 {/* Footer/CTA */}
@@ -1184,7 +1177,7 @@ export default function Products() {
                     onClick={() => setSelectedProduct(null)}
                     className="w-full bg-primary hover:bg-primary/90 text-white text-[13.5px] font-bold py-3 px-4 rounded-full transition-all text-center flex items-center justify-center gap-2"
                   >
-                    <Building className="w-4 h-4" /> Enquire for Dealership
+                    <Building className="w-4 h-4" /> Enquire for Products
                   </Link>
                   <p className="text-[10px] text-gray-400 text-center">
                     Customer Care: +91 9021342901 · Pune, MH

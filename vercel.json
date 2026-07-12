@@ -1,9 +1,0 @@
-{
-  "buildCommand": "npx pnpm --filter @workspace/agrishield run build",
-  "outputDirectory": "artifacts/agrishield/dist",
-  "framework": "vite",
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}

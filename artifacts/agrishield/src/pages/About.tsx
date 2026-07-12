@@ -24,20 +24,17 @@ const VALUES = [
   {
     title: "Trust",
     desc: "Like the earth, we are dependable. We work with integrity of purpose, honesty in action and fairness in all our dealings.",
-    color: "#22c55e",
-    icon: Leaf
+    img: "/val-trust.png"
   },
   {
     title: "Adaptability",
     desc: "Adaptive, like water. Constantly transforming ourselves like water, we are nimble-footed and highly responsive to change.",
-    color: "#0ea5e9",
-    icon: Droplets
+    img: "/val-adaptability.png"
   },
   {
     title: "Speed",
     desc: "Blazing ahead like fire. Quick and agile, Like fire we constantly strive to work with speed in the way. We observe, think and act.",
-    color: "#f97316",
-    icon: Flame
+    img: "/val-speed.png"
   }
 ];
 
@@ -261,12 +258,12 @@ export default function About() {
                 key={val.title}
                 className="flex flex-col items-center text-center px-4"
               >
-                <div className="w-20 h-20 relative flex items-center justify-center mb-6">
-                  {/* Hexagon shape outline */}
-                  <svg className="absolute inset-0 w-full h-full text-gray-200 fill-none stroke-[3.5]" viewBox="0 0 100 100">
-                    <polygon points="50,6 88,28 88,72 50,94 12,72 12,28" />
-                  </svg>
-                  <val.icon className="w-8 h-8 relative z-10" style={{ color: val.color }} />
+                <div className="w-20 h-20 flex items-center justify-center mb-6">
+                  <img
+                    src={val.img}
+                    alt={val.title}
+                    className="max-w-full max-h-full object-contain"
+                  />
                 </div>
                 <h3 className="text-[22px] font-bold text-gray-900 mb-4">
                   {val.title}

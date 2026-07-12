@@ -189,7 +189,7 @@ export default function About() {
               Reputation Built on Quality &amp; Honest Intentions
             </h2>
             <p className="text-[15px] text-gray-500 leading-relaxed mb-4">
-              Agrishield has rapidly acquired an outstanding reputation in the Indian agrochemical market for our services, uncompromising quality, and reasonable prices. Our honest intentions to transform the lives of farmers have propelled us to greater heights.
+              AGRISHIELD® organisation started in the year 2020. The organisation is ISO 9001: 2015 certified, Organic Biostimulants, Organic Bio Fertilizers DRC Certified, Adjuvants, Micronutrients &amp; Water Soluble Fertilizers Manufacturing license, CIBRC &amp; Maharashtra state manufacturing license of Insecticides etc. The organisation also has the Maharashtra Pollution Control Board’s Consent to operate.
             </p>
             <p className="text-[15px] text-gray-500 leading-relaxed mb-6">
               Our comprehensive product range includes **Organic Biostimulants**, **Organic Bio-fertilizers**, **Adjuvants**, **Chelated Micronutrients**, **NPK Water Soluble Fertilizer formulations**, straight micronutrients &amp; mixtures, liquid fertilizers, insecticides, pesticides, herbicides, and custom agricultural inputs.
@@ -204,11 +204,11 @@ export default function About() {
           <div className="lg:col-span-6 lg:order-1">
             <div className="relative">
               {/* Highlight image card */}
-              <div className="rounded-[32px] overflow-hidden aspect-[4/5] max-w-[420px] mx-auto relative shadow-xl border border-gray-100">
+              <div className="rounded-[32px] overflow-hidden aspect-[4/5] max-w-[420px] mx-auto relative shadow-xl border border-gray-100 bg-white">
                 <img
-                  src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=600&h=750&fit=crop&q=80"
-                  alt="Quality checked chemical agrochemicals"
-                  className="w-full h-full object-cover"
+                  src="/iso-certificate.png"
+                  alt="Agrishield ISO 9001:2015 Certification Document"
+                  className="w-full h-full object-contain p-4"
                 />
                 
                 {/* Floating metrics badge */}

@@ -884,15 +884,17 @@ const ALL_PRODUCTS = [
   },
   {
     id: 59,
-    name: "AGRISHIELD FOLLIBOSTER",
-    type: "Foliar Booster – Advanced Plant Growth Promoter",
+    name: "AGRISHIELD FOLLI BOOSTER+",
+    type: "Nitrobenzene 20% EW – Amino & Fulvic Acid Compatible",
     category: "Herbicide/Fungicide/Insecticide",
-    sizes: "On Request",
+    sizes: "500 ml",
     price: "On Request",
     rating: 4.82,
     badge: false,
-    img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop&q=80",
-    packings: []
+    img: "/product-photos/folli_booster_plus.jpeg",
+    packings: [
+      { size: "500 ml", price: "On Request" }
+    ]
   },
 ];
 

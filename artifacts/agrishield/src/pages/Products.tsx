@@ -898,6 +898,38 @@ const ALL_PRODUCTS = [
   },
 ];
 
+const PRODUCT_DESCRIPTIONS: Record<string, string> = {
+  "AGRISHIELD® HumiGrowth": "A premium organic bio-stimulant formulated with biologically activated Humic Acid (98%) and Potassium Humate (98%). It improves soil chemical, biological, and physical properties, increases soil carbon content, and significantly enhances the growth of leaves, flowers, and fruits.",
+  "AGRISHIELD® FulviGrowth": "An 80% high-grade Fulvic Acid powder that improves soil permeability and aeration. It enhances drainage, stimulates beneficial soil microbial activity, and promotes deep root system development for better nutrient uptake.",
+  "AGRISHIELD® SilGrowth": "A unique soil-drenching solution containing bio-available Silicon Dioxide. It helps deter soil-borne mycopathogens from entering the root system and acts as an effective preventive and curative shield against fungal diseases like Phytophthora, Rhizoctonia, and Fusarium.",
+  "AGRISHIELD® AmiGrowth": "An 80% Amino Acid powder containing a balanced blend of 18 essential amino acids and protein hydrolysates. It enhances nutrient absorption, increases fruit size, strengthens plant immunity, and boosts crop resistance to environmental stress.",
+  "AGRISHIELD® SHIELD-ZYME Next": "An advanced biostimulant derived from premium seaweed extract, amino acids, fulvic acid, and humic acid. Using modern biotechnological methods, it stimulates vital plant physiological processes to improve overall crop growth and quality.",
+  "AGRISHIELD® SEAWEED Plus": "A highly concentrated organic biostimulant extracted from premium marine seaweed (Ascophyllum nodosum). It provides natural plant growth regulators, trace elements, and vitamins to stimulate cell division and improve root development.",
+  "AGRISHIELD® SHIELD BAHAR": "A specialized plant health promoter engineered to boost vegetative growth and maximize flowering. It reduces flower drop, enhances fruit setting, and improves crop yield quality.",
+  "AGRISHIELD SHIELD BAHAR": "A specialized plant health promoter engineered to boost vegetative growth and maximize flowering. It reduces flower drop, enhances fruit setting, and improves crop yield quality.",
+  "AGRISHIELD® SIZE PRO K-45": "A high-potassium formulation specifically designed to accelerate fruit development, improve size uniformity, enhance sugar accumulation, and increase the weight of the harvest.",
+  "AGRISHIELD® Super Power Plus": "An organic liquid manure and plant growth promoter. It enriches the soil with essential nutrients, improves soil texture, prevents nutrient leaching, and promotes vigorous plant growth.",
+  "AGRISHIELD SUPER POWER PLUS": "An organic liquid manure and plant growth promoter. It enriches the soil with essential nutrients, improves soil texture, prevents nutrient leaching, and promotes vigorous plant growth.",
+  "AGRISHIELD® NEEM ATTACKER": "A natural, eco-friendly crop protection solution derived from pure neem oil. It acts as an effective repellent, antifeedant, and growth regulator against a wide range of sucking and chewing pests.",
+  "AGRISHIELD® Thyrogen plus": "A comprehensive crop protection solution designed to control thrips, mites, viruses, and larvae. Formulated for quick action and long-lasting defense.",
+  "AGRISHIELD THYROGEN PLUS": "A comprehensive crop protection solution designed to control thrips, mites, viruses, and larvae. Formulated for quick action and long-lasting defense.",
+  "AGRISHIELD WASHOUT 41": "A non-selective, systemic post-emergence herbicide containing Glyphosate 41% S.L. It is used to control annual and perennial weeds by effectively inhibiting EPSP synthesis in plants.",
+  "AGRISHIELD FINISHER 58": "A selective, systemic post-emergence herbicide containing 2,4-D Amine Salt 58% S.L. It belongs to the phenoxy carboxylic group and is highly effective at controlling annual and perennial broad-leaved weeds.",
+  "AGRISHIELD WASHOUT 71": "A high-strength, non-selective, non-residual post-emergence herbicide containing Glyphosate 71% SG. It is highly effective against a wide variety of grasses, broadleaf weeds, and woody brush.",
+  "AGRISHIELD PROTECTION": "A high-efficacy insecticide containing Emamectin Benzoate 5% SG. It targets bollworms and other lepidopteran pests, offering rapid knockdown and stomach action.",
+  "AGRISHIELD METRISHIELD": "A selective herbicide containing Metribuzin 70% WP. It controls annual grasses and numerous broadleaf weeds in crops like sugarcane, potato, tomato, and wheat.",
+  "AGRISHIELD® FOLLI BOOSTER": "A premium plant growth regulator and foliar booster (Nitrobenzene 20% EW). It is fully compatible with amino and fulvic acids, promoting profuse flowering and robust fruit development.",
+  "AGRISHIELD FOLLI BOOSTER+": "A premium plant growth regulator and foliar booster (Nitrobenzene 20% EW). It is fully compatible with amino and fulvic acids, promoting profuse flowering and robust fruit development.",
+  "AGRISHIELD® DOUSE SAVER": "A cost-effective, pH-balanced silicone adjuvant that acts as a superior sticker, spreader, wetter, and penetrator. It improves the efficiency of foliar sprays at a dosage of 0.5 - 1.0 ml per liter.",
+  "AGRISHIELD® SPREADSIL": "A highly concentrated, premium silicone-based adjuvant that acts as a superior spreader, sticker, wetting agent, and penetrator. It ensures uniform chemical coverage at a low dosage of 0.25 - 0.50 ml per liter.",
+  "AGRISHIELD PS BACTOISHIELD": "A liquid biofertilizer containing Phosphate Solubilizing Bacteria (PSB). It converts insoluble phosphorus in the soil into bio-available forms for plant roots, improving soil health and crop growth.",
+  "AGRISHIELD K-MOBISHIELD": "A liquid biofertilizer containing Potash Mobilizing Bacteria (KMB). It mobilizes locked potassium in the soil, making it easily accessible near plant roots as an eco-friendly alternative to chemical potash.",
+  "AGRISHIELD AZOTOSHIELD": "A liquid biofertilizer containing Azospirillum (Nitrogen Fixing Bacteria). It converts atmospheric nitrogen into ammonia near the roots, featuring a high CFU of 5 x 10⁸ cells/ml for superior efficacy.",
+  "AGRISHIELD SHIELDZYME+GR": "A granular organic bio-fertilizer enriched with essential enzyme complexes. It stimulates soil microbial activity, improves root branching, and enhances crop nutrient assimilation.",
+  "AGRISHIELD CALCIBOR": "A soluble micronutrient blend containing EDTA Chelated Calcium (Ca-6%) and Boron (B-6%). It prevents calcium and boron deficiencies, improves cell wall strength, and enhances fruit set quality.",
+  "AGRISHIELD BORON 20%": "A foliar-grade straight micronutrient spray containing Boron 20%. It is essential for sugar translocation, pollen tube growth, cell division, and prevention of hollow heart or cracking disorders."
+};
+
 const CATEGORIES = ["All", "Water Soluble Fertilizers", "Biostimulant", "Bio-Fertilizers", "Micronutrient", "Herbicide/Fungicide/Insecticide", "Adjuvant", "Other"];
 
 function ProductCard({ 
@@ -1111,6 +1143,12 @@ export default function Products() {
                     <p className="text-[13.5px] text-gray-500 font-medium mt-1 leading-snug">
                       {selectedProduct.type}
                     </p>
+                  </div>
+
+                  {/* Product Description */}
+                  <div className="text-[13px] text-gray-600 leading-relaxed border-t border-b border-gray-100/80 py-3.5">
+                    {PRODUCT_DESCRIPTIONS[selectedProduct.name] || 
+                     `${selectedProduct.name} is a high-grade product engineered by Agrishield Industries. Specially designed to optimize crop growth, protect plants from diseases and environmental stress, and improve harvest yield.`}
                   </div>
 
                   {/* Packings List */}

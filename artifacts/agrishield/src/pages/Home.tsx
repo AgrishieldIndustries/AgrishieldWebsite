@@ -103,7 +103,9 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
           <img
             src={product.img}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+            loading="eager"
+            decoding="async"
+            className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out will-change-transform"
           />
           {product.badge && (
             <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-[11px] font-semibold text-gray-800 shadow-sm">
@@ -111,10 +113,11 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
             </div>
           )}
           <button
-            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm hover:bg-white/30 transition-all duration-200"
+            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm hover:bg-white/30 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1"
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLiked(!liked); }}
             data-testid={`btn-like-${product.id}`}
-            aria-label="Save product"
+            aria-label={liked ? `Remove ${product.name} from saved` : `Save ${product.name}`}
+            aria-pressed={liked}
           >
             <Heart
               className={`w-[17px] h-[17px] transition-all duration-200 ${liked ? "fill-primary text-primary scale-110" : "text-white drop-shadow"}`}
@@ -167,9 +170,11 @@ export default function Home() {
           >
             <img
               src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=800&fit=crop&q=90"
-              alt="Farmland aerial view"
+              alt="Aerial view of Indian farmland at dawn – Agrishield Industries crop nutrition"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ objectPosition: "center 55%" }}
+              fetchPriority="high"
+              decoding="sync"
             />
             {/* cinematic layered gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
@@ -238,7 +243,7 @@ export default function Home() {
                       </button>
                     );
                   })}
-                  <button className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 transition-colors px-5 py-4 md:py-3.5 w-full md:w-auto shrink-0">
+                  <button className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 transition-colors px-5 py-4 md:py-3.5 w-full md:w-auto shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset" aria-label="Search for products">
                     <Search className="w-4 h-4 text-white" strokeWidth={2.5} />
                     <span className="text-[13px] font-bold text-white">Search</span>
                   </button>
@@ -379,10 +384,12 @@ export default function Home() {
                 data-testid={`card-solution-${i}`}
               >
                 <div className="aspect-[16/10] overflow-hidden">
-                  <img
+                <img
                     src={sol.img}
                     alt={sol.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 will-change-transform"
                   />
                 </div>
                 <div className="p-6">

@@ -120,7 +120,7 @@ export default function Footer() {
 
         <div className="pt-6 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[12px] text-gray-400">
-            © 2025 Agrishield Industries Pvt. Ltd. All rights reserved.
+            © {new Date().getFullYear()} Agrishield Industries Pvt. Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             {[
@@ -129,7 +129,7 @@ export default function Footer() {
               { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/agrishield.india/" },
               { Icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com" },
             ].map(({ Icon, label, href }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="text-gray-400 hover:text-gray-600 transition-colors">
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="text-gray-400 hover:text-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1">
                 <Icon className="w-4 h-4" />
               </a>
             ))}

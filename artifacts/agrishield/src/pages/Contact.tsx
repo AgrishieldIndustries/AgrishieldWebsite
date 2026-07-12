@@ -13,8 +13,8 @@ export default function Contact() {
     const formData = new FormData(e.currentTarget);
     const object = Object.fromEntries(formData.entries());
     object.access_key = "28ca6348-1a33-4b31-a833-4519a4453046";
-    object.subject = "New Website Enquiry - Agrishield Industries";
-    object.from_name = "Agrishield Website Portal";
+    object.subject = "New Website Enquiry - Agrishield Industries Pvt. Ltd.";
+    object.from_name = "Agrishield Industries Pvt. Ltd. Website Portal";
 
     const json = JSON.stringify(object);
 
@@ -117,7 +117,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-semibold text-[15px] rounded-[8px] transition-colors disabled:opacity-60"
+                className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-semibold text-[15px] rounded-[8px] transition-colors disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 data-testid="btn-submit-enquiry"
               >
                 {loading ? "Sending..." : "Send enquiry"}

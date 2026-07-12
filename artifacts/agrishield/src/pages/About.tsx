@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  ShieldCheck, Check, ChevronDown, Award, Users, FileText, 
-  Linkedin, Twitter, Globe, Star, ArrowRight, UserCheck, 
-  Flame, Droplets, Compass, Target, Leaf
+  ShieldCheck, ChevronDown, Award, FileText, 
+  Star, ArrowRight, UserCheck, Compass, Target
 } from "lucide-react";
 import { Link } from "wouter";
 
@@ -50,21 +49,6 @@ const INFRASTRUCTURE = [
   {
     title: "Comprehensive Licensing & Certifications",
     content: "We hold full active government licenses and consents: ISO 9001:2015 certification for quality management, DRC Domestic Registrations for Organic Biostimulants & Bio-fertilizers, official manufacturing licenses for Micronutrients and Water-Soluble Fertilizers (NPK formulations), CIBRC licensing, and Maharashtra state manufacturing licenses for insecticides, alongside the Maharashtra Pollution Control Board's (MPCB) Consent to Operate."
-  }
-];
-
-const TEAM = [
-  {
-    name: "Dr. Shantishwar Patil",
-    role: "Managing Director",
-    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&q=80",
-    bio: "Postgraduate, MBA in Operation Management with 24 years of chemical industrial operations experience."
-  },
-  {
-    name: "Mrs. Pratibha Patil",
-    role: "HRD Director",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80",
-    bio: "Maintains a collaborative, neat workplace environment and professional family-like 'Not I, Say We' culture."
   }
 ];
 
@@ -119,16 +103,16 @@ export default function About() {
             
             {/* Main Welcome Title */}
             <h1 className="text-[36px] md:text-[48px] lg:text-[54px] font-extrabold text-gray-900 leading-[1.1] mb-3 tracking-tight">
-              Welcome to Agrishield Industries Pvt Ltd
+              Welcome to Agrishield Industries Pvt. Ltd.
             </h1>
 
             {/* Subtitle */}
             <div className="text-[18px] md:text-[22px] font-bold text-[#1a3a6e] mb-8">
-              Agrochemical's Manufacturer in Pune
+              Agrochemicals Manufacturer in Pune
             </div>
 
             <p className="text-[15.5px] md:text-[17px] text-gray-500 leading-relaxed mb-8 max-w-2xl">
-              AGRISHIELD® Brand of Agrishield Industries Pvt Ltd located in the Pune District of Maharashtra State, in the Kuruli Industrial Area, Tal- Khed near Chakan. It is well connected by road, rail &amp; air. Our product range includes Organic Biostimulants, Organic Bio Fertilizers, Adjuvants, Chelated Micronutrients, Water Soluble Fertilizers Formulations (NPK’s) Straight Micronutrients &amp; their mixtures, Liquid Fertilizers, Insecticides, Pesticides, Herbicides and various Agrochemicals.
+              AGRISHIELD® Brand of Agrishield Industries Pvt. Ltd. located in the Pune District of Maharashtra State, in the Kuruli Industrial Area, Tal- Khed near Chakan. It is well connected by road, rail &amp; air. Our product range includes Organic Biostimulants, Organic Bio Fertilizers, Adjuvants, Chelated Micronutrients, Water Soluble Fertilizers Formulations (NPK’s) Straight Micronutrients &amp; their mixtures, Liquid Fertilizers, Insecticides, Pesticides, Herbicides and various Agrochemicals.
             </p>
 
             <Link href="/contact">
@@ -180,7 +164,7 @@ export default function About() {
               Reputation Built on Quality &amp; Honest Intentions
             </h2>
              <p className="text-[15px] text-gray-500 leading-relaxed mb-8">
-              AGRISHIELD® organisation started in the year 2020. The organisation is ISO 9001: 2015 certified, Organic Biostimulants, Organic Bio Fertilizers DRC Certified, Adjuvants, Micronutrients &amp; Water Soluble Fertilizers Manufacturing license, CIBRC &amp; Maharashtra state manufacturing license of Insecticides etc. The organisation also has the Maharashtra Pollution Control Board’s Consent to operate.
+              AGRISHIELD® organization started in the year 2020. The organization is ISO 9001:2015 certified, Organic Biostimulants, Organic Bio Fertilizers DRC Certified, Adjuvants, Micronutrients &amp; Water Soluble Fertilizers Manufacturing license, CIBRC &amp; Maharashtra state manufacturing license of Insecticides etc. The organization also has the Maharashtra Pollution Control Board’s Consent to operate.
             </p>
             <Link href="/products">
               <span className="inline-flex items-center gap-1.5 text-[15px] font-bold text-primary hover:underline cursor-pointer group">
@@ -355,7 +339,7 @@ export default function About() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               <div className="lg:col-span-7 flex flex-col justify-center">
                 <p className="text-[15.5px] text-gray-700 leading-relaxed font-medium mb-8">
-                  " I believe and salute Farmer’s strength &amp; patience to walk in all up and down weather conditions, Our country’s growth depends on the growth of our farmers. They are the backbone of our economy. I extend my heartfelt thanks to our country’s Annadatas, the farmers who stay close to nature and work extensively to bring out the gems from Mother Earth to feed our growing population. We are running our organisation AGRISHIELD® Brand of Agrishield Industries Pvt Ltd on the slogan “CONSERVE THE NATURE, SERVE THE FUTURE”. We believe in educating and sharing new technology through our advanced crop protection solutions and services to ensure National Food Security, and to support today’s farmers to become the agricultural leaders of tomorrow. AGRISHIELD® organisation is bound to manufacture and sell quality products at reasonable cost in future. "
+                  " I believe and salute Farmer’s strength &amp; patience to walk in all up and down weather conditions, Our country’s growth depends on the growth of our farmers. They are the backbone of our economy. I extend my heartfelt thanks to our country’s Annadatas, the farmers who stay close to nature and work extensively to bring out the gems from Mother Earth to feed our growing population. We are running our organization AGRISHIELD® Brand of Agrishield Industries Pvt. Ltd. on the slogan “CONSERVE THE NATURE, SERVE THE FUTURE”. We believe in educating and sharing new technology through our advanced crop protection solutions and services to ensure National Food Security, and to support today’s farmers to become the agricultural leaders of tomorrow. AGRISHIELD® organization is bound to manufacture and sell quality products at reasonable cost in future. "
                 </p>
                 <div>
                   <h3 className="text-[20px] md:text-[22px] font-extrabold text-[#1a3a6e] leading-tight mb-1">
@@ -375,8 +359,9 @@ export default function About() {
                   <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-gray-150 bg-white">
                     <img
                       src="/director-shantishwar.png"
-                      alt="Dr. Shantishwar Patil"
+                      alt="Dr. Shantishwar Patil, Managing Director of Agrishield Industries Pvt. Ltd."
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -407,8 +392,9 @@ export default function About() {
                   <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-gray-150 bg-white">
                     <img
                       src="/mrs-pratibha-patil.png"
-                      alt="Mrs. Pratibha Patil"
+                      alt="Mrs. Pratibha Patil, HRD Director of Agrishield Industries Pvt. Ltd."
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </div>

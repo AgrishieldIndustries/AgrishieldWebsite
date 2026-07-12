@@ -22,10 +22,10 @@ export default function Navigation() {
     <>
       <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100">
         <div className="max-w-[1280px] mx-auto px-6 h-[80px] flex items-center justify-between">
-          <Link href="/" className="flex items-center shrink-0" data-testid="link-home-logo">
+          <Link href="/" className="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg" data-testid="link-home-logo" aria-label="Agrishield Industries – Home">
             <img
               src="/logo.png"
-              alt="Agrishield Industries"
+              alt="Agrishield Industries Pvt. Ltd. logo"
               className="w-auto object-contain"
               style={{ height: 96, maxWidth: 210 }}
             />
@@ -37,7 +37,8 @@ export default function Navigation() {
                 key={href}
                 href={href}
                 data-testid={`tab-nav-${label.toLowerCase()}`}
-                className={`flex flex-col items-center px-5 pt-4 pb-3 gap-1.5 relative transition-colors group ${
+                aria-current={isActive(href) ? "page" : undefined}
+                className={`flex flex-col items-center px-5 pt-4 pb-3 gap-1.5 relative transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset rounded-sm ${
                   isActive(href) ? "text-gray-900" : "text-gray-400 hover:text-gray-700"
                 }`}
               >
@@ -61,14 +62,15 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-3">
             <button
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-600"
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               aria-label="Language selector"
               data-testid="btn-language"
             >
               <Globe className="w-[18px] h-[18px]" />
             </button>
             <button
-              className="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-2 hover:shadow-md transition-all duration-200"
+              className="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-2 hover:shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              aria-label="Open account menu"
               data-testid="btn-account-menu"
             >
               <Menu className="w-[14px] h-[14px] text-gray-600" />
@@ -79,9 +81,11 @@ export default function Navigation() {
           </div>
 
           <button
-            className="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
+            className="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
             data-testid="btn-mobile-menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -90,14 +94,15 @@ export default function Navigation() {
       </header>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-white pt-[68px] overflow-y-auto md:hidden">
+        <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu" className="fixed inset-0 z-40 bg-white pt-[68px] overflow-y-auto md:hidden">
           <div className="px-6 py-4 space-y-1">
             {tabs.map(({ href, label, Icon }) => (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center gap-3 py-4 text-[16px] font-medium border-b border-gray-100 ${
+                aria-current={isActive(href) ? "page" : undefined}
+                className={`flex items-center gap-3 py-4 text-[16px] font-medium border-b border-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset ${
                   isActive(href) ? "text-primary" : "text-gray-700"
                 }`}
               >

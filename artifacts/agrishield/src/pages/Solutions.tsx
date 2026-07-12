@@ -64,6 +64,8 @@ export default function Solutions() {
                 <img
                   src={sol.img}
                   alt={sol.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                   style={{ minHeight: 260 }}
                 />

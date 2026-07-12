@@ -90,13 +90,13 @@ const ALL_PRODUCTS = [
   {
     id: 7,
     name: "AGRISHIELD® SHIELD BAHAR",
-    type: "Formulated by Fulvic, Amino & Seaweed",
+    type: "Plant Health Promoter – Fulvic, Amino & Seaweed",
     category: "Biostimulant",
     sizes: "100 ml · 250 ml · 500 ml · 1 L",
     price: "₹175 - ₹1,070",
     rating: 4.89,
     badge: false,
-    img: "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/shield_bahar.jpeg",
     packings: [
       { size: "100 ml", price: "₹175" },
       { size: "250 ml", price: "₹300" },
@@ -138,14 +138,14 @@ const ALL_PRODUCTS = [
   },
   {
     id: 10,
-    name: "AGRISHIELD® Super Power Plus",
-    type: "Bio-Stimulant Booster",
+    name: "AGRISHIELD® SUPER POWER PLUS",
+    type: "Plant Growth Promoter (Organic Manure Liquid)",
     category: "Biostimulant",
     sizes: "100 ml · 250 ml · 500 ml · 1 L · 5 L",
     price: "₹190 - ₹2,750",
     rating: 4.91,
     badge: true,
-    img: "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/super_power_plus.jpeg",
     packings: [
       { size: "100 ml", price: "₹190" },
       { size: "250 ml", price: "₹310" },
@@ -157,7 +157,7 @@ const ALL_PRODUCTS = [
   {
     id: 11,
     name: "AGRISHIELD® NEEM ATTACKER",
-    type: "NEEM OIL 10000 PPM",
+    type: "Neem Oil 10000 PPM",
     category: "Biostimulant",
     sizes: "250 ml · 500 ml · 1 L · 5 L",
     price: "₹350 - ₹5,500",
@@ -173,14 +173,14 @@ const ALL_PRODUCTS = [
   },
   {
     id: 12,
-    name: "AGRISHIELD® Thyrogen plus",
-    type: "Natural Oil & Botanical Extract",
+    name: "AGRISHIELD® THYROGEN PLUS",
+    type: "All-in-One: Thrips / Mites / Virus / Larvae",
     category: "Biostimulant",
     sizes: "100 ml · 250 ml · 500 ml · 1 L",
     price: "₹450 - ₹3,910",
     rating: 4.93,
     badge: true,
-    img: "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/thyrogen_plus.jpeg",
     packings: [
       { size: "100 ml", price: "₹450" },
       { size: "250 ml", price: "₹1,000" },
@@ -287,14 +287,14 @@ const ALL_PRODUCTS = [
   },
   {
     id: 20,
-    name: "AGRISHIELD CalciBoR",
-    type: "Calcium 6% & Boron 5%",
+    name: "AGRISHIELD CALCIBOR",
+    type: "EDTA Chelated Calcium Ca-6% + Boron B-6%",
     category: "Micronutrient",
     sizes: "500 g",
     price: "₹810",
     rating: 4.81,
     badge: false,
-    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/calcibor.jpeg",
     packings: [{ size: "500 gms", price: "₹810" }]
   },
   {
@@ -548,7 +548,7 @@ const ALL_PRODUCTS = [
   {
     id: 37,
     name: "AGRISHIELD® FOLLI BOOSTER",
-    type: "NitroBenzene 20% EW",
+    type: "Nitrobenzene 20% EW – Foliar Growth Booster",
     category: "Biostimulant",
     sizes: "250 ml · 500 ml · 1 L",
     price: "₹680 - ₹2,410",
@@ -563,8 +563,8 @@ const ALL_PRODUCTS = [
   },
   {
     id: 38,
-    name: "Agrishield Shield-Pro",
-    type: "Chlorantraniliprole 9.3% + Lambda 4.6% ZC",
+    name: "AGRISHIELD SHIELD-PRO",
+    type: "Chlorantraniliprole 9.3% + Lambda-cyhalothrin 4.6% ZC",
     category: "Herbicide/Fungicide/Insecticide",
     sizes: "250 ml · 500 ml",
     price: "₹1,510 - ₹2,950",
@@ -578,7 +578,7 @@ const ALL_PRODUCTS = [
   },
   {
     id: 39,
-    name: "Agrishield Hunter",
+    name: "AGRISHIELD HUNTER",
     type: "Emamectin Benzoate 1.9% EC",
     category: "Herbicide/Fungicide/Insecticide",
     sizes: "500 ml · 1 L",
@@ -593,8 +593,8 @@ const ALL_PRODUCTS = [
   },
   {
     id: 40,
-    name: "Agrishield Citron",
-    type: "Thiamethoxam 12.6% + Lambda 9.5% ZC",
+    name: "AGRISHIELD CITRON",
+    type: "Thiamethoxam 12.6% + Lambda-cyhalothrin 9.5% ZC",
     category: "Herbicide/Fungicide/Insecticide",
     sizes: "250 ml · 500 ml · 1 L",
     price: "₹850 - ₹2,750",
@@ -609,7 +609,7 @@ const ALL_PRODUCTS = [
   },
   {
     id: 41,
-    name: "Agrishield Azocure",
+    name: "AGRISHIELD AZOCURE",
     type: "Azoxystrobin 11% + Tebuconazole 18.3% SC",
     category: "Herbicide/Fungicide/Insecticide",
     sizes: "250 ml · 500 ml · 1 L",
@@ -625,7 +625,7 @@ const ALL_PRODUCTS = [
   },
   {
     id: 42,
-    name: "Agrishield Tebuza",
+    name: "AGRISHIELD TEBUZA",
     type: "Tricyclazole 18% + Tebuconazole 14.4% SC",
     category: "Herbicide/Fungicide/Insecticide",
     sizes: "250 ml · 500 ml · 1 L",
@@ -765,55 +765,13 @@ const ALL_PRODUCTS = [
     price: "On Request",
     rating: 4.80,
     badge: false,
-    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/shield_zyme_gr.jpeg",
     packings: []
   },
 
   // H: New Products
   {
     id: 51,
-    name: "AGRISHIELD THYROGEN PLUS",
-    type: "All-in-One: Thrips / Mites / Virus / Larvae",
-    category: "Herbicide/Fungicide/Insecticide",
-    sizes: "250 ml",
-    price: "On Request",
-    rating: 4.82,
-    badge: false,
-    img: "/product-photos/thyrogen_plus.jpeg",
-    packings: [
-      { size: "250 ml", price: "On Request" }
-    ]
-  },
-  {
-    id: 52,
-    name: "AGRISHIELD SUPER POWER PLUS",
-    type: "Plant Growth Promotor (Organic Manure Liquid)",
-    category: "Biostimulant",
-    sizes: "5 L",
-    price: "₹2,750",
-    rating: 4.84,
-    badge: false,
-    img: "/product-photos/super_power_plus.jpeg",
-    packings: [
-      { size: "5 Litre", price: "₹2,750" }
-    ]
-  },
-  {
-    id: 53,
-    name: "AGRISHIELD SHIELD BAHAR",
-    type: "Plant Health Promoter",
-    category: "Biostimulant",
-    sizes: "1 L",
-    price: "On Request",
-    rating: 4.81,
-    badge: false,
-    img: "/product-photos/shield_bahar.jpeg",
-    packings: [
-      { size: "1 Litre", price: "On Request" }
-    ]
-  },
-  {
-    id: 54,
     name: "AGRISHIELD BLOOM SHIELD",
     type: "Nitrobenzene 20% EW – Flower Growth Regulator",
     category: "Herbicide/Fungicide/Insecticide",
@@ -827,49 +785,7 @@ const ALL_PRODUCTS = [
     ]
   },
   {
-    id: 55,
-    name: "AGRISHIELD CALTAR PLUS",
-    type: "Paclobutrazol 23% SC – Plant Growth Regulator",
-    category: "Herbicide/Fungicide/Insecticide",
-    sizes: "1 L",
-    price: "On Request",
-    rating: 4.86,
-    badge: false,
-    img: "/product-photos/caltar_plus.jpeg",
-    packings: [
-      { size: "1 Litre", price: "On Request" }
-    ]
-  },
-  {
-    id: 56,
-    name: "AGRISHIELD SPREADSIL",
-    type: "Superior Spreading & Wetting Agent 250 ml",
-    category: "Adjuvant",
-    sizes: "250 ml",
-    price: "On Request",
-    rating: 4.78,
-    badge: false,
-    img: "/product-photos/spreadsil.jpeg",
-    packings: [
-      { size: "250 ml", price: "On Request" }
-    ]
-  },
-  {
-    id: 57,
-    name: "AGRISHIELD CALCIBOR",
-    type: "EDTA Chelated Calcium Ca-6% + Boron B-6%",
-    category: "Micronutrient",
-    sizes: "500 g",
-    price: "On Request",
-    rating: 4.83,
-    badge: false,
-    img: "/product-photos/calcibor.jpeg",
-    packings: [
-      { size: "500 gms", price: "On Request" }
-    ]
-  },
-  {
-    id: 58,
+    id: 52,
     name: "AGRISHIELD BORON 20%",
     type: "Boron (B-20%) Foliar Spray",
     category: "Micronutrient",
@@ -883,7 +799,7 @@ const ALL_PRODUCTS = [
     ]
   },
   {
-    id: 59,
+    id: 53,
     name: "AGRISHIELD FOLLI BOOSTER+",
     type: "Nitrobenzene 20% EW – Amino & Fulvic Acid Compatible",
     category: "Herbicide/Fungicide/Insecticide",
@@ -906,28 +822,26 @@ const PRODUCT_DESCRIPTIONS: Record<string, string> = {
   "AGRISHIELD® SHIELD-ZYME Next": "An advanced biostimulant derived from premium seaweed extract, amino acids, fulvic acid, and humic acid. Using modern biotechnological methods, it stimulates vital plant physiological processes to improve overall crop growth and quality.",
   "AGRISHIELD® SEAWEED Plus": "A highly concentrated organic biostimulant extracted from premium marine seaweed (Ascophyllum nodosum). It provides natural plant growth regulators, trace elements, and vitamins to stimulate cell division and improve root development.",
   "AGRISHIELD® SHIELD BAHAR": "A specialized plant health promoter engineered to boost vegetative growth and maximize flowering. It reduces flower drop, enhances fruit setting, and improves crop yield quality.",
-  "AGRISHIELD SHIELD BAHAR": "A specialized plant health promoter engineered to boost vegetative growth and maximize flowering. It reduces flower drop, enhances fruit setting, and improves crop yield quality.",
   "AGRISHIELD® SIZE PRO K-45": "A high-potassium formulation specifically designed to accelerate fruit development, improve size uniformity, enhance sugar accumulation, and increase the weight of the harvest.",
-  "AGRISHIELD® Super Power Plus": "An organic liquid manure and plant growth promoter. It enriches the soil with essential nutrients, improves soil texture, prevents nutrient leaching, and promotes vigorous plant growth.",
-  "AGRISHIELD SUPER POWER PLUS": "An organic liquid manure and plant growth promoter. It enriches the soil with essential nutrients, improves soil texture, prevents nutrient leaching, and promotes vigorous plant growth.",
+  "AGRISHIELD® SUPER POWER PLUS": "An organic liquid manure and plant growth promoter. It enriches the soil with essential nutrients, improves soil texture, prevents nutrient leaching, and promotes vigorous plant growth.",
   "AGRISHIELD® NEEM ATTACKER": "A natural, eco-friendly crop protection solution derived from pure neem oil. It acts as an effective repellent, antifeedant, and growth regulator against a wide range of sucking and chewing pests.",
-  "AGRISHIELD® Thyrogen plus": "A comprehensive crop protection solution designed to control thrips, mites, viruses, and larvae. Formulated for quick action and long-lasting defense.",
-  "AGRISHIELD THYROGEN PLUS": "A comprehensive crop protection solution designed to control thrips, mites, viruses, and larvae. Formulated for quick action and long-lasting defense.",
+  "AGRISHIELD® THYROGEN PLUS": "A comprehensive crop protection solution designed to control thrips, mites, viruses, and larvae. Formulated for quick action and long-lasting systemic defense.",
   "AGRISHIELD WASHOUT 41": "A non-selective, systemic post-emergence herbicide containing Glyphosate 41% S.L. It is used to control annual and perennial weeds by effectively inhibiting EPSP synthesis in plants.",
   "AGRISHIELD FINISHER 58": "A selective, systemic post-emergence herbicide containing 2,4-D Amine Salt 58% S.L. It belongs to the phenoxy carboxylic group and is highly effective at controlling annual and perennial broad-leaved weeds.",
   "AGRISHIELD WASHOUT 71": "A high-strength, non-selective, non-residual post-emergence herbicide containing Glyphosate 71% SG. It is highly effective against a wide variety of grasses, broadleaf weeds, and woody brush.",
   "AGRISHIELD PROTECTION": "A high-efficacy insecticide containing Emamectin Benzoate 5% SG. It targets bollworms and other lepidopteran pests, offering rapid knockdown and stomach action.",
   "AGRISHIELD METRISHIELD": "A selective herbicide containing Metribuzin 70% WP. It controls annual grasses and numerous broadleaf weeds in crops like sugarcane, potato, tomato, and wheat.",
   "AGRISHIELD® FOLLI BOOSTER": "A premium plant growth regulator and foliar booster (Nitrobenzene 20% EW). It is fully compatible with amino and fulvic acids, promoting profuse flowering and robust fruit development.",
-  "AGRISHIELD FOLLI BOOSTER+": "A premium plant growth regulator and foliar booster (Nitrobenzene 20% EW). It is fully compatible with amino and fulvic acids, promoting profuse flowering and robust fruit development.",
-  "AGRISHIELD® DOUSE SAVER": "A cost-effective, pH-balanced silicone adjuvant that acts as a superior sticker, spreader, wetter, and penetrator. It improves the efficiency of foliar sprays at a dosage of 0.5 - 1.0 ml per liter.",
-  "AGRISHIELD® SPREADSIL": "A highly concentrated, premium silicone-based adjuvant that acts as a superior spreader, sticker, wetting agent, and penetrator. It ensures uniform chemical coverage at a low dosage of 0.25 - 0.50 ml per liter.",
+  "AGRISHIELD FOLLI BOOSTER+": "An enhanced plant growth regulator and foliar booster (Nitrobenzene 20% EW) with improved amino and fulvic acid compatibility. Promotes profuse flowering, improves fruit set, and boosts overall yield.",
+  "AGRISHIELD® DOUSE SAVER": "A cost-effective, pH-balanced silicone adjuvant that acts as a superior sticker, spreader, wetter, and penetrator. It improves the efficiency of foliar sprays at a dosage of 0.5–1.0 ml per litre.",
+  "AGRISHIELD® SPREADSIL": "A highly concentrated, premium silicone-based adjuvant that acts as a superior spreader, sticker, wetting agent, and penetrator. It ensures uniform chemical coverage at a low dosage of 0.25–0.50 ml per litre.",
   "AGRISHIELD PS BACTOISHIELD": "A liquid biofertilizer containing Phosphate Solubilizing Bacteria (PSB). It converts insoluble phosphorus in the soil into bio-available forms for plant roots, improving soil health and crop growth.",
   "AGRISHIELD K-MOBISHIELD": "A liquid biofertilizer containing Potash Mobilizing Bacteria (KMB). It mobilizes locked potassium in the soil, making it easily accessible near plant roots as an eco-friendly alternative to chemical potash.",
-  "AGRISHIELD AZOTOSHIELD": "A liquid biofertilizer containing Azospirillum (Nitrogen Fixing Bacteria). It converts atmospheric nitrogen into ammonia near the roots, featuring a high CFU of 5 x 10⁸ cells/ml for superior efficacy.",
+  "AGRISHIELD AZOTOSHIELD": "A liquid biofertilizer containing Azospirillum (Nitrogen Fixing Bacteria). It converts atmospheric nitrogen into ammonia near the roots, featuring a high CFU of 5 × 10⁸ cells/ml for superior efficacy.",
   "AGRISHIELD SHIELDZYME+GR": "A granular organic bio-fertilizer enriched with essential enzyme complexes. It stimulates soil microbial activity, improves root branching, and enhances crop nutrient assimilation.",
   "AGRISHIELD CALCIBOR": "A soluble micronutrient blend containing EDTA Chelated Calcium (Ca-6%) and Boron (B-6%). It prevents calcium and boron deficiencies, improves cell wall strength, and enhances fruit set quality.",
-  "AGRISHIELD BORON 20%": "A foliar-grade straight micronutrient spray containing Boron 20%. It is essential for sugar translocation, pollen tube growth, cell division, and prevention of hollow heart or cracking disorders."
+  "AGRISHIELD BORON 20%": "A foliar-grade straight micronutrient spray containing Boron 20%. It is essential for sugar translocation, pollen tube growth, cell division, and prevention of hollow heart or cracking disorders.",
+  "AGRISHIELD BLOOM SHIELD": "A targeted Nitrobenzene 20% EW growth regulator specifically formulated to prevent flower drop, enhance fruit setting, and improve flowering density in high-value fruit crops.",
 };
 
 const CATEGORIES = ["All", "Water Soluble Fertilizers", "Biostimulant", "Bio-Fertilizers", "Micronutrient", "Herbicide/Fungicide/Insecticide", "Adjuvant", "Other"];

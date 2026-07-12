@@ -118,23 +118,22 @@ export default function About() {
         {/* ── HERO SECTION ───────────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-24 items-center">
           <div className="lg:col-span-7">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-[13px] font-semibold text-gray-400 mb-6 uppercase tracking-wider">
-              <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-              <span>/</span>
-              <span className="text-gray-600">About Us</span>
+            {/* Red Line + About Us Label */}
+            <div className="flex items-center gap-4 mb-5">
+              <div className="w-16 h-[3px] bg-[#b91c1c] shrink-0" />
+              <span className="text-[20px] font-bold text-[#b91c1c] uppercase tracking-wider">
+                About Us
+              </span>
             </div>
             
-            <h1 className="text-[36px] md:text-[52px] lg:text-[60px] font-extrabold text-gray-900 leading-[1.05] tracking-tight mb-6">
-              AGRISHIELD® Brand of Agrishield Industries
+            {/* Main Welcome Title */}
+            <h1 className="text-[36px] md:text-[48px] lg:text-[54px] font-extrabold text-gray-900 leading-[1.1] mb-3 tracking-tight">
+              Welcome to Agrishield Industries Pvt Ltd
             </h1>
 
-            {/* Trust badge */}
-            <div className="flex items-center gap-3.5 mb-8">
-              <div className="w-2.5 h-2.5 rounded-full bg-primary animate-ping" />
-              <span className="text-[13.5px] font-bold text-gray-700 uppercase tracking-wide">
-                Pune District, Maharashtra State · Kuruli Industrial Area
-              </span>
+            {/* Subtitle */}
+            <div className="text-[18px] md:text-[22px] font-bold text-[#1a3a6e] mb-8">
+              Agrochemical's Manufacturer in Pune
             </div>
 
             <p className="text-[15.5px] md:text-[17px] text-gray-500 leading-relaxed mb-8 max-w-2xl">

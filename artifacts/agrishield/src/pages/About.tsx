@@ -323,13 +323,13 @@ export default function About() {
           <div className="lg:col-span-5">
             <div className="rounded-[32px] overflow-hidden aspect-[4/3] relative shadow-xl border border-gray-100">
               <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop&q=80"
-                alt="NABL quality control checking"
+                src="/company-lab.png"
+                alt="Agrishield Quality Control Laboratory showing Automatic Absorption Spectroscopy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-6 left-6 bg-black/45 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-[12px] font-semibold text-white">
-                50 MT/Day Capacity Facility
+                Quality Control Lab &amp; AAS System
               </div>
             </div>
           </div>

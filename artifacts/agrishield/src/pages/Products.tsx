@@ -714,7 +714,7 @@ const ALL_PRODUCTS = [
   },
 ];
 
-const CATEGORIES = ["All", "NPK", "Biostimulant", "Micronutrient", "Herbicide", "Fungicide", "Insecticide", "Adjuvant", "Other"];
+const CATEGORIES = ["All", "NPK", "Biostimulant", "Bio-Fertilizers", "Micronutrient", "Herbicide", "Fungicide", "Insecticide", "Adjuvant", "Other"];
 
 function ProductCard({ 
   product, 

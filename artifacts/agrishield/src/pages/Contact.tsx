@@ -6,14 +6,32 @@ export default function Contact() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", "28ca6348-1a33-4b31-a833-4519a4453046");
+    formData.append("subject", "New Website Enquiry - Agrishield Industries");
+    formData.append("from_name", "Agrishield Website Portal");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
+      if (data.success) {
+        toast({ title: "Enquiry sent", description: "Our field officer will respond within one working day." });
+        e.currentTarget.reset();
+      } else {
+        toast({ title: "Submission failed", description: data.message || "Please try again later.", variant: "destructive" });
+      }
+    } catch (err) {
+      toast({ title: "Submission failed", description: "A network error occurred. Please try again later.", variant: "destructive" });
+    } finally {
       setLoading(false);
-      toast({ title: "Enquiry sent", description: "Our field officer will respond within one working day." });
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+    }
   };
 
   return (
@@ -36,6 +54,7 @@ export default function Contact() {
                   <label className="block text-[13px] font-medium text-gray-700 mb-1.5">Full name</label>
                   <input
                     required
+                    name="name"
                     placeholder="Your name"
                     className="w-full h-11 px-4 rounded-[8px] border border-gray-200 text-[14px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 bg-white transition"
                     data-testid="input-full-name"
@@ -46,6 +65,7 @@ export default function Contact() {
                   <input
                     required
                     type="tel"
+                    name="phone"
                     placeholder="+91"
                     className="w-full h-11 px-4 rounded-[8px] border border-gray-200 text-[14px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 bg-white transition"
                     data-testid="input-phone"
@@ -58,6 +78,7 @@ export default function Contact() {
                 <input
                   required
                   type="email"
+                  name="email"
                   placeholder="you@farm.in"
                   className="w-full h-11 px-4 rounded-[8px] border border-gray-200 text-[14px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 bg-white transition"
                   data-testid="input-email"
@@ -67,6 +88,7 @@ export default function Contact() {
               <div>
                 <label className="block text-[13px] font-medium text-gray-700 mb-1.5">Crop &amp; region</label>
                 <input
+                  name="crop_region"
                   placeholder="e.g. Grapes, Nashik"
                   className="w-full h-11 px-4 rounded-[8px] border border-gray-200 text-[14px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 bg-white transition"
                   data-testid="input-crop-region"
@@ -78,6 +100,7 @@ export default function Contact() {
                 <textarea
                   required
                   rows={4}
+                  name="message"
                   placeholder="Describe your crop challenge or what you're looking for..."
                   className="w-full px-4 py-3 rounded-[8px] border border-gray-200 text-[14px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 bg-white transition resize-none"
                   data-testid="textarea-message"

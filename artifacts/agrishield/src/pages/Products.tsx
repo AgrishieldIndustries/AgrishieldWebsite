@@ -896,11 +896,11 @@ export default function Products() {
               </button>
 
               {/* Left Column: Image */}
-              <div className="w-full md:w-1/2 aspect-square md:aspect-auto md:h-auto bg-gray-50 flex items-center justify-center p-6 border-b md:border-b-0 md:border-r border-gray-100 shrink-0">
+              <div className="w-full md:w-1/2 h-48 md:h-auto bg-gray-50 flex items-center justify-center p-6 border-b md:border-b-0 md:border-r border-gray-100 shrink-0">
                 <img
                   src={selectedProduct.img}
                   alt={selectedProduct.name}
-                  className="max-h-[220px] md:max-h-[360px] w-auto object-contain rounded-lg drop-shadow-md"
+                  className="max-h-full md:max-h-[360px] w-auto object-contain rounded-lg drop-shadow-md"
                 />
               </div>
 

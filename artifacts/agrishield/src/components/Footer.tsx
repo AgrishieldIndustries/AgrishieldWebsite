@@ -8,8 +8,8 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100 pt-14 pb-8">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center mb-4">
               <img
                 src="/logo.png"

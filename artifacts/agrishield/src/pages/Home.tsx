@@ -163,8 +163,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.995 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-[24px] overflow-hidden"
-            style={{ minHeight: 560 }}
+            className="relative rounded-[24px] overflow-hidden min-h-[660px] md:min-h-[560px]"
           >
             <img
               src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=800&fit=crop&q=90"
@@ -173,12 +172,11 @@ export default function Home() {
               style={{ objectPosition: "center 55%" }}
             />
             {/* cinematic layered gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/25 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
 
             <div
-              className="relative z-10 flex flex-col justify-between h-full px-10 md:px-14 py-12 md:py-14"
-              style={{ minHeight: 560 }}
+              className="relative z-10 flex flex-col justify-between h-full px-6 md:px-14 py-10 md:py-14 min-h-[660px] md:min-h-[560px]"
             >
               {/* Text block */}
               <div className="max-w-[540px]">
@@ -186,9 +184,9 @@ export default function Home() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
-                  className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-4 py-1.5 mb-7"
+                  className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-3.5 py-1 mb-5"
                 >
-                  <span className="text-[10.5px] font-bold text-gray-600 tracking-[0.08em] uppercase">
+                  <span className="text-[9.5px] md:text-[10.5px] font-bold text-gray-600 tracking-[0.08em] uppercase">
                     Manufactured in Pune · Trusted across India
                   </span>
                 </motion.div>
@@ -197,8 +195,8 @@ export default function Home() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="font-extrabold text-white leading-[1.06] tracking-tight mb-5"
-                  style={{ fontSize: "clamp(34px, 4.2vw, 58px)" }}
+                  className="font-extrabold text-white leading-[1.08] tracking-tight mb-4"
+                  style={{ fontSize: "clamp(30px, 4.2vw, 58px)" }}
                 >
                   Fertilizers &amp; micronutrients that boost your plant growth.
                 </motion.h1>
@@ -207,7 +205,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.42, duration: 0.55 }}
-                  className="text-[15px] md:text-[16px] text-white/75 leading-[1.7] max-w-[420px]"
+                  className="text-[14.5px] md:text-[16px] text-white/80 leading-relaxed max-w-[420px]"
                 >
                   The complete crop-care catalogue from Agrishield Industries — biostimulants, NPKs, chelated micronutrients and plant protection, engineered for every crop.
                 </motion.p>
@@ -218,9 +216,9 @@ export default function Home() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.52, duration: 0.55 }}
-                className="mt-10"
+                className="mt-8 w-full max-w-lg"
               >
-                <div className="inline-flex items-center bg-white rounded-2xl shadow-2xl overflow-hidden border border-white/10 divide-x divide-gray-100">
+                <div className="flex flex-col md:flex-row items-stretch md:items-center bg-white rounded-2xl shadow-2xl overflow-hidden border border-white/10 divide-y md:divide-y-0 md:divide-x divide-gray-100 w-full">
                   {(["CROP", "CONCERN", "REGION"] as const).map((tab) => {
                     const { Icon, placeholder } = tabConfig[tab];
                     return (
@@ -228,19 +226,19 @@ export default function Home() {
                         key={tab}
                         onClick={() => setActiveTab(tab)}
                         data-testid={`tab-hero-${tab.toLowerCase()}`}
-                        className={`flex flex-col items-start px-5 py-3.5 transition-colors group min-w-[140px] ${
+                        className={`flex flex-col items-start px-5 py-3 md:py-3.5 transition-colors group w-full md:min-w-[130px] ${
                           activeTab === tab ? "bg-white" : "bg-white/95 hover:bg-white"
                         }`}
                       >
-                        <span className="text-[10px] font-bold uppercase tracking-[0.09em] text-gray-500 mb-0.5">{tab}</span>
-                        <div className="flex items-center gap-1.5">
+                        <span className="text-[9px] font-bold uppercase tracking-[0.09em] text-gray-500 mb-0.5">{tab}</span>
+                        <div className="flex items-center gap-1.5 w-full">
                           <Icon className="w-3.5 h-3.5 text-gray-400 shrink-0" strokeWidth={2} />
-                          <span className="text-[13px] text-gray-400 whitespace-nowrap">{placeholder}</span>
+                          <span className="text-[13px] text-gray-550 truncate">{placeholder}</span>
                         </div>
                       </button>
                     );
                   })}
-                  <button className="flex items-center gap-2 bg-primary hover:bg-primary/90 transition-colors px-5 py-3.5 h-full">
+                  <button className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 transition-colors px-5 py-4 md:py-3.5 w-full md:w-auto shrink-0">
                     <Search className="w-4 h-4 text-white" strokeWidth={2.5} />
                     <span className="text-[13px] font-bold text-white">Search</span>
                   </button>

@@ -520,7 +520,7 @@ const ALL_PRODUCTS = [
     price: "₹750 - ₹4,500",
     rating: 4.86,
     badge: true,
-    img: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/protection_new.jpeg",
     packings: [
       { size: "100 Gms", price: "₹750" },
       { size: "250 Gms", price: "₹1,250" },
@@ -704,12 +704,182 @@ const ALL_PRODUCTS = [
     price: "₹390 - ₹9,750",
     rating: 4.84,
     badge: false,
-    img: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/biosulf20_new.jpeg",
     packings: [
       { size: "500 ml", price: "₹390" },
       { size: "1000 ml", price: "₹710" },
       { size: "5 Litre", price: "₹3,250" },
       { size: "20 Litre", price: "₹9,750" }
+    ]
+  },
+
+  // G: Bio-Fertilizers
+  {
+    id: 47,
+    name: "AGRISHIELD PS BACTOISHIELD",
+    type: "Phosphate Solubilizing Bacteria Bio Fertilizer",
+    category: "Bio-Fertilizers",
+    sizes: "1 L",
+    price: "On Request",
+    rating: 4.85,
+    badge: false,
+    img: "/product-photos/ps_bactoishield.jpeg",
+    packings: [
+      { size: "1 Litre", price: "On Request" }
+    ]
+  },
+  {
+    id: 48,
+    name: "AGRISHIELD K-MOBISHIELD",
+    type: "Potash Mobilizing Bacteria Bio Fertilizer",
+    category: "Bio-Fertilizers",
+    sizes: "1 L",
+    price: "On Request",
+    rating: 4.83,
+    badge: false,
+    img: "/product-photos/k_mobishield.jpeg",
+    packings: [
+      { size: "1 Litre", price: "On Request" }
+    ]
+  },
+  {
+    id: 49,
+    name: "AGRISHIELD AZOTOSHIELD",
+    type: "Azospirillum Nitrogen Fixing Bio Fertilizer",
+    category: "Bio-Fertilizers",
+    sizes: "1 L",
+    price: "On Request",
+    rating: 4.87,
+    badge: false,
+    img: "/product-photos/azotoshield.jpeg",
+    packings: [
+      { size: "1 Litre", price: "On Request" }
+    ]
+  },
+  {
+    id: 50,
+    name: "AGRISHIELD SHIELDZYME+GR",
+    type: "Granular Bio Fertilizer with Enzyme Complex",
+    category: "Bio-Fertilizers",
+    sizes: "On Request",
+    price: "On Request",
+    rating: 4.80,
+    badge: false,
+    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop&q=80",
+    packings: []
+  },
+
+  // H: New Products
+  {
+    id: 51,
+    name: "AGRISHIELD THYROGEN PLUS",
+    type: "All-in-One: Thrips / Mites / Virus / Larvae",
+    category: "Herbicide/Fungicide/Insecticide",
+    sizes: "250 ml",
+    price: "On Request",
+    rating: 4.82,
+    badge: false,
+    img: "/product-photos/thyrogen_plus.jpeg",
+    packings: [
+      { size: "250 ml", price: "On Request" }
+    ]
+  },
+  {
+    id: 52,
+    name: "AGRISHIELD SUPER POWER PLUS",
+    type: "Plant Growth Promotor (Organic Manure Liquid)",
+    category: "Biostimulant",
+    sizes: "5 L",
+    price: "₹2,750",
+    rating: 4.84,
+    badge: false,
+    img: "/product-photos/super_power_plus.jpeg",
+    packings: [
+      { size: "5 Litre", price: "₹2,750" }
+    ]
+  },
+  {
+    id: 53,
+    name: "AGRISHIELD SHIELD BAHAR",
+    type: "Plant Health Promoter",
+    category: "Biostimulant",
+    sizes: "1 L",
+    price: "On Request",
+    rating: 4.81,
+    badge: false,
+    img: "/product-photos/shield_bahar.jpeg",
+    packings: [
+      { size: "1 Litre", price: "On Request" }
+    ]
+  },
+  {
+    id: 54,
+    name: "AGRISHIELD BLOOM SHIELD",
+    type: "Nitrobenzene 20% EW – Flower Growth Regulator",
+    category: "Biostimulant",
+    sizes: "1 L",
+    price: "₹950",
+    rating: 4.79,
+    badge: false,
+    img: "/product-photos/bloom_shield.jpeg",
+    packings: [
+      { size: "1 Litre", price: "₹950" }
+    ]
+  },
+  {
+    id: 55,
+    name: "AGRISHIELD CALTAR PLUS",
+    type: "Paclobutrazol 23% SC – Plant Growth Regulator",
+    category: "Biostimulant",
+    sizes: "1 L",
+    price: "On Request",
+    rating: 4.86,
+    badge: false,
+    img: "/product-photos/caltar_plus.jpeg",
+    packings: [
+      { size: "1 Litre", price: "On Request" }
+    ]
+  },
+  {
+    id: 56,
+    name: "AGRISHIELD SPREADSIL",
+    type: "Superior Spreading & Wetting Agent 250 ml",
+    category: "Adjuvant",
+    sizes: "250 ml",
+    price: "On Request",
+    rating: 4.78,
+    badge: false,
+    img: "/product-photos/spreadsil.jpeg",
+    packings: [
+      { size: "250 ml", price: "On Request" }
+    ]
+  },
+  {
+    id: 57,
+    name: "AGRISHIELD CALCIBOR",
+    type: "EDTA Chelated Calcium Ca-6% + Boron B-6%",
+    category: "Micronutrient",
+    sizes: "500 g",
+    price: "On Request",
+    rating: 4.83,
+    badge: false,
+    img: "/product-photos/calcibor.jpeg",
+    packings: [
+      { size: "500 gms", price: "On Request" }
+    ]
+  },
+  {
+    id: 58,
+    name: "AGRISHIELD BORON 20%",
+    type: "Boron (B-20%) Foliar Spray",
+    category: "Micronutrient",
+    sizes: "500 g",
+    price: "On Request",
+    rating: 4.80,
+    badge: false,
+    img: "/product-photos/boron_20.jpeg",
+    packings: [
+      { size: "500 gms", price: "On Request" }
     ]
   },
 ];

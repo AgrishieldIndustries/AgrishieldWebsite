@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   ShieldCheck, Check, ChevronDown, Award, Users, FileText, 
   Linkedin, Twitter, Globe, Star, ArrowRight, UserCheck, 
-  Flame, Droplets, Compass, Target
+  Flame, Droplets, Compass, Target, Leaf
 } from "lucide-react";
 import { Link } from "wouter";
 
@@ -22,27 +22,21 @@ const STATS = [
 
 const VALUES = [
   {
-    title: "Trust (Earth)",
+    title: "Trust",
     desc: "Like the earth, we are dependable. We work with integrity of purpose, honesty in action and fairness in all our dealings.",
-    color: "#854d0e",
-    bg: "#fefbeb",
-    border: "#fef08a",
-    icon: Compass
+    color: "#22c55e",
+    icon: Leaf
   },
   {
-    title: "Adaptability (Water)",
-    desc: "Adaptive, like water. Constantly transforming ourselves, we are nimble-footed and highly responsive to change.",
-    color: "#0369a1",
-    bg: "#f0f9ff",
-    border: "#bae6fd",
+    title: "Adaptability",
+    desc: "Adaptive, like water. Constantly transforming ourselves like water, we are nimble-footed and highly responsive to change.",
+    color: "#0ea5e9",
     icon: Droplets
   },
   {
-    title: "Speed (Fire)",
-    desc: "Blazing ahead like fire. Quick and agile, we constantly strive to work with speed in the way we observe, think and act.",
-    color: "#b91c1c",
-    bg: "#fef2f2",
-    border: "#fecaca",
+    title: "Speed",
+    desc: "Blazing ahead like fire. Quick and agile, Like fire we constantly strive to work with speed in the way. We observe, think and act.",
+    color: "#f97316",
     icon: Flame
   }
 ];
@@ -254,34 +248,30 @@ export default function About() {
 
         {/* ── OUR CORE VALUES ─────────────────────────────────── */}
         <div className="mb-24">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-[12px] font-bold text-primary tracking-widest uppercase mb-2 block">
-              Core Principles
+          <div className="flex items-center gap-4 mb-16 justify-start">
+            <div className="w-16 h-[3px] bg-[#b91c1c] shrink-0" />
+            <span className="text-[20px] font-bold text-[#b91c1c] uppercase tracking-wider">
+              Our Values
             </span>
-            <h2 className="text-[32px] font-extrabold text-gray-900 leading-none">
-              Our Core Values
-            </h2>
-            <p className="text-[14px] text-gray-500 mt-3">
-              Representing the three fundamental elements that define our action and integrity.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
             {VALUES.map((val) => (
               <div 
                 key={val.title}
-                className="rounded-2xl p-6 border transition-shadow duration-300 hover:shadow-md"
-                style={{ backgroundColor: val.bg, borderColor: val.border }}
+                className="flex flex-col items-center text-center px-4"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${val.color}15` }}>
-                    <val.icon className="w-5 h-5" style={{ color: val.color }} />
-                  </div>
-                  <h3 className="text-[16px] font-extrabold" style={{ color: val.color }}>
-                    {val.title}
-                  </h3>
+                <div className="w-20 h-20 relative flex items-center justify-center mb-6">
+                  {/* Hexagon shape outline */}
+                  <svg className="absolute inset-0 w-full h-full text-gray-200 fill-none stroke-[3.5]" viewBox="0 0 100 100">
+                    <polygon points="50,6 88,28 88,72 50,94 12,72 12,28" />
+                  </svg>
+                  <val.icon className="w-8 h-8 relative z-10" style={{ color: val.color }} />
                 </div>
-                <p className="text-[13.5px] leading-relaxed text-gray-600">
+                <h3 className="text-[22px] font-bold text-gray-900 mb-4">
+                  {val.title}
+                </h3>
+                <p className="text-[14.5px] leading-relaxed text-gray-500">
                   {val.desc}
                 </p>
               </div>

@@ -1,0 +1,96 @@
+/**
+ * Premium Business Website Framework (PBWF)
+ * Centralized Branding & Theme Configuration Template
+ * 
+ * Instructions: Rename this file to `theme.config.ts` and import it 
+ * across your page layouts (e.g. Navigation, Footer, Contact, Home)
+ * to instantly change branding copy, contact detail points, and SEO meta.
+ */
+
+export interface CompanyConfig {
+  legalName: string;            // Legal entity name (e.g., "Agrishield Industries Pvt. Ltd.")
+  shortName: string;            // Conversational name (e.g., "Agrishield")
+  tagline: string;              // Primary slogan (e.g., "Conserve the nature, serve the future")
+  establishmentYear: number;
+  contactEmail: string;         // Primary mailbox
+  secondaryEmail?: string;
+  contactPhones: string[];      // Multiple support numbers
+  address: {
+    line1: string;
+    line2: string;
+    highway: string;
+    region: string;
+    postalCode: string;
+    country: string;
+  };
+  socials: {
+    whatsappNumber: string;    // International format e.g. "919021342901"
+    facebookUrl?: string;
+    twitterUrl?: string;
+    instagramUrl?: string;
+    linkedinUrl?: string;
+  };
+  seo: {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string[];
+    canonicalUrl: string;
+    ogImage: string;
+  };
+  colors: {
+    primary: string;           // Hex value
+    secondary: string;
+    accent: string;
+  };
+}
+
+export const themeConfig: CompanyConfig = {
+  legalName: "Agrishield Industries Pvt. Ltd.",
+  shortName: "Agrishield",
+  tagline: "Conserve the nature, serve the future",
+  establishmentYear: 2020,
+  contactEmail: "shantishwar.patil@agrishieldindustries.com",
+  secondaryEmail: "info.agrishield@gmail.com",
+  contactPhones: [
+    "+91 93596 87781",
+    "+91 79726 10839",
+    "+91 90213 42901"
+  ],
+  address: {
+    line1: "Plot No. 55",
+    line2: "Gat No. 679, Behind Maruti Suzuki Showroom",
+    highway: "Pune Nashik Highway, Kuruli",
+    region: "Tal: Khed, Dist: Pune",
+    postalCode: "410501",
+    country: "India"
+  },
+  socials: {
+    whatsappNumber: "919021342901",
+    facebookUrl: "https://www.facebook.com",
+    twitterUrl: "https://twitter.com",
+    instagramUrl: "https://www.instagram.com/agrishield.india/",
+    linkedinUrl: "https://www.linkedin.com"
+  },
+  seo: {
+    metaTitle: "Agrishield Industries Pvt. Ltd. | Water Soluble Fertilizers & Crop Nutrition",
+    metaDescription: "Agrishield Industries Pvt. Ltd. manufactures premium water-soluble fertilizers, chelated micronutrients, organic biostimulants, bio-fertilizers, insecticides and agro-chemicals in Pune, Maharashtra. ISO 9001:2015 certified.",
+    keywords: [
+      "Water Soluble Fertilizers",
+      "Micronutrients",
+      "Organic Biostimulants",
+      "Bio Fertilizers",
+      "Agro Chemicals",
+      "Crop Nutrition",
+      "Maharashtra",
+      "Pune",
+      "India"
+    ],
+    canonicalUrl: "https://agrishieldindustries.com/",
+    ogImage: "https://agrishieldindustries.com/logo.png"
+  },
+  colors: {
+    primary: "#1f7a3a",
+    secondary: "#111827",
+    accent: "#B45309"
+  }
+};

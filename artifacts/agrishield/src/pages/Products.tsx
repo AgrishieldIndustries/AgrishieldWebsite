@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Heart, Star, Search, X, Check, Building } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { initializeDatabase, getProducts, Product } from "../lib/dbStore";
 
 export const ALL_PRODUCTS = [
@@ -915,11 +915,21 @@ export default function Products() {
   const [search, setSearch] = useState("");
   const [productsList, setProductsList] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [location] = useLocation();
 
   useEffect(() => {
     initializeDatabase();
     setProductsList(getProducts());
-  }, []);
+
+    // Parse category query parameter if present
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get("category");
+    if (categoryParam) {
+      setActiveCategory(categoryParam);
+    } else {
+      setActiveCategory("All");
+    }
+  }, [location]);
 
   const filtered = productsList.filter((p) => {
     const matchCat = activeCategory === "All" || p.category === activeCategory;

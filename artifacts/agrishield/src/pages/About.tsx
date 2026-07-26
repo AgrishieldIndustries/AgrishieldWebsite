@@ -393,7 +393,7 @@ export default function About() {
                     <img
                       src="/mrs-pratibha-patil.png"
                       alt="Mrs. Pratibha Patil, HRD Director of Agrishield Industries Pvt. Ltd."
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                       loading="lazy"
                     />
                   </div>

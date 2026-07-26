@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heart, Star, Search, X, Check, Building } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
+import { initializeDatabase, getProducts, Product } from "../lib/dbStore";
 
-const ALL_PRODUCTS = [
+export const ALL_PRODUCTS = [
   // A: PLANT GROWTH REGULATORS (Bio-Stimulants)
   {
     id: 1,
@@ -851,9 +852,9 @@ function ProductCard({
   index, 
   onSelect 
 }: { 
-  product: typeof ALL_PRODUCTS[0]; 
+  product: Product; 
   index: number; 
-  onSelect: (product: typeof ALL_PRODUCTS[0]) => void;
+  onSelect: (product: Product) => void;
 }) {
   const [liked, setLiked] = useState(false);
   return (
@@ -912,9 +913,15 @@ function ProductCard({
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState<typeof ALL_PRODUCTS[0] | null>(null);
+  const [productsList, setProductsList] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  const filtered = ALL_PRODUCTS.filter((p) => {
+  useEffect(() => {
+    initializeDatabase();
+    setProductsList(getProducts());
+  }, []);
+
+  const filtered = productsList.filter((p) => {
     const matchCat = activeCategory === "All" || p.category === activeCategory;
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase()) || p.type.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
@@ -1064,6 +1071,41 @@ export default function Products() {
                     {PRODUCT_DESCRIPTIONS[selectedProduct.name] || 
                      `${selectedProduct.name} is a high-grade product engineered by Agrishield Industries. Specially designed to optimize crop growth, protect plants from diseases and environmental stress, and improve harvest yield.`}
                   </div>
+
+                  {/* Agronomy Recommendations */}
+                  {(selectedProduct.dosage || selectedProduct.method || selectedProduct.composition) && (
+                    <div className="space-y-2">
+                      <h3 className="text-[11.5px] font-bold uppercase tracking-wider text-gray-400">
+                        Agronomy Recommendations
+                      </h3>
+                      <div className="bg-gray-50 rounded-xl border border-gray-100 p-3.5 space-y-2 text-[12.5px] leading-relaxed">
+                        {selectedProduct.composition && (
+                          <div>
+                            <span className="font-extrabold text-gray-700">Composition: </span>
+                            <span className="text-gray-600">{selectedProduct.composition}</span>
+                          </div>
+                        )}
+                        {selectedProduct.dosage && (
+                          <div>
+                            <span className="font-extrabold text-gray-700">Dosage: </span>
+                            <span className="text-gray-600">{selectedProduct.dosage}</span>
+                          </div>
+                        )}
+                        {selectedProduct.method && (
+                          <div>
+                            <span className="font-extrabold text-gray-700">Method: </span>
+                            <span className="text-gray-600">{selectedProduct.method}</span>
+                          </div>
+                        )}
+                        {selectedProduct.crops && selectedProduct.crops.length > 0 && (
+                          <div>
+                            <span className="font-extrabold text-gray-700">Supported Crops: </span>
+                            <span className="text-gray-600">{selectedProduct.crops.join(", ")}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Packings List */}
                   {selectedProduct.packings && selectedProduct.packings.length > 0 && (

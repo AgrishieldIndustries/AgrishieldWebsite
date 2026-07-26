@@ -12,6 +12,7 @@ import Awards from "@/pages/Awards";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Social from "@/pages/Social";
+import AdminDashboard from "@/pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/social" component={Social} />
+        <Route path="/admin" component={AdminDashboard} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

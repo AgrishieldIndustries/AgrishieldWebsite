@@ -1,56 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { Heart, Star, ChevronRight, Search, MapPin, Sprout, AlertCircle } from "lucide-react";
+import { Heart, Star, ChevronRight, Search, Sprout, AlertCircle, Clock } from "lucide-react";
 import { motion } from "framer-motion";
-
-/* ─── DATA ─────────────────────────────────────────────────── */
-
-const PRODUCTS = [
-  {
-    id: 1,
-    name: "AGRISHIELD WSF 19:19:19",
-    type: "Water Soluble Fertilizer",
-    category: "NPK",
-    sizes: "1 kg · 5 kg",
-    price: "₹420",
-    rating: 4.92,
-    badge: true,
-    img: "/product-photos/wsf_19_19_19.jpeg",
-  },
-  {
-    id: 2,
-    name: "AGRISHIELD® HumiGrowth",
-    type: "Organic Soil Conditioner Powder 98%",
-    category: "Biostimulant",
-    sizes: "500 g",
-    price: "₹580",
-    rating: 4.88,
-    badge: true,
-    img: "/product-photos/humigrowth.jpeg",
-  },
-  {
-    id: 3,
-    name: "AGRISHIELD WASHOUT 41",
-    type: "Systemic Herbicide",
-    category: "Herbicide",
-    sizes: "1 L · 5 L",
-    price: "₹1,080 - ₹4,850",
-    rating: 4.81,
-    badge: true,
-    img: "/product-photos/washout_41.jpeg",
-  },
-  {
-    id: 4,
-    name: "AGRISHIELD CalciNitro",
-    type: "Water Soluble Fertilizer",
-    category: "NPK",
-    sizes: "1 kg · 25 kg",
-    price: "₹165 - ₹3,465",
-    rating: 4.81,
-    badge: true,
-    img: "/product-photos/calcinitro.jpeg",
-  },
-];
+import { 
+  initializeDatabase, getCrops, getStages, getConcerns, getProducts,
+  getStagesForCrop, getConcernsForCropAndStage, Product, Crop, GrowthStage, Concern
+} from "../lib/dbStore";
 
 const STATES = [
   { state: "Maharashtra", crops: "Grape & pomegranate" },
@@ -86,7 +41,7 @@ const SOLUTIONS = [
 ];
 
 /* ─── PRODUCT CARD ──────────────────────────────────────────── */
-function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: number }) {
+function ProductCard({ product, index }: { product: Product; index: number }) {
   const [liked, setLiked] = useState(false);
 
   return (
@@ -148,12 +103,109 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
 
 /* ─── PAGE ──────────────────────────────────────────────────── */
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"CROP" | "CONCERN" | "REGION">("CROP");
+  const [crops, setCrops] = useState<Crop[]>([]);
+  const [selectedCrop, setSelectedCrop] = useState("All crops");
 
-  const tabConfig = {
-    CROP: { Icon: Sprout, placeholder: "Tomato, grape, cotton…" },
-    CONCERN: { Icon: AlertCircle, placeholder: "Growth, pest, deficiency…" },
-    REGION: { Icon: MapPin, placeholder: "Anywhere in India" },
+  const [stages, setStages] = useState<GrowthStage[]>([]);
+  const [selectedStage, setSelectedStage] = useState("All stages");
+
+  const [concerns, setConcerns] = useState<Concern[]>([]);
+  const [selectedConcern, setSelectedConcern] = useState("All concerns");
+
+  const [activeDropdown, setActiveDropdown] = useState<"crop" | "stage" | "concern" | null>(null);
+
+  const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
+  const [searchTitle, setSearchTitle] = useState("Inspiration for your next season");
+  const [isSearching, setIsSearching] = useState(false);
+  const [loadingSearch, setLoadingSearch] = useState(false);
+
+  // Initialize Database on mount
+  useEffect(() => {
+    initializeDatabase();
+    const products = getProducts();
+    
+    // Filter crops to only display those with at least one associated product
+    const allCrops = getCrops();
+    const activeCropNames = new Set(products.flatMap(p => p.crops));
+    const filteredCrops = allCrops.filter(c => activeCropNames.has(c.name) || c.name === "All" || c.name === "All supported crops");
+    setCrops(filteredCrops);
+
+    // Initial 4 products for featured section
+    setDisplayProducts(products.slice(0, 4));
+  }, []);
+
+  // Update Stages dynamically when selected crop changes
+  useEffect(() => {
+    if (selectedCrop === "All crops") {
+      setStages(getStages());
+      return;
+    }
+    const applicableStages = getStagesForCrop(selectedCrop);
+    setStages(applicableStages);
+    
+    // Reset selected stage if it's no longer applicable for the new crop selection
+    if (selectedStage !== "All stages" && !applicableStages.some(s => s.name === selectedStage)) {
+      setSelectedStage("All stages");
+    }
+  }, [selectedCrop]);
+
+  // Update Concerns dynamically when crop or stage changes
+  useEffect(() => {
+    const applicableConcerns = getConcernsForCropAndStage(
+      selectedCrop === "All crops" ? "" : selectedCrop, 
+      selectedStage === "All stages" ? "" : selectedStage
+    );
+    setConcerns(applicableConcerns);
+
+    // Reset selected concern if it's no longer applicable for the new crop + stage selection
+    if (selectedConcern !== "All concerns" && !applicableConcerns.some(c => c.name === selectedConcern)) {
+      setSelectedConcern("All concerns");
+    }
+  }, [selectedCrop, selectedStage]);
+
+  // Document Click Listener to Close Dropdowns
+  useEffect(() => {
+    const handleOutsideClick = () => {
+      setActiveDropdown(null);
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, []);
+
+  // Filter products matching selected cascading options
+  const handleSearch = () => {
+    setLoadingSearch(true);
+    setTimeout(() => {
+      const products = getProducts();
+      const filtered = products.filter(p => {
+        const matchCrop = selectedCrop === "All crops" || 
+                          p.crops.includes(selectedCrop) || 
+                          p.crops.includes("All supported crops") || 
+                          p.crops.includes("All");
+                           
+        const matchStage = selectedStage === "All stages" || 
+                            p.stages.includes(selectedStage);
+                            
+        const matchConcern = selectedConcern === "All concerns" || 
+                              p.concerns.includes(selectedConcern);
+                              
+        return matchCrop && matchStage && matchConcern;
+      });
+      
+      setDisplayProducts(filtered);
+      setSearchTitle(filtered.length > 0 ? `Matched Results (${filtered.length})` : "No matching products found");
+      setIsSearching(true);
+      setLoadingSearch(false);
+    }, 550);
+  };
+
+  const handleReset = () => {
+    setSelectedCrop("All crops");
+    setSelectedStage("All stages");
+    setSelectedConcern("All concerns");
+    setDisplayProducts(getProducts().slice(0, 4));
+    setSearchTitle("Inspiration for your next season");
+    setIsSearching(false);
   };
 
   return (
@@ -216,37 +268,122 @@ export default function Home() {
                 </motion.p>
               </div>
 
-              {/* Search pill */}
+              {/* Dynamic Cascading Search select blocks */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.52, duration: 0.55 }}
                 className="mt-8 w-full max-w-lg"
               >
-                <div className="flex flex-col md:flex-row items-stretch md:items-center bg-white rounded-2xl shadow-2xl overflow-hidden border border-white/10 divide-y md:divide-y-0 md:divide-x divide-gray-100 w-full">
-                  {(["CROP", "CONCERN", "REGION"] as const).map((tab) => {
-                    const { Icon, placeholder } = tabConfig[tab];
-                    return (
-                      <button
-                        key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        data-testid={`tab-hero-${tab.toLowerCase()}`}
-                        className={`flex flex-col items-start px-5 py-3 md:py-3.5 transition-colors group w-full md:min-w-[130px] ${
-                          activeTab === tab ? "bg-white" : "bg-white/95 hover:bg-white"
-                        }`}
-                      >
-                        <span className="text-[9px] font-bold uppercase tracking-[0.09em] text-gray-500 mb-0.5">{tab}</span>
-                        <div className="flex items-center gap-1.5 w-full">
-                          <Icon className="w-3.5 h-3.5 text-gray-400 shrink-0" strokeWidth={2} />
-                          <span className="text-[13px] text-gray-550 truncate">{placeholder}</span>
+                <div className="flex flex-col md:flex-row items-stretch md:items-center bg-white rounded-2xl shadow-2xl overflow-visible border border-white/10 divide-y md:divide-y-0 md:divide-x divide-gray-100 w-full relative">
+                  
+                  {/* CROP DROPDOWN */}
+                  <div 
+                    className="relative flex flex-col items-start px-5 py-3 md:py-3.5 bg-white w-full md:w-1/3 group cursor-pointer hover:bg-gray-50/50 rounded-t-2xl md:rounded-t-none md:rounded-l-2xl transition-colors"
+                    onClick={(e) => { e.stopPropagation(); setActiveDropdown(activeDropdown === "crop" ? null : "crop"); }}
+                    data-testid="dropdown-crop-trigger"
+                  >
+                    <span className="text-[9px] font-bold uppercase tracking-[0.09em] text-gray-500 mb-0.5">Crop</span>
+                    <div className="flex items-center gap-1.5 w-full">
+                      <Sprout className="w-3.5 h-3.5 text-gray-400 shrink-0" strokeWidth={2} />
+                      <span className="text-[13px] font-bold text-gray-900 truncate">{selectedCrop}</span>
+                    </div>
+                    {activeDropdown === "crop" && (
+                      <div className="absolute top-full left-0 right-0 z-30 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 max-h-60 overflow-y-auto py-2">
+                        <div 
+                          className="px-4 py-2 text-[13px] text-gray-700 hover:bg-gray-50 cursor-pointer font-medium"
+                          onClick={() => setSelectedCrop("All crops")}
+                        >
+                          All crops
                         </div>
-                      </button>
-                    );
-                  })}
-                  <button className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 transition-colors px-5 py-4 md:py-3.5 w-full md:w-auto shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset" aria-label="Search for products">
+                        {crops.map((c) => (
+                          <div 
+                            key={c.id}
+                            className={`px-4 py-2 text-[13px] hover:bg-gray-50 cursor-pointer font-medium ${selectedCrop === c.name ? "text-primary font-bold bg-emerald-50/30" : "text-gray-700"}`}
+                            onClick={() => setSelectedCrop(c.name)}
+                          >
+                            {c.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* GROWTH STAGE DROPDOWN */}
+                  <div 
+                    className="relative flex flex-col items-start px-5 py-3 md:py-3.5 bg-white w-full md:w-1/3 group cursor-pointer hover:bg-gray-50/50 transition-colors"
+                    onClick={(e) => { e.stopPropagation(); setActiveDropdown(activeDropdown === "stage" ? null : "stage"); }}
+                    data-testid="dropdown-stage-trigger"
+                  >
+                    <span className="text-[9px] font-bold uppercase tracking-[0.09em] text-gray-500 mb-0.5">Growth Stage</span>
+                    <div className="flex items-center gap-1.5 w-full">
+                      <Clock className="w-3.5 h-3.5 text-gray-400 shrink-0" strokeWidth={2} />
+                      <span className="text-[13px] font-bold text-gray-900 truncate">{selectedStage}</span>
+                    </div>
+                    {activeDropdown === "stage" && (
+                      <div className="absolute top-full left-0 right-0 z-30 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 max-h-60 overflow-y-auto py-2">
+                        <div 
+                          className="px-4 py-2 text-[13px] text-gray-700 hover:bg-gray-50 cursor-pointer font-medium"
+                          onClick={() => setSelectedStage("All stages")}
+                        >
+                          All stages
+                        </div>
+                        {stages.map((s) => (
+                          <div 
+                            key={s.id}
+                            className={`px-4 py-2 text-[13px] hover:bg-gray-50 cursor-pointer font-medium ${selectedStage === s.name ? "text-primary font-bold bg-emerald-50/30" : "text-gray-700"}`}
+                            onClick={() => setSelectedStage(s.name)}
+                          >
+                            {s.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CONCERN DROPDOWN */}
+                  <div 
+                    className="relative flex flex-col items-start px-5 py-3 md:py-3.5 bg-white w-full md:w-1/3 group cursor-pointer hover:bg-gray-50/50 transition-colors"
+                    onClick={(e) => { e.stopPropagation(); setActiveDropdown(activeDropdown === "concern" ? null : "concern"); }}
+                    data-testid="dropdown-concern-trigger"
+                  >
+                    <span className="text-[9px] font-bold uppercase tracking-[0.09em] text-gray-500 mb-0.5">Concern</span>
+                    <div className="flex items-center gap-1.5 w-full">
+                      <AlertCircle className="w-3.5 h-3.5 text-gray-400 shrink-0" strokeWidth={2} />
+                      <span className="text-[13px] font-bold text-gray-900 truncate">{selectedConcern}</span>
+                    </div>
+                    {activeDropdown === "concern" && (
+                      <div className="absolute top-full left-0 right-0 z-30 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 max-h-60 overflow-y-auto py-2">
+                        <div 
+                          className="px-4 py-2 text-[13px] text-gray-700 hover:bg-gray-50 cursor-pointer font-medium"
+                          onClick={() => setSelectedConcern("All concerns")}
+                        >
+                          All concerns
+                        </div>
+                        {concerns.map((cn) => (
+                          <div 
+                            key={cn.id}
+                            className={`px-4 py-2 text-[13px] hover:bg-gray-50 cursor-pointer font-medium ${selectedConcern === cn.name ? "text-primary font-bold bg-emerald-50/30" : "text-gray-700"}`}
+                            onClick={() => setSelectedConcern(cn.name)}
+                          >
+                            {cn.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Search Button */}
+                  <button 
+                    onClick={handleSearch}
+                    className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 transition-colors px-5 py-4 md:py-3.5 w-full md:w-auto shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset rounded-b-2xl md:rounded-b-none md:rounded-r-2xl cursor-pointer" 
+                    aria-label="Search for products"
+                    data-testid="btn-search-trigger"
+                  >
                     <Search className="w-4 h-4 text-white" strokeWidth={2.5} />
                     <span className="text-[13px] font-bold text-white">Search</span>
                   </button>
+
                 </div>
               </motion.div>
             </div>
@@ -259,25 +396,53 @@ export default function Home() {
         <div className="max-w-[1280px] mx-auto">
           <div className="flex items-end justify-between mb-9">
             <div>
-              <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-primary mb-2">Featured products</p>
+              <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-primary mb-2">
+                {isSearching ? "Search results" : "Featured products"}
+              </p>
               <h2 className="text-[26px] md:text-[32px] font-extrabold text-gray-900 tracking-tight leading-tight">
-                Inspiration for your next season
+                {searchTitle}
               </h2>
             </div>
-            <Link
-              href="/products"
-              className="hidden md:flex items-center gap-1 text-[14px] font-semibold text-gray-900 hover:underline underline-offset-2"
-              data-testid="link-view-all-products"
-            >
-              View all products <ChevronRight className="w-4 h-4" />
-            </Link>
+            {isSearching ? (
+              <button
+                onClick={handleReset}
+                className="flex items-center gap-1 text-[14px] font-bold text-primary hover:underline underline-offset-2 cursor-pointer"
+              >
+                Reset Search
+              </button>
+            ) : (
+              <Link
+                href="/products"
+                className="hidden md:flex items-center gap-1 text-[14px] font-semibold text-gray-900 hover:underline underline-offset-2"
+                data-testid="link-view-all-products"
+              >
+                View all products <ChevronRight className="w-4 h-4" />
+              </Link>
+            )}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-7">
-            {PRODUCTS.map((product, i) => (
-              <ProductCard key={product.id} product={product} index={i} />
-            ))}
-          </div>
+          {loadingSearch ? (
+            <div className="py-24 flex flex-col items-center justify-center w-full">
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4" />
+              <p className="text-gray-500 text-[14.5px] font-medium">Finding matching products...</p>
+            </div>
+          ) : displayProducts.length === 0 ? (
+            <div className="py-24 text-center w-full bg-gray-50/50 rounded-2xl border border-gray-100 p-8">
+              <p className="text-gray-400 text-[15px] font-medium mb-4">No products match your selected filters.</p>
+              <button
+                onClick={handleReset}
+                className="text-[14.5px] font-bold text-primary hover:underline"
+              >
+                Clear all filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-7">
+              {displayProducts.map((product, i) => (
+                <ProductCard key={product.id} product={product} index={i} />
+              ))}
+            </div>
+          )}
 
           <div className="mt-8 md:hidden text-center">
             <Link href="/products" className="text-[14px] font-semibold text-gray-900 underline underline-offset-2">

@@ -385,7 +385,7 @@ export default function About() {
               </div>
 
               <div className="lg:col-span-5 lg:order-1 flex justify-center">
-                <div className="relative w-full max-w-[380px] aspect-[4/3] mr-4 mb-4">
+                <div className="relative w-full max-w-[380px] aspect-[3/4] mr-4 mb-4">
                   {/* Red backdrop offset */}
                   <div className="absolute inset-0 bg-[#b91c1c] rounded-2xl translate-x-3 translate-y-3" />
                   {/* Image card */}

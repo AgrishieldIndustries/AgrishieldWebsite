@@ -929,6 +929,9 @@ export default function Products() {
     } else {
       setActiveCategory("All");
     }
+
+    // Force page scroll reset to top of viewport
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location]);
 
   const filtered = productsList.filter((p) => {

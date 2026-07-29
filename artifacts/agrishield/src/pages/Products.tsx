@@ -51,7 +51,7 @@ export const ALL_PRODUCTS = [
     price: "₹740",
     rating: 4.82,
     badge: false,
-    img: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/amigrowth.jpeg",
     packings: [{ size: "500 gms", price: "₹740" }]
   },
   {
@@ -217,7 +217,7 @@ export const ALL_PRODUCTS = [
     price: "₹410 - ₹675",
     rating: 4.82,
     badge: false,
-    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/chel_combi.jpeg",
     packings: [
       { size: "250 gms", price: "₹410" },
       { size: "500 gms", price: "₹675" }
@@ -280,7 +280,7 @@ export const ALL_PRODUCTS = [
     price: "₹190 - ₹315",
     rating: 4.85,
     badge: false,
-    img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop&q=80",
+    img: "/product-photos/boroshield_20.jpeg",
     packings: [
       { size: "250 gms", price: "₹190" },
       { size: "500 gms", price: "₹315" }

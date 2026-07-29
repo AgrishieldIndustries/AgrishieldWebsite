@@ -219,7 +219,15 @@ export const getConcerns = (): Concern[] => {
 
 export const getProducts = (): Product[] => {
   initializeDatabase();
-  return JSON.parse(localStorage.getItem("agrishield_db_products") || "[]");
+  const stored: Product[] = JSON.parse(localStorage.getItem("agrishield_db_products") || "[]");
+  const updated = stored.map(p => {
+    const fresh = ALL_PRODUCTS.find(ap => ap.id === p.id);
+    if (fresh && fresh.img && fresh.img !== p.img && !p.img.startsWith("data:")) {
+      return { ...p, img: fresh.img };
+    }
+    return p;
+  });
+  return updated;
 };
 
 // Cascading Filter Logic

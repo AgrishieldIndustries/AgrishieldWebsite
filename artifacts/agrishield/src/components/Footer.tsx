@@ -124,9 +124,11 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[12px] text-gray-400">
-            © {new Date().getFullYear()} Agrishield Industries Pvt. Ltd. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-[12px] text-gray-400">
+            <p>© {new Date().getFullYear()} Agrishield Industries Pvt. Ltd. All rights reserved.</p>
+            <span className="hidden sm:inline text-gray-300">•</span>
+            <p>Managed by <span className="font-medium text-gray-500">Arclane Studio</span></p>
+          </div>
           <div className="flex items-center gap-5">
             {[
               { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com" },

@@ -144,8 +144,9 @@ export default function Contact() {
                   <div className="text-[13px] font-semibold text-gray-900 mb-2">Visit us</div>
                   <p className="text-[14px] text-gray-600 leading-relaxed">
                     Plot No. 55, Gat No. 679,<br />
-                    Behind Maruti Suzuki Showroom,<br />
-                    Pune Nashik Highway, Kuruli,<br />
+                    Balaji Industrial Area,<br />
+                    Behind Maruti Suzuki ARENA Showroom,<br />
+                    Pune Nashik Highway, Kuruli, Near Chakan,<br />
                     Tal: Khed, Dist: Pune - 410501<br />
                     Maharashtra, India
                   </p>

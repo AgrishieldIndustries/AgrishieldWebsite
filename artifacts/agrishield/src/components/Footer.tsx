@@ -72,9 +72,11 @@ export default function Footer() {
                 </span>
                 <span className="text-[12.5px] text-gray-500 leading-relaxed">
                   Plot No. 55, Gat No. 679,<br />
-                  Behind Maruti Suzuki Showroom,<br />
-                  Pune Nashik Highway, Kuruli,<br />
-                  Tal: Khed, Dist: Pune – 410501
+                  Balaji Industrial Area,<br />
+                  Behind Maruti Suzuki ARENA Showroom,<br />
+                  Pune Nashik Highway, Kuruli, Near Chakan,<br />
+                  Tal: Khed, Dist: Pune – 410501<br />
+                  Maharashtra, India
                 </span>
               </li>
 

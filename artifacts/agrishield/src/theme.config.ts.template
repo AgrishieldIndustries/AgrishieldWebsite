@@ -57,11 +57,12 @@ export const themeConfig: CompanyConfig = {
     "+91 90213 42901"
   ],
   address: {
-    line1: "Plot No. 55",
-    line2: "Gat No. 679, Behind Maruti Suzuki Showroom",
-    highway: "Pune Nashik Highway, Kuruli",
-    region: "Tal: Khed, Dist: Pune",
+    line1: "Plot No. 55, Gat No. 679",
+    line2: "Balaji Industrial Area, Behind Maruti Suzuki ARENA Showroom",
+    highway: "Pune Nashik Highway, Kuruli, Near Chakan",
+    region: "Tal: Khed, Dist: Pune - 410501",
     postalCode: "410501",
+    state: "Maharashtra",
     country: "India"
   },
   socials: {

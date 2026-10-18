@@ -2,9 +2,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   ShieldCheck, ChevronDown, Award, FileText, 
-  Star, ArrowRight, UserCheck, Compass, Target
+  Star, ArrowRight, UserCheck, Compass, Target,
+  Lock, Mail, Send, CheckCircle2, X, Building2, User, Phone
 } from "lucide-react";
 import { Link } from "wouter";
+import { useToast } from "@/hooks/use-toast";
 
 const LOGO_STRIP = [
   { name: "ISO 9001:2015", icon: ShieldCheck, label: "Quality System Certified" },
@@ -80,10 +82,77 @@ const TESTIMONIALS = [
 ];
 
 export default function About() {
+  const { toast } = useToast();
   const [openAccord, setOpenAccord] = useState<number | null>(0);
+  const [requestModalOpen, setRequestModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    organization: "",
+    purpose: "Quality & Compliance Verification",
+    message: "",
+  });
 
   const toggleAccord = (index: number) => {
     setOpenAccord(openAccord === index ? null : index);
+  };
+
+  const handleSubmitRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const payload = {
+      access_key: "28ca6348-1a33-4b31-a833-4519a4453046",
+      subject: "Document Access Request: ISO 9001:2015 Quality Management - Agrishield",
+      from_name: "Agrishield Document Request Portal",
+      certificate_title: "ISO 9001:2015 Quality Management",
+      certificate_code: "ISO 9001:2015",
+      certificate_issuer: "Quality Control Certification (QCC) · Accredited by UABL",
+      requester_name: formData.name,
+      requester_email: formData.email,
+      requester_phone: formData.phone,
+      organization: formData.organization || "Not specified",
+      purpose: formData.purpose,
+      additional_notes: formData.message || "None",
+      message: `A visitor has requested to view official document "ISO 9001:2015 Quality Management".\n\nRequester Information:\n• Name: ${formData.name}\n• Email: ${formData.email}\n• Phone: ${formData.phone}\n• Organization: ${formData.organization || "Independent"}\n• Purpose: ${formData.purpose}\n• Notes: ${formData.message || "None"}\n\nDocument Information:\n• Title: ISO 9001:2015 Quality Management\n• Code: ISO 9001:2015\n• Issuer: Quality Control Certification (QCC) · Accredited by UABL`
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setSubmitted(true);
+        toast({
+          title: "Request Sent Successfully",
+          description: "Your request to view the ISO 9001:2015 Certificate has been forwarded to our compliance desk.",
+        });
+      } else {
+        toast({
+          title: "Submission failed",
+          description: data.message || "Please try again or email us directly.",
+          variant: "destructive",
+        });
+      }
+    } catch (err) {
+      toast({
+        title: "Submission failed",
+        description: "A network error occurred. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -175,13 +244,48 @@ export default function About() {
 
           <div className="lg:col-span-6 lg:order-1">
             <div className="relative">
-              {/* Highlight image card */}
-              <div className="rounded-[32px] overflow-hidden aspect-[4/5] max-w-[420px] mx-auto relative shadow-xl border border-gray-100 bg-white">
+              {/* Highlight image card with secure overlay */}
+              <div className="rounded-[32px] overflow-hidden aspect-[4/5] max-w-[420px] mx-auto relative shadow-2xl border border-gray-100 bg-gray-950 group">
                 <img
                   src="/iso-certificate.png"
                   alt="Agrishield ISO 9001:2015 Certification Document"
-                  className="w-full h-full object-contain p-4"
+                  className="w-full h-full object-contain p-4 filter blur-[7px] opacity-40 scale-95 transition-all duration-300"
                 />
+
+                {/* Security Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/75 to-transparent flex flex-col items-center justify-end p-6 text-center text-white pb-8">
+                  <div className="w-13 h-13 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-3 shadow-lg">
+                    <Lock className="w-6 h-6 text-white" />
+                  </div>
+
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/15 text-white mb-2 border border-white/15">
+                    Restricted Compliance Record
+                  </div>
+
+                  <h3 className="text-[18px] font-bold text-white mb-1">
+                    ISO 9001:2015 Certificate
+                  </h3>
+                  <p className="text-[12px] text-gray-300 max-w-[280px] mb-4 leading-relaxed">
+                    Official accreditation documents are restricted to verified partners &amp; regulatory inquiries.
+                  </p>
+
+                  <button
+                    onClick={() => {
+                      setRequestModalOpen(true);
+                      setSubmitted(false);
+                    }}
+                    className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold text-[13.5px] px-6 py-2.5 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer hover:scale-105 active:scale-95 mb-3"
+                    data-testid="btn-about-request-iso"
+                  >
+                    <Mail className="w-4 h-4" /> Request to View
+                  </button>
+
+                  <Link href="/awards#certifications">
+                    <span className="text-[12px] text-gray-300 hover:text-white underline cursor-pointer">
+                      View all 12 licenses &amp; certificates &rarr;
+                    </span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -457,6 +561,227 @@ export default function About() {
         </div>
 
       </div>
+
+      {/* ── REQUEST TO VIEW MODAL ────────────────────────────────── */}
+      <AnimatePresence>
+        {requestModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+            onClick={() => setRequestModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 15 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 15 }}
+              className="bg-white rounded-2xl overflow-hidden w-full max-w-lg shadow-2xl relative my-8 border border-gray-100 flex flex-col text-left"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="px-6 py-5 border-b border-gray-100 flex items-start justify-between bg-gray-50/70">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wide mb-1.5 bg-red-100 text-red-700">
+                    <Lock className="w-3 h-3" /> ISO 9001:2015
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-[17px] leading-snug">
+                    ISO 9001:2015 Quality Management
+                  </h3>
+                  <p className="text-[12px] text-gray-500 font-medium mt-0.5">
+                    Quality Control Certification (QCC) · Accredited by UABL
+                  </p>
+                </div>
+                <button
+                  onClick={() => setRequestModalOpen(false)}
+                  className="p-2 rounded-full hover:bg-gray-200 transition-colors ml-4 cursor-pointer text-gray-500 hover:text-gray-800"
+                  aria-label="Close modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-6">
+                {!submitted ? (
+                  <div>
+                    <div className="bg-primary/[0.04] border border-primary/15 rounded-xl p-3.5 mb-5 flex items-start gap-3">
+                      <ShieldCheck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                      <p className="text-[13px] text-gray-600 leading-relaxed">
+                        Official compliance records are shared upon verified request. Fill in your details below and our team will verify and forward the document to your email.
+                      </p>
+                    </div>
+
+                    <form onSubmit={handleSubmitRequest} className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-[12.5px] font-semibold text-gray-700 mb-1">
+                            Full Name <span className="text-red-500">*</span>
+                          </label>
+                          <div className="relative">
+                            <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                            <input
+                              required
+                              type="text"
+                              value={formData.name}
+                              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                              placeholder="Your full name"
+                              className="w-full h-10.5 pl-10 pr-3 rounded-lg border border-gray-200 text-[13.5px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition bg-white"
+                              data-testid="input-about-request-name"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-[12.5px] font-semibold text-gray-700 mb-1">
+                            Phone / WhatsApp <span className="text-red-500">*</span>
+                          </label>
+                          <div className="relative">
+                            <Phone className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                            <input
+                              required
+                              type="tel"
+                              value={formData.phone}
+                              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                              placeholder="+91 98765 43210"
+                              className="w-full h-10.5 pl-10 pr-3 rounded-lg border border-gray-200 text-[13.5px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition bg-white"
+                              data-testid="input-about-request-phone"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-[12.5px] font-semibold text-gray-700 mb-1">
+                          Email Address <span className="text-red-500">*</span>
+                        </label>
+                        <div className="relative">
+                          <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                          <input
+                            required
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            placeholder="you@company.com"
+                            className="w-full h-10.5 pl-10 pr-3 rounded-lg border border-gray-200 text-[13.5px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition bg-white"
+                            data-testid="input-about-request-email"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-[12.5px] font-semibold text-gray-700 mb-1">
+                            Organization / Firm
+                          </label>
+                          <div className="relative">
+                            <Building2 className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                            <input
+                              type="text"
+                              value={formData.organization}
+                              onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                              placeholder="e.g. Kisan Agri Centre / Dealer"
+                              className="w-full h-10.5 pl-10 pr-3 rounded-lg border border-gray-200 text-[13.5px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition bg-white"
+                              data-testid="input-about-request-org"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-[12.5px] font-semibold text-gray-700 mb-1">
+                            Purpose of Request
+                          </label>
+                          <select
+                            value={formData.purpose}
+                            onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+                            className="w-full h-10.5 px-3 rounded-lg border border-gray-200 text-[13.5px] text-gray-900 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition bg-white"
+                            data-testid="select-about-request-purpose"
+                          >
+                            <option value="Quality & Compliance Verification">Quality &amp; Compliance Verification</option>
+                            <option value="Dealership / Retail Partnership">Dealership / Retail Partnership</option>
+                            <option value="Institutional / B2B Procurement">Institutional / B2B Procurement</option>
+                            <option value="Export & International Trade">Export &amp; International Trade</option>
+                            <option value="Other Verification">Other Verification</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-[12.5px] font-semibold text-gray-700 mb-1">
+                          Notes / Specific requirement (Optional)
+                        </label>
+                        <textarea
+                          rows={2}
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          placeholder="Provide any specific requirement or notes..."
+                          className="w-full px-3 py-2 rounded-lg border border-gray-200 text-[13px] text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition bg-white resize-none"
+                          data-testid="textarea-about-request-notes"
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full h-11 bg-primary hover:bg-primary/90 text-white font-semibold text-[14px] rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer mt-2"
+                        data-testid="btn-submit-about-request"
+                      >
+                        {loading ? (
+                          <>
+                            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            Sending Request to Agrishield...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4" /> Submit Request to View
+                          </>
+                        )}
+                      </button>
+                    </form>
+                  </div>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-6 px-2"
+                  >
+                    <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-4 border border-emerald-100 shadow-sm">
+                      <CheckCircle2 className="w-9 h-9" />
+                    </div>
+
+                    <h4 className="text-[20px] font-bold text-gray-900 mb-2">Request Submitted Successfully</h4>
+                    <p className="text-[14px] text-gray-600 mb-6 max-w-sm mx-auto leading-relaxed">
+                      Thank you, <strong className="text-gray-900">{formData.name}</strong>. Your formal request to inspect <strong className="text-gray-900">ISO 9001:2015 Quality Management</strong> has been emailed to our compliance desk.
+                    </p>
+
+                    <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-left mb-6 text-[12.5px] space-y-1.5">
+                      <div className="flex justify-between text-gray-500">
+                        <span>Document:</span>
+                        <strong className="text-gray-800">ISO 9001:2015</strong>
+                      </div>
+                      <div className="flex justify-between text-gray-500">
+                        <span>Dispatched to:</span>
+                        <strong className="text-primary truncate ml-2">shantishwar.patil@agrishieldindustries.com</strong>
+                      </div>
+                      <div className="flex justify-between text-gray-500">
+                        <span>Contact Info:</span>
+                        <span className="text-gray-700">{formData.email} · {formData.phone}</span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => setRequestModalOpen(false)}
+                      className="w-full h-11 bg-gray-900 hover:bg-black text-white font-semibold text-[14px] rounded-xl transition-colors cursor-pointer"
+                    >
+                      Done
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

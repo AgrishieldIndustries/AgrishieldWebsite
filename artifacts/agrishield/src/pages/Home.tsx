@@ -218,62 +218,97 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.995 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-[24px] overflow-hidden min-h-[660px] md:min-h-[560px]"
+            className="relative rounded-[24px] overflow-hidden min-h-[680px] md:min-h-[580px] shadow-sm"
           >
             <img
-              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=800&fit=crop&q=90"
-              alt="Aerial view of Indian farmland at dawn – Agrishield Industries crop nutrition"
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ objectPosition: "center 55%" }}
+              src="/hero-farmland.jpg"
+              alt="AGRISHIELD cinematic farmland with golden-hour sunlight – smarter crop nutrition and stronger harvests"
+              className="absolute inset-0 w-full h-full object-cover object-[72%_center] md:object-[68%_center]"
               fetchPriority="high"
               decoding="sync"
             />
-            {/* cinematic layered gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+            {/* Subtle dark green/teal gradient overlay on the left fading toward the right for text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#041d14]/95 via-[#06291c]/75 via-48% to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
             <div
-              className="relative z-10 flex flex-col justify-between h-full px-6 md:px-14 py-10 md:py-14 min-h-[660px] md:min-h-[560px]"
+              className="relative z-10 flex flex-col justify-between h-full px-6 md:px-14 py-10 md:py-14 min-h-[680px] md:min-h-[580px]"
             >
-              {/* Text block */}
-              <div className="max-w-[540px]">
+              {/* Text & CTAs block */}
+              <div className="max-w-[580px]">
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-3.5 py-1 mb-5"
+                  transition={{ delay: 0.15, duration: 0.5 }}
+                  className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3.5 py-1 mb-5"
                 >
-                  <span className="text-[9.5px] md:text-[10.5px] font-bold text-gray-600 tracking-[0.08em] uppercase">
-                    Manufactured in Pune · Trusted across India
+                  <span className="text-[10px] md:text-[11px] font-bold text-white tracking-[0.1em] uppercase">
+                    MANUFACTURED IN PUNE · TRUSTED ACROSS INDIA
                   </span>
                 </motion.div>
 
                 <motion.h1
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ delay: 0.25, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   className="font-extrabold text-white leading-[1.08] tracking-tight mb-4"
-                  style={{ fontSize: "clamp(30px, 4.2vw, 58px)" }}
+                  style={{ fontSize: "clamp(32px, 4.2vw, 56px)" }}
                 >
-                  Fertilizers &amp; micronutrients that boost your plant growth.
+                  Smarter Crop Nutrition.<br />
+                  <span className="text-[#86efac]">Stronger Harvests.</span>
                 </motion.h1>
 
                 <motion.p
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.42, duration: 0.55 }}
-                  className="text-[14.5px] md:text-[16px] text-white/80 leading-relaxed max-w-[420px]"
+                  transition={{ delay: 0.35, duration: 0.55 }}
+                  className="text-[15px] md:text-[16.5px] text-white/90 leading-relaxed max-w-[480px]"
                 >
-                  The complete crop-care catalogue from Agrishield Industries — biostimulants, NPKs, chelated micronutrients and plant protection, engineered for every crop.
+                  Discover crop nutrition and protection solutions engineered for healthier growth, better plant health, and a greener future.
                 </motion.p>
+
+                {/* Hero CTAs */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45, duration: 0.55 }}
+                  className="flex flex-wrap items-center gap-3 mt-6 mb-2"
+                >
+                  <Link
+                    href="/products"
+                    className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-[14px] px-5 py-3 rounded-full shadow-lg shadow-black/25 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+                    data-testid="btn-hero-explore-products"
+                  >
+                    <span>Explore Products</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const el = document.getElementById("hero-crop-finder");
+                      if (el) {
+                        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                      }
+                      setActiveDropdown((prev) => (prev === "crop" ? null : "crop"));
+                    }}
+                    className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md border border-white/25 font-bold text-[14px] px-5 py-3 rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+                    data-testid="btn-hero-find-crop-solution"
+                  >
+                    <Sprout className="w-4 h-4 text-[#86efac]" />
+                    <span>Find Your Crop Solution</span>
+                  </button>
+                </motion.div>
               </div>
 
               {/* Dynamic Cascading Search select blocks */}
               <motion.div
+                id="hero-crop-finder"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.52, duration: 0.55 }}
-                className="mt-8 w-full max-w-lg"
+                className="mt-6 w-full max-w-xl"
               >
                 <div className="flex flex-col md:flex-row items-stretch md:items-center bg-white rounded-2xl shadow-2xl overflow-visible border border-white/10 divide-y md:divide-y-0 md:divide-x divide-gray-100 w-full relative">
                   

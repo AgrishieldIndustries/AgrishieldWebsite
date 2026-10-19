@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, FileText, CheckCircle, Mail, X, Send, Lock, Building2, User, Phone, CheckCircle2 } from "lucide-react";
+import { 
+  ShieldCheck, FileText, CheckCircle, Mail, X, Send, 
+  Lock, Building2, User, Phone, CheckCircle2, Award, Trophy, Maximize2 
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const CERTIFICATIONS = [
@@ -103,6 +106,12 @@ export default function Awards() {
     purpose: "Dealership / Retail Partnership",
     message: "",
   });
+  const [previewImage, setPreviewImage] = useState<{
+    src: string;
+    alt: string;
+    title: string;
+    subtitle?: string;
+  } | null>(null);
 
   const handleOpenRequest = (cert: typeof CERTIFICATIONS[0]) => {
     setSelectedCert(cert);
@@ -252,6 +261,148 @@ export default function Awards() {
               <div className="text-[12.5px] text-gray-500 font-medium leading-snug">{stat.label}</div>
             </motion.div>
           ))}
+        </div>
+
+        {/* ── INDUSTRY AWARDS & RECOGNITION ───────────────────── */}
+        <div id="awards" className="mb-24 scroll-mt-24">
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-800 border border-amber-500/20 rounded-full px-3.5 py-1 text-[12px] font-semibold tracking-wider uppercase mb-3">
+              <Trophy className="w-3.5 h-3.5 text-amber-600" /> Honors &amp; Recognition
+            </div>
+            <h2 className="text-[26px] md:text-[34px] font-bold text-gray-900 mb-3 tracking-tight">
+              Industry Awards &amp; Honors
+            </h2>
+            <p className="text-[15px] text-gray-500 max-w-2xl leading-relaxed">
+              Recognizing outstanding leadership, industry contribution, and commitment to farmer empowerment.
+            </p>
+          </div>
+
+          {/* Lokmat Excellence Award Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
+            className="bg-white rounded-[24px] border border-gray-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+            data-testid="card-lokmat-award"
+          >
+            <div className="p-6 md:p-10">
+              {/* Header Badges & Info */}
+              <div className="flex flex-wrap items-start justify-between gap-4 mb-6 pb-6 border-b border-gray-100">
+                <div className="space-y-1.5 max-w-2xl">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider bg-red-50 text-[#b91c1c] border border-red-100">
+                      Lokmat Excellence Awards 2025
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[12px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-100">
+                      Excellence in Agriculture Industry
+                    </span>
+                  </div>
+
+                  <h3 className="text-[24px] md:text-[30px] font-extrabold text-gray-900 leading-snug">
+                    Lokmat Excellence Awards 2025
+                  </h3>
+
+                  <div className="flex flex-wrap items-center gap-y-1 gap-x-4 pt-1 text-[14px]">
+                    <span className="flex items-center gap-1.5 text-gray-700">
+                      <User className="w-4 h-4 text-primary" />
+                      Recognized person: <strong className="text-gray-900 font-bold">Dr. Shantishwar Patil</strong>
+                    </span>
+                    <span className="text-gray-300 hidden sm:inline">•</span>
+                    <span className="flex items-center gap-1.5 text-gray-700">
+                      <Building2 className="w-4 h-4 text-gray-400" />
+                      Organization: <strong className="text-gray-900 font-bold">Agrishield Industries Pvt. Ltd.</strong>
+                    </span>
+                  </div>
+                </div>
+
+                <div className="bg-amber-50/80 rounded-2xl px-4 py-3 border border-amber-100 flex items-center gap-3 shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center shrink-0">
+                    <Award className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-amber-800">Recognition</div>
+                    <div className="text-[13.5px] font-extrabold text-gray-900">Excellence in Agriculture Industry</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Description & Marathi Reference */}
+              <div className="mb-8">
+                <blockquote className="text-[16px] md:text-[17px] font-semibold text-gray-800 leading-relaxed mb-2">
+                  “Recognition of Dr. Shantishwar Patil of Agrishield Industries at the Lokmat Excellence Awards 2025.”
+                </blockquote>
+                <p className="text-[13px] text-gray-500 font-medium">
+                  विशेष गौरव: ‘लोकमत एक्सलन्स अवॉर्ड्स २०२५’ — डॉ. शांतीश्वर पाटील, एक्सलन्स इन ॲग्रीकल्चर इंडस्ट्री
+                </p>
+              </div>
+
+              {/* Two Photographs Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                {/* Photo 1: Primary Award Recognition Image (Portrait newspaper / award clipping) */}
+                <div className="lg:col-span-5 flex flex-col">
+                  <div
+                    onClick={() =>
+                      setPreviewImage({
+                        src: "/lokmat-excellence-award-2025-recognition.jpg",
+                        alt: "Lokmat Excellence Awards 2025 recognition featuring Dr. Shantishwar Patil.",
+                        title: "Lokmat Excellence Awards 2025 – Award Recognition",
+                        subtitle: "डॉ. शांतीश्वर पाटील – एक्सलन्स इन ॲग्रीकल्चर इंडस्ट्री",
+                      })
+                    }
+                    className="group relative rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:shadow-md cursor-pointer flex-1 flex items-center justify-center p-3 transition-all duration-200"
+                    data-testid="img-lokmat-recognition"
+                  >
+                    <img
+                      src="/lokmat-excellence-award-2025-recognition.jpg"
+                      alt="Lokmat Excellence Awards 2025 recognition featuring Dr. Shantishwar Patil."
+                      className="w-full h-auto max-h-[480px] object-contain rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 text-gray-900 text-[12px] font-semibold px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-sm">
+                        <Maximize2 className="w-3.5 h-3.5" /> Click to view larger
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-[12px] text-gray-500 mt-2.5 text-center font-medium">
+                    Award recognition coverage · ‘लोकमत एक्सलन्स अवॉर्ड्स २०२५’
+                  </p>
+                </div>
+
+                {/* Photo 2: Full-stage Ceremony Photograph (Landscape) */}
+                <div className="lg:col-span-7 flex flex-col">
+                  <div
+                    onClick={() =>
+                      setPreviewImage({
+                        src: "/lokmat-excellence-award-2025-stage.jpg",
+                        alt: "Group photograph from the Lokmat Excellence Awards 2025 ceremony.",
+                        title: "Lokmat Excellence Awards 2025 – Stage Ceremony",
+                        subtitle: "Presentation ceremony with dignitaries on stage",
+                      })
+                    }
+                    className="group relative rounded-2xl overflow-hidden border border-gray-200 bg-gray-50/50 shadow-sm hover:shadow-md cursor-pointer flex-1 flex items-center justify-center p-3 transition-all duration-200"
+                    data-testid="img-lokmat-stage"
+                  >
+                    <img
+                      src="/lokmat-excellence-award-2025-stage.jpg"
+                      alt="Group photograph from the Lokmat Excellence Awards 2025 ceremony."
+                      className="w-full h-auto max-h-[480px] object-contain rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 text-gray-900 text-[12px] font-semibold px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-sm">
+                        <Maximize2 className="w-3.5 h-3.5" /> Click to view larger
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-[12px] text-gray-500 mt-2.5 text-center font-medium">
+                    Group presentation ceremony on stage with dignitaries
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Certificates Grid */}
@@ -535,6 +686,53 @@ export default function Awards() {
                     </button>
                   </motion.div>
                 )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── IMAGE LIGHTBOX MODAL ─────────────────────────────────── */}
+      <AnimatePresence>
+        {previewImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setPreviewImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="bg-white rounded-2xl overflow-hidden max-w-4xl w-full max-h-[92vh] shadow-2xl relative flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/80">
+                <div>
+                  <h3 className="font-bold text-gray-900 text-[16px] leading-snug">{previewImage.title}</h3>
+                  {previewImage.subtitle && (
+                    <p className="text-[12px] text-gray-500 font-medium">{previewImage.subtitle}</p>
+                  )}
+                </div>
+                <button
+                  onClick={() => setPreviewImage(null)}
+                  className="p-2 rounded-full hover:bg-gray-200 transition-colors cursor-pointer text-gray-500 hover:text-gray-800"
+                  aria-label="Close image preview"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Full Image */}
+              <div className="flex-1 overflow-auto p-4 bg-gray-950 flex items-center justify-center min-h-[300px]">
+                <img
+                  src={previewImage.src}
+                  alt={previewImage.alt}
+                  className="max-w-full max-h-[75vh] object-contain rounded shadow"
+                />
               </div>
             </motion.div>
           </motion.div>

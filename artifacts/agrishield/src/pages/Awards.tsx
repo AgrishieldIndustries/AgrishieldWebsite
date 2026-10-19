@@ -269,7 +269,7 @@ export default function Awards() {
             <div className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-800 border border-amber-500/20 rounded-full px-3.5 py-1 text-[12px] font-semibold tracking-wider uppercase mb-3">
               <Trophy className="w-3.5 h-3.5 text-amber-600" /> Honors &amp; Recognition
             </div>
-            <h2 className="text-[26px] md:text-[34px] font-bold text-gray-900 mb-3 tracking-tight">
+            <h2 className="text-[26px] md:text-[34px] font-bold text-gray-900 mb-3 tracking-tight font-['Lexend',sans-serif]">
               Industry Awards &amp; Honors
             </h2>
             <p className="text-[15px] text-gray-500 max-w-2xl leading-relaxed">
@@ -287,48 +287,11 @@ export default function Awards() {
             data-testid="card-lokmat-award"
           >
             <div className="p-6 md:p-10">
-              {/* Header Badges & Info */}
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-6 pb-6 border-b border-gray-100">
-                <div className="space-y-1.5 max-w-2xl">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider bg-red-50 text-[#b91c1c] border border-red-100">
-                      Lokmat Excellence Awards 2025
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[12px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-100">
-                      Excellence in Agriculture Industry
-                    </span>
-                  </div>
-
-                  <h3 className="text-[24px] md:text-[30px] font-extrabold text-gray-900 leading-snug">
-                    Lokmat Excellence Awards 2025
-                  </h3>
-
-                  <div className="flex flex-wrap items-center gap-y-1 gap-x-4 pt-1 text-[14px]">
-                    <span className="flex items-center gap-1.5 text-gray-700">
-                      <User className="w-4 h-4 text-primary" />
-                      Recognized person: <strong className="text-gray-900 font-bold">Dr. Shantishwar Patil</strong>
-                    </span>
-                    <span className="text-gray-300 hidden sm:inline">•</span>
-                    <span className="flex items-center gap-1.5 text-gray-700">
-                      <Building2 className="w-4 h-4 text-gray-400" />
-                      Organization: <strong className="text-gray-900 font-bold">Agrishield Industries Pvt. Ltd.</strong>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="bg-amber-50/80 rounded-2xl px-4 py-3 border border-amber-100 flex items-center gap-3 shrink-0">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center shrink-0">
-                    <Award className="w-5 h-5 text-amber-600" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-amber-800">Recognition</div>
-                    <div className="text-[13.5px] font-extrabold text-gray-900">Excellence in Agriculture Industry</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Description & Marathi Reference */}
-              <div className="mb-8">
+              {/* Header Title & Description */}
+              <div className="mb-8 pb-6 border-b border-gray-100">
+                <h3 className="text-[26px] md:text-[32px] font-bold text-gray-900 leading-snug tracking-tight font-['Lexend',sans-serif] mb-3">
+                  Lokmat Excellence Awards 2025
+                </h3>
                 <blockquote className="text-[16px] md:text-[17px] font-semibold text-gray-800 leading-relaxed mb-2">
                   “Recognition of Dr. Shantishwar Patil of Agrishield Industries at the Lokmat Excellence Awards 2025.”
                 </blockquote>
